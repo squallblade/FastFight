@@ -5,6 +5,15 @@ bin-release/
 test/
 jars/
 conf/
+*.sh
+*.bat
+doc/
+*.txt
+CHANGELOG
+*.py
+runtime/
+
+
 
 # Other files and folders
 .settings/
