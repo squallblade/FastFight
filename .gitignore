@@ -3,6 +3,7 @@ bin/
 bin-debug/
 bin-release/
 test/
+jars/
 
 # Other files and folders
 .settings/
