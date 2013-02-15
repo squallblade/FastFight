@@ -7,7 +7,7 @@ jars/
 conf/
 *.sh
 *.bat
-doc/
+docs/
 *.txt
 CHANGELOG
 *.py
