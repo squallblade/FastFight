@@ -12,7 +12,7 @@ docs/
 CHANGELOG
 *.py
 runtime/
-temps/
+temp/
 jars/
 logs/
 lib/
