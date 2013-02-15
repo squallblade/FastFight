@@ -12,6 +12,7 @@ docs/
 CHANGELOG
 *.py
 runtime/
+.gitignore
 
 
 
