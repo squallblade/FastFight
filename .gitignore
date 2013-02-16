@@ -1,13 +1,11 @@
 # Build and Release Folders
 bin-debug/
 bin-release/
-test/
 jars/
 conf/
 *.sh
 *.bat
 docs/
-*.txt
 CHANGELOG
 *.py
 runtime/
