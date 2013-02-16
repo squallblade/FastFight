@@ -291,12 +291,12 @@ public class GuiMainMenu extends GuiScreen
         
         //light edition
         
-    	 GL11.glPushMatrix();
-         GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/title/parchemin.png"));
-     	GL11.glScalef((float)(1280/this.width)+0.5F, (float)(768/this.height)+0.2F, 1.0F);
-         this.drawTexturedModalRect(0, 0, 0, 0, 640, 384);
-         GL11.glPopMatrix();
-         System.out.println(this.width+"   "+this.height);
+//    	 GL11.glPushMatrix();
+//         GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/title/parchemin.png"));
+//     	GL11.glScalef((float)(1280/this.width)+0.5F, (float)(768/this.height)+0.2F, 1.0F);
+//         this.drawTexturedModalRect(0, 0, 0, 0, 640, 384);
+//         GL11.glPopMatrix();
+//         System.out.println(this.width+"   "+this.height);
        this.drawGradientRect(0, 0, this.width, this.height, this.anim, 16777215);
        this.drawGradientRect(0, 10, this.width, this.height-45, 0xfd8d8d8, Integer.MIN_VALUE);
        this.drawRect(0, 0, this.width, this.height, 0xff);
