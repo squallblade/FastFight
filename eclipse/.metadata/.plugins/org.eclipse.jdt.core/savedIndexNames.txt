@@ -1,0 +1,5 @@
+INDEX VERSION 1.126+C:\Users\Samuel.samuel-PC\Desktop\MCP\FastFight\eclipse\.metadata\.plugins\org.eclipse.jdt.core
+3444757604.index
+2549917922.index
+1182967862.index
+1954120464.index
