@@ -545,7 +545,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         if (minecraftDir == null)
         {
 //            minecraftDir = getAppDir("minecraft");
-        	 minecraftDir = getAppDir("MineForWars");
+        	 minecraftDir = getAppDir("losan");
         }
 
         return minecraftDir;
