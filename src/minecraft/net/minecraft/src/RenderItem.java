@@ -72,7 +72,8 @@ public class RenderItem extends Render
                     GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
                 }
 
-                this.loadTexture("/terrain.png");
+                //SDI/T
+                this.loadTexture(var14.getTextureFile());
                 float var22 = 0.25F;
                 var16 = var14.getRenderType();
 
@@ -152,13 +153,14 @@ public class RenderItem extends Render
 
                     var15 = var10.getIconIndex();
 
+                    //SDI/T
                     if (var14 != null)
                     {
-                        this.loadTexture("/terrain.png");
+                        this.loadTexture(var14.getTextureFile());
                     }
                     else
                     {
-                        this.loadTexture("/gui/items.png");
+                        this.loadTexture(var10.getItem().getTextureFile());
                     }
 
                     if (this.field_77024_a)
@@ -230,7 +232,8 @@ public class RenderItem extends Render
 
         if (var6 < 256 && RenderBlocks.renderItemIn3d(Block.blocksList[var6].getRenderType()))
         {
-            par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/terrain.png"));
+            //SDI/T
+            par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Block.blocksList[var6].getTextureFile()));
             Block var15 = Block.blocksList[var6];
             GL11.glPushMatrix();
             GL11.glTranslatef((float)(par4 - 2), (float)(par5 + 3), -3.0F + this.zLevel);
@@ -262,7 +265,8 @@ public class RenderItem extends Render
             if (Item.itemsList[var6].requiresMultipleRenderPasses())
             {
                 GL11.glDisable(GL11.GL_LIGHTING);
-                par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/gui/items.png"));
+                //SDI/T
+                par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Item.itemsList[var6].getTextureFile()));
 
                 for (var9 = 0; var9 <= 1; ++var9)
                 {
@@ -286,13 +290,14 @@ public class RenderItem extends Render
             {
                 GL11.glDisable(GL11.GL_LIGHTING);
 
+                //SDI/T
                 if (var6 < 256)
                 {
-                    par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/terrain.png"));
+                    par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Block.blocksList[var6].getTextureFile()));
                 }
                 else
                 {
-                    par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/gui/items.png"));
+                    par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Item.itemsList[var6].getTextureFile()));
                 }
 
                 var9 = Item.itemsList[var6].getColorFromItemStack(par3ItemStack, 0);

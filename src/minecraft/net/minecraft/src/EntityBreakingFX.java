@@ -2,6 +2,9 @@ package net.minecraft.src;
 
 public class EntityBreakingFX extends EntityFX
 {
+	//SDI/T
+    private Item itemInstance;
+	
     public EntityBreakingFX(World par1World, double par2, double par4, double par6, Item par8Item)
     {
         super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
@@ -9,6 +12,9 @@ public class EntityBreakingFX extends EntityFX
         this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
         this.particleGravity = Block.blockSnow.blockParticleGravity;
         this.particleScale /= 2.0F;
+        
+        //SDI/T
+        this.itemInstance = par8Item;
     }
 
     public EntityBreakingFX(World par1World, double par2, double par4, double par6, double par8, double par10, double par12, Item par14Item)
@@ -22,6 +28,12 @@ public class EntityBreakingFX extends EntityFX
         this.motionZ += par12;
     }
 
+ 	//SDI/T
+    public String getEntityItemTexture()
+    {
+        return itemInstance.getTextureFile();
+    }
+    
     public int getFXLayer()
     {
         return 2;

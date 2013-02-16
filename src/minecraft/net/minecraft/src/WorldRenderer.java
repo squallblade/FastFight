@@ -3,6 +3,9 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import net.minecraft.client.Minecraft;
+
 import org.lwjgl.opengl.GL11;
 
 public class WorldRenderer
@@ -181,12 +184,19 @@ public class WorldRenderer
                     this.bytesDrawn = 0;
                     Tessellator var11 = Tessellator.instance;
                     boolean var12 = Reflector.hasClass(1);
+                    
+                    //SDI/T
+                    String actualTexture = "";
+                    String blockTexture = "";
 
                     for (int var13 = 0; var13 < 2; ++var13)
                     {
                         boolean var14 = false;
                         boolean var15 = false;
                         boolean var16 = false;
+                        
+                        //SDI/T
+                        boolean hasDraw = false;
 
                         for (int var17 = var2; var17 < var5; ++var17)
                         {
@@ -202,8 +212,16 @@ public class WorldRenderer
                                         {
                                             var16 = true;
                                             GL11.glNewList(this.glRenderList + var13, GL11.GL_COMPILE);
+                                            GL11.glPushMatrix();
                                             var11.setRenderingChunk(true);
-
+                                            float par19 = 1.000001F;
+                                            GL11.glTranslatef(-8.0F, -8.0F, -8.0F);
+                                            GL11.glScalef(par19, par19, par19);
+                                            GL11.glTranslatef(8.0F, 8.0F, 8.0F);
+                                        	//SDI/T
+                                            actualTexture = Block.blocksList[var20].getTextureFile();
+                                            GL11.glBindTexture(GL11.GL_TEXTURE_2D, Minecraft.getMinecraft().renderEngine.getTexture(actualTexture));
+                                            
                                             if (var12)
                                             {
                                                 Reflector.callVoid(13, new Object[] {Integer.valueOf(var13)});
@@ -215,6 +233,9 @@ public class WorldRenderer
 
                                         Block var21 = Block.blocksList[var20];
 
+                                        //SDI/T
+                                        blockTexture = var21.getTextureFile();
+                                        
                                         if (var21 != null)
                                         {
                                             if (var13 == 0 && var21.hasTileEntity())
@@ -235,6 +256,24 @@ public class WorldRenderer
                                                 var14 = true;
                                                 var23 = false;
                                             }
+                                            else if (var28 == var13)
+                                            {
+                                            	//SDI/T
+                                                if(blockTexture != actualTexture)
+                                                {                                   
+                                                    bytesDrawn += var11.draw();
+                                                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, Minecraft.getMinecraft().renderEngine.getTexture(blockTexture));
+                                                    actualTexture = blockTexture;
+                                                    
+                                                    var11.startDrawingQuads();
+                                                    var11.setTranslation((double)(-globalChunkOffsetX), 0.0D, (double)(-globalChunkOffsetZ));
+                                                    
+                                                    hasDraw = false;
+                                                }
+                                                
+                                                var15 |= var10.renderBlockByRenderType(var21, var19, var17, var18);
+                                            }
+
 
                                             if (var12)
                                             {
@@ -269,6 +308,7 @@ public class WorldRenderer
                             }
 
                             this.bytesDrawn += var11.draw();
+                            GL11.glPopMatrix();
                             GL11.glEndList();
                             var11.setRenderingChunk(false);
                             var11.setTranslation(0.0D, 0.0D, 0.0D);

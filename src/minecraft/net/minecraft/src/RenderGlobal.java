@@ -376,7 +376,7 @@ public class RenderGlobal implements IWorldAccess
                     for (int var9 = 0; var9 < this.renderChunksDeep; ++var9)
                     {
                         int var10 = (var9 * this.renderChunksTall + var12) * this.renderChunksWide + var7;
-                        this.worldRenderers[var10] = WrUpdates.makeWorldRenderer(this.theWorld, this.tileEntities, var7 * 16, var12 * 16, var9 * 16, this.glRenderListBase + var4);
+                        this.worldRenderers[var10] = new WorldRenderer(this.theWorld, this.tileEntities, var7 * 16, var12 * 16, var9 * 16, this.glRenderListBase + var4);
 
                         if (this.occlusionEnabled)
                         {
@@ -669,7 +669,6 @@ public class RenderGlobal implements IWorldAccess
         }
 
         RenderHelper.disableStandardItemLighting();
-        WrUpdates.preRender(this, par1EntityLiving);
 
         if (this.mc.gameSettings.ofSmoothFps && par2 == 0)
         {
@@ -837,7 +836,6 @@ public class RenderGlobal implements IWorldAccess
         }
 
         var5.endSection();
-        WrUpdates.postRender();
         return var20;
     }
 
@@ -1509,11 +1507,7 @@ public class RenderGlobal implements IWorldAccess
      */
     public boolean updateRenderers(EntityLiving par1EntityLiving, boolean par2)
     {
-        if (WrUpdates.hasWrUpdater())
-        {
-            return WrUpdates.updateRenderers(this, par1EntityLiving, par2);
-        }
-        else if (this.worldRenderersToUpdate.size() <= 0)
+        if (this.worldRenderersToUpdate.size() <= 0)
         {
             return false;
         }
@@ -1904,8 +1898,8 @@ public class RenderGlobal implements IWorldAccess
         }
         catch (Throwable var17)
         {
-            CrashReport var15 = CrashReport.func_85055_a(var17, "Exception while adding particle");
-            CrashReportCategory var16 = var15.func_85058_a("Particle being added");
+            CrashReport var15 = CrashReport.makeCrashReport(var17, "Exception while adding particle");
+            CrashReportCategory var16 = var15.makeCategory("Particle being added");
             var16.addCrashSection("Name", par1Str);
             var16.addCrashSectionCallable("Position", new CallableParticlePositionInfo(this, par2, par4, par6));
             throw new ReportedException(var15);
@@ -2014,7 +2008,7 @@ public class RenderGlobal implements IWorldAccess
                     else if (par1Str.equals("mobSpellAmbient"))
                     {
                         var21 = new EntitySpellParticleFX(this.theWorld, par2, par4, par6, 0.0D, 0.0D, 0.0D);
-                        ((EntityFX)var21).func_82338_g(0.15F);
+                        ((EntityFX)var21).setAlphaF(0.15F);
                         ((EntityFX)var21).setRBGColorF((float)par8, (float)par10, (float)par12);
                     }
                     else if (par1Str.equals("spell"))

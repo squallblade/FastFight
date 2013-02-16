@@ -39,18 +39,25 @@ public class ItemRenderer
 
         if (var4 != null && RenderBlocks.renderItemIn3d(var4.getRenderType()))
         {
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
+        	//SDI/T
+            //GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
+        	GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var4.getTextureFile()));
             this.renderBlocksInstance.renderBlockAsItem(var4, par2ItemStack.getItemDamage(), 1.0F);
         }
         else
         {
-            if (var4 != null)
+        	if (var4 != null)
             {
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
+            	//SDI/T
+              //  GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var4.getTextureFile()));
             }
             else
             {
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/gui/items.png"));
+            	//SDI/T
+              //  GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/gui/items.png"));
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(Item.itemsList[par2ItemStack.itemID].getTextureFile()));
+
             }
 
             Tessellator var5 = Tessellator.instance;

@@ -384,8 +384,8 @@ public class NBTTagCompound extends NBTBase
      */
     private CrashReport createCrashReport(String par1Str, int par2, ClassCastException par3ClassCastException)
     {
-        CrashReport var4 = CrashReport.func_85055_a(par3ClassCastException, "Reading NBT data");
-        CrashReportCategory var5 = var4.func_85057_a("Corrupt NBT tag", 1);
+        CrashReport var4 = CrashReport.makeCrashReport(par3ClassCastException, "Reading NBT data");
+        CrashReportCategory var5 = var4.makeCategoryDepth("Corrupt NBT tag", 1);
         var5.addCrashSectionCallable("Tag type found", new CallableTagCompound1(this, par1Str));
         var5.addCrashSectionCallable("Tag type expected", new CallableTagCompound2(this, par2));
         var5.addCrashSection("Tag name", par1Str);

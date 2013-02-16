@@ -493,8 +493,8 @@ public class WorldServer extends World
                         }
                         catch (Throwable var13)
                         {
-                            CrashReport var8 = CrashReport.func_85055_a(var13, "Exception while ticking a block");
-                            CrashReportCategory var9 = var8.func_85058_a("Block being ticked");
+                            CrashReport var8 = CrashReport.makeCrashReport(var13, "Exception while ticking a block");
+                            CrashReportCategory var9 = var8.makeCategory("Block being ticked");
                             int var10;
 
                             try

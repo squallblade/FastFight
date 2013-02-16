@@ -56,46 +56,26 @@ public class ItemRendererHD extends ItemRenderer
 
                 if (var21)
                 {
-                    var9 = "/terrain.png";
+                    var9 = Block.blocksList[var2.itemID].getTextureFile();
 
                     if (var4)
                     {
                         var9 = Reflector.callString(var2.getItem(), 120, Reflector.NO_PARAMS);
                     }
 
-                    if (var9.equals("/terrain.png") && Config.isMultiTexture())
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, Tessellator.getTileTextures(this.minecraft.renderEngine.getTexture(var9))[var7]);
-                        var7 = 0;
-                        var8 = 16.0F;
-                    }
-                    else
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
-                    }
-
+                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
                     var22 = Config.getIconWidthTerrain();
                 }
                 else
                 {
-                    var9 = "/gui/items.png";
+                    var9 = Item.itemsList[var2.itemID].getTextureFile();
 
                     if (var4)
                     {
                         var9 = Reflector.callString(var2.getItem(), 120, Reflector.NO_PARAMS);
                     }
 
-                    if (var9.equals("/gui/items.png") && Config.isMultiTexture())
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, Tessellator.getTileTextures(this.minecraft.renderEngine.getTexture(var9))[var7]);
-                        var7 = 0;
-                        var8 = 16.0F;
-                    }
-                    else
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
-                    }
-
+                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
                     var22 = Config.getIconWidthItems();
                 }
 

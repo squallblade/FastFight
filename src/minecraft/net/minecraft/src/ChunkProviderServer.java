@@ -107,8 +107,8 @@ public class ChunkProviderServer implements IChunkProvider
                     }
                     catch (Throwable var9)
                     {
-                        CrashReport var7 = CrashReport.func_85055_a(var9, "Exception generating new chunk");
-                        CrashReportCategory var8 = var7.func_85058_a("Chunk to be generated");
+                        CrashReport var7 = CrashReport.makeCrashReport(var9, "Exception generating new chunk");
+                        CrashReportCategory var8 = var7.makeCategory("Chunk to be generated");
                         var8.addCrashSection("Location", String.format("%d,%d", new Object[] {Integer.valueOf(par1), Integer.valueOf(par2)}));
                         var8.addCrashSection("Position hash", Long.valueOf(var3));
                         var8.addCrashSection("Generator", this.currentChunkProvider.makeString());

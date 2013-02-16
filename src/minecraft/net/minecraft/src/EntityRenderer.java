@@ -960,7 +960,7 @@ public class EntityRenderer
 
         if (var2 != null && Config.getNewRelease() != null)
         {
-            String var3 = "HD_U " + Config.getNewRelease();
+            String var3 = "HD " + Config.getNewRelease();
             this.mc.ingameGUI.getChatGUI().printChatMessage("A new \u00a7eOptiFine\u00a7f version is available: \u00a7e" + var3 + "\u00a7f");
             Config.setNewRelease((String)null);
         }
@@ -1117,8 +1117,8 @@ public class EntityRenderer
                 }
                 catch (Throwable var13)
                 {
-                    CrashReport var11 = CrashReport.func_85055_a(var13, "Rendering screen");
-                    CrashReportCategory var12 = var11.func_85058_a("Screen render details");
+                    CrashReport var11 = CrashReport.makeCrashReport(var13, "Rendering screen");
+                    CrashReportCategory var12 = var11.makeCategory("Screen render details");
                     var12.addCrashSectionCallable("Screen name", new CallableScreenName(this));
                     var12.addCrashSectionCallable("Mouse location", new CallableMouseLocation(this, var18, var20));
                     var12.addCrashSectionCallable("Screen size", new CallableScreenSize(this, var15));
@@ -1587,7 +1587,6 @@ public class EntityRenderer
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glDisable(GL11.GL_CULL_FACE);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
-            WrUpdates.resumeBackgroundUpdates();
 
             if (Config.isWaterFancy())
             {
@@ -1630,7 +1629,6 @@ public class EntityRenderer
                 var5.renderAllSortedRenderers(1, (double)par1);
             }
 
-            WrUpdates.pauseBackgroundUpdates();
             GL11.glDepthMask(true);
             GL11.glEnable(GL11.GL_CULL_FACE);
             GL11.glDisable(GL11.GL_BLEND);

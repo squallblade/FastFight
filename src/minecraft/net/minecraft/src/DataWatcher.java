@@ -111,8 +111,8 @@ public class DataWatcher
         }
         catch (Throwable var6)
         {
-            CrashReport var4 = CrashReport.func_85055_a(var6, "Getting synched entity data");
-            CrashReportCategory var5 = var4.func_85058_a("Synched entity data");
+            CrashReport var4 = CrashReport.makeCrashReport(var6, "Getting synched entity data");
+            CrashReportCategory var5 = var4.makeCategory("Synched entity data");
             var5.addCrashSection("Data ID", Integer.valueOf(par1));
             throw new ReportedException(var4);
         }

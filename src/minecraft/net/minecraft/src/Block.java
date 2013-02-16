@@ -3,6 +3,7 @@ package net.minecraft.src;
 import java.util.List;
 import java.util.Random;
 
+
 public class Block
 {
     /**
@@ -202,6 +203,47 @@ public class Block
     public static final Block skull = (new BlockSkull(144)).setHardness(1.0F).setStepSound(soundStoneFootstep).setBlockName("skull").setRequiresSelfNotify();
     public static final Block anvil = (new BlockAnvil(145)).setHardness(5.0F).setStepSound(soundAnvilFootstep).setResistance(2000.0F).setBlockName("anvil").setRequiresSelfNotify();
 
+    //______________________________________________________________________________________________________________________________________________________________________________________________________________________
+    
+    public static final Block Color_Glass = (new BlockVitreColor()).setHardness(0.3F).setStepSound(soundGlassFootstep).setBlockName("coloredGlass").setRequiresSelfNotify();
+//    public static final Block coloredGlowStone = (new BlockGlowStoneColor()).setHardness(0.3F).setStepSound(soundGlassFootstep).setLightValue(1.0F).setBlockName("coloredGlowStone");
+//    public static final Block moquette = (new BlockMoquette()).setHardness(0.8F).setResistance(1.2F).setStepSound(soundClothFootstep).setBlockName("moquette").setCreativeTab(CreativeTabs.tabDecorations);
+//    public static final Block chaise = (new BlockChaise(213, wood, 0)).setHardness(1.8F).setResistance(4.5F).setStepSound(soundWoodFootstep).setBlockName("chaise").setCreativeTab(CreativeTabs.tabDecorations);
+//    public static final Block chaiseModerne = (new BlockChaiseModerne(214, cloth, 0)).setHardness(1.8F).setResistance(4.5F).setStepSound(soundWoodFootstep).setBlockName("chaise").setCreativeTab(CreativeTabs.tabDecorations);  
+//    public static final Block blockRubis = (new BlockOreStorage(215, 26)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRubis").setTextureFile("/terrain1.png");
+//    public static final Block oreRubis = (new BlockOre(216, 27)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("oreRubis").setTextureFile("/terrain1.png");
+//    public static final Block football = (new BlockFoot(217, 442,  Material.cloth)).setHardness(5.0F).setResistance(5.0F).setStepSound(soundClothFootstep).setBlockName("football").setCreativeTab(CreativeTabs.tabDecorations);
+//    public static final Block Redstone = (new BlockOreStorage(218, 459)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundMetalFootstep).setBlockName("blockRedstone").setCreativeTab(CreativeTabs.tabRedstone).setTextureFile("/terrain1.png");
+//    public static final Block Charbon = (new BlockOreStorage(219, 460)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundMetalFootstep).setBlockName("blockCharbon").setCreativeTab(CreativeTabs.tabDecorations).setTextureFile("/terrain1.png");
+//    public static final Block Speeder = (new BlockSpeeder(220, 461)).setHardness(2.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("Speeder").setCreativeTab(CreativeTabs.tabBlock);
+//    public static final Block Jumper = (new BlockJumper(221, 476)).setHardness(2.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("Jumper").setCreativeTab(CreativeTabs.tabBlock);
+//    public static final Block freezera = (new BlockFreezer(222, false)).setHardness(3.9F).setStepSound(soundStoneFootstep).setBlockName("Freezer").setRequiresSelfNotify().setCreativeTab(CreativeTabs.tabDecorations);
+//    public static final Block freezerb = (new BlockFreezer(223, true)).setHardness(3.9F).setStepSound(soundStoneFootstep).setLightValue(0.11F).setBlockName("Freezer").setRequiresSelfNotify();
+//    public static final Block fut = (new BlockFut(224, false)).setHardness(2.5F).setStepSound(soundWoodFootstep).setBlockName("fut").setRequiresSelfNotify();
+//    public static final Block poubelle = (new BlockPoubelle(225)).setHardness(2.5F).setStepSound(soundStoneFootstep).setBlockName("poubelle").setRequiresSelfNotify(); 
+//    public static final Block etagereBois = (new BlockEtagereBois(226)).setHardness(2.5F).setStepSound(soundWoodFootstep).setBlockName("etagereBois").disableStats().setRequiresSelfNotify(); 
+//    public static final Block orgeCrops = (new BlockOrgeCrops(227, 360)).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("orgeCrops").disableStats().setRequiresSelfNotify(); 
+//    public static final Block SpeederV = (new BlockSpeederV(228, 269)).setHardness(2.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("Speeder").setCreativeTab(CreativeTabs.tabBlock);
+
+    public static final Block Escalier_Wool_BLANC = (new BlockStairs(230, cloth, 0)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_BLANC").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_ORANGE = (new BlockStairs(231, cloth, 1)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_ORANGE").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_MAGENTA = (new BlockStairs(232, cloth, 2)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_MAGENTA").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_BLEUCIEL = (new BlockStairs(233, cloth, 3)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_BLEUCIEL").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_JAUNE = (new BlockStairs(234, cloth, 4)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_JAUNE").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_VERTCLAIR = (new BlockStairs(235, cloth, 5)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_VERTCLAIR").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_ROSE = (new BlockStairs(236, cloth, 6)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_ROSE").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_GRIS = (new BlockStairs(237, cloth, 7)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_GRIS").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_GRISCLAIR = (new BlockStairs(238, cloth, 8)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_GRISCLAIR").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_AQUA = (new BlockStairs(239, cloth, 9)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_AQUA").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_VIOLET = (new BlockStairs(240, cloth, 10)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_VIOLET").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_BLEU = (new BlockStairs(241, cloth, 11)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_BLEU").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_MARRON = (new BlockStairs(242, cloth, 12)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_MARRON").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_VERT = (new BlockStairs(243, cloth, 13)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_VERT").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_ROUGE = (new BlockStairs(244, cloth, 14)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_ROUGE").setRequiresSelfNotify();
+    public static final Block Escalier_Wool_BLACK = (new BlockStairs(245, cloth, 15)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_BLACK").setRequiresSelfNotify();
+    
+    //______________________________________________________________________________________________________________________________________________________________________________________________________________________
+   
     /**
      * The index of the texture to be displayed for this block. May vary based on graphics settings. Mostly seems to
      * come from terrain.png, and the index is 0-based (grass is 0).
@@ -266,6 +308,9 @@ public class Block
      */
     public float slipperiness;
     private String blockName;
+    
+    //SDI/T
+    private String textureFile;
 
     protected Block(int par1, Material par2Material)
     {
@@ -275,6 +320,9 @@ public class Block
         this.blockParticleGravity = 1.0F;
         this.slipperiness = 0.6F;
 
+        //SDI/T
+        this.textureFile = "/terrain.png";
+        
         if (blocksList[par1] != null)
         {
             throw new IllegalArgumentException("Slot " + par1 + " is already occupied by " + blocksList[par1] + " when adding " + this);
@@ -291,6 +339,21 @@ public class Block
         }
     }
 
+    //SDI/T
+    /** Permet de changer la texture utilisée par ce block */
+    public Block setTextureFile(String tf)
+    {
+    	this.textureFile = tf;
+    	return this;
+    }
+
+   	//SDI/T
+    /** Renvoie le nom du fichier de texture que ce block utilise */
+    public String getTextureFile()
+    {
+        return this.textureFile;
+    }
+    
     /**
      * Blocks with this attribute will not notify all near blocks when it's metadata change. The default behavior is
      * always notify every neightbor block when anything changes.
@@ -484,7 +547,10 @@ public class Block
      */
     public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        return this.getBlockTextureFromSideAndMetadata(par5, par1IBlockAccess.getBlockMetadata(par2, par3, par4));
+    	if(this instanceof BlockVitreColor)
+    		return this.getBlockTextureFromSideAndMetadata(8, par1IBlockAccess.getBlockMetadata(par2, par3, par4));
+    	else
+    		return this.getBlockTextureFromSideAndMetadata(par5, par1IBlockAccess.getBlockMetadata(par2, par3, par4));
     }
 
     /**
@@ -1251,6 +1317,13 @@ public class Block
         Item.itemsList[cobblestoneWall.blockID] = (new ItemMultiTextureTile(cobblestoneWall.blockID - 256, cobblestoneWall, BlockWall.types)).setItemName("cobbleWall");
         Item.itemsList[anvil.blockID] = (new ItemAnvilBlock(anvil)).setItemName("anvil");
 
+        
+        //___________________________________________________________________________________________________________________________________________________________________________
+//        Item.itemsList[coloredGlowStone.blockID] = (new ItemColoredGlowStone(coloredGlowStone.blockID - 256)).setItemName("lightgemColor");
+//        Item.itemsList[moquette.blockID] = (new ItemMoquetteColor(moquette.blockID - 256)).setItemName("moquette");
+        Item.itemsList[Color_Glass.blockID] = (new ItemGlassColor(Color_Glass.blockID - 256)).setItemName("colorGlass");
+        //___________________________________________________________________________________________________________________________________________________________________________
+        
         for (int var0 = 0; var0 < 256; ++var0)
         {
             if (blocksList[var0] != null)

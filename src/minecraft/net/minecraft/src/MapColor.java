@@ -5,7 +5,7 @@ public class MapColor
     /**
      * Holds all the 16 colors used on maps, very similar of a pallete system.
      */
-    public static final MapColor[] mapColorArray = new MapColor[16];
+    public static final MapColor[] mapColorArray = new MapColor[32];
 
     /** The map color for Air blocks */
     public static final MapColor airColor = new MapColor(0, 0);
@@ -51,6 +51,12 @@ public class MapColor
 
     /** Holds the color in RGB value that will be rendered on maps. */
     public final int colorValue;
+    
+    /** The map color for moquette color */
+    public static final MapColor moquette = new MapColor(15, 10987431); //ajout
+    
+    /** The map color for glowstoneColor color */
+    public static final MapColor glowstoneColor = new MapColor(14, 10987431);//ajout
 
     /** Holds the index of the color used on map. */
     public final int colorIndex;

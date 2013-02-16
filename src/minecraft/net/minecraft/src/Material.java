@@ -48,7 +48,16 @@ public class Material
 
     /** Pistons' material. */
     public static final Material piston = (new Material(MapColor.stoneColor)).setImmovableMobility();
+    
+    /** moquette's material. */
+    public static final Material moquette = (new Material(MapColor.clothColor)).setBurning(); //ajout
+    
+    /** glowstoneColor material. */
+    public static final Material glowstoneColor = (new Material(MapColor.clothColor)).setTranslucent();//ajout
 
+    /** glassColor's material. */
+    public static final Material glassColor = (new Material(MapColor.clothColor)).setTranslucent();//ajout
+    
     /** Bool defining if the block can burn or not. */
     private boolean canBurn;
 

@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Map;
 import org.lwjgl.opengl.GL11;
 
+
+
 public class RenderManager
 {
     /** A map of entity classes and the associated renderer. */
@@ -89,6 +91,13 @@ public class RenderManager
         this.entityRenderMap.put(EntityBoat.class, new RenderBoat());
         this.entityRenderMap.put(EntityFishHook.class, new RenderFish());
         this.entityRenderMap.put(EntityLightningBolt.class, new RenderLightningBolt());
+        
+        //custom Render
+//        this.entityRenderMap.put(EntityRaptor.class, new RenderRaptor(new ModelRaptor(), 0.5F));//ajout
+//        this.entityRenderMap.put(EntityGiantRaptor.class, new RenderGiantRaptor(new ModelRaptor(), 0.5F, 6.0F));//ajout
+//        this.entityRenderMap.put(EntityVoiture.class, new RenderVoiture());//ajout
+        //custom render
+        
         Iterator var1 = this.entityRenderMap.values().iterator();
 
         while (var1.hasNext())
@@ -208,7 +217,7 @@ public class RenderManager
                     }
                     catch (Throwable var17)
                     {
-                        throw new ReportedException(CrashReport.func_85055_a(var17, "Rendering entity hitbox in world"));
+                        throw new ReportedException(CrashReport.makeCrashReport(var17, "Rendering entity hitbox in world"));
                     }
                 }
 
@@ -218,7 +227,7 @@ public class RenderManager
                 }
                 catch (Throwable var16)
                 {
-                    throw new ReportedException(CrashReport.func_85055_a(var16, "Rendering entity in world"));
+                    throw new ReportedException(CrashReport.makeCrashReport(var16, "Rendering entity in world"));
                 }
 
                 try
@@ -227,16 +236,16 @@ public class RenderManager
                 }
                 catch (Throwable var15)
                 {
-                    throw new ReportedException(CrashReport.func_85055_a(var15, "Post-rendering entity in world"));
+                    throw new ReportedException(CrashReport.makeCrashReport(var15, "Post-rendering entity in world"));
                 }
             }
         }
         catch (Throwable var18)
         {
-            CrashReport var12 = CrashReport.func_85055_a(var18, "Rendering entity in world");
-            CrashReportCategory var13 = var12.func_85058_a("Entity being rendered");
+            CrashReport var12 = CrashReport.makeCrashReport(var18, "Rendering entity in world");
+            CrashReportCategory var13 = var12.makeCategory("Entity being rendered");
             par1Entity.func_85029_a(var13);
-            CrashReportCategory var14 = var12.func_85058_a("Renderer details");
+            CrashReportCategory var14 = var12.makeCategory("Renderer details");
             var14.addCrashSection("Assigned renderer", var10);
             var14.addCrashSection("Location", CrashReportCategory.func_85074_a(par2, par4, par6));
             var14.addCrashSection("Rotation", Float.valueOf(par8));

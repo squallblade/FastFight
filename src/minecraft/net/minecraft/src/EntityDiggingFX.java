@@ -46,6 +46,12 @@ public class EntityDiggingFX extends EntityFX
         }
     }
 
+    //SDI/T
+    public String getEntityBlockTexture()
+    {
+    	return blockInstance.getTextureFile();
+    }
+    
     public int getFXLayer()
     {
         return 1;

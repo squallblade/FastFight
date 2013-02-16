@@ -22,7 +22,9 @@ public class EntityFX extends Entity
      * The blue amount of color. Used as a percentage, 1.0 = 255 and 0.0 = 0.
      */
     protected float particleBlue;
-    protected float field_82339_as = 1.0F;
+
+    /** Particle alpha */
+    protected float particleAlpha = 1.0F;
     public static double interpPosX;
     public static double interpPosY;
     public static double interpPosZ;
@@ -74,9 +76,12 @@ public class EntityFX extends Entity
         this.particleBlue = par3;
     }
 
-    public void func_82338_g(float par1)
+    /**
+     * Sets the particle alpha (float)
+     */
+    public void setAlphaF(float par1)
     {
-        this.field_82339_as = par1;
+        this.particleAlpha = par1;
     }
 
     public float getRedColorF()
@@ -143,7 +148,7 @@ public class EntityFX extends Entity
         float var14 = (float)(this.prevPosY + (this.posY - this.prevPosY) * (double)par2 - interpPosY);
         float var15 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * (double)par2 - interpPosZ);
         float var16 = 1.0F;
-        par1Tessellator.setColorRGBA_F(this.particleRed * var16, this.particleGreen * var16, this.particleBlue * var16, this.field_82339_as);
+        par1Tessellator.setColorRGBA_F(this.particleRed * var16, this.particleGreen * var16, this.particleBlue * var16, this.particleAlpha);
         par1Tessellator.addVertexWithUV((double)(var13 - par3 * var12 - par6 * var12), (double)(var14 - par4 * var12), (double)(var15 - par5 * var12 - par7 * var12), (double)var9, (double)var11);
         par1Tessellator.addVertexWithUV((double)(var13 - par3 * var12 + par6 * var12), (double)(var14 + par4 * var12), (double)(var15 - par5 * var12 + par7 * var12), (double)var9, (double)var10);
         par1Tessellator.addVertexWithUV((double)(var13 + par3 * var12 + par6 * var12), (double)(var14 + par4 * var12), (double)(var15 + par5 * var12 + par7 * var12), (double)var8, (double)var10);
@@ -188,6 +193,6 @@ public class EntityFX extends Entity
 
     public String toString()
     {
-        return this.getClass().getSimpleName() + ", Pos (" + this.posX + "," + this.posY + "," + this.posZ + "), RGBA (" + this.particleRed + "," + this.particleGreen + "," + this.particleBlue + "," + this.field_82339_as + "), Age " + this.particleAge;
+        return this.getClass().getSimpleName() + ", Pos (" + this.posX + "," + this.posY + "," + this.posZ + "), RGBA (" + this.particleRed + "," + this.particleGreen + "," + this.particleBlue + "," + this.particleAlpha + "), Age " + this.particleAge;
     }
 }

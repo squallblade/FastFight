@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import net.minecraft.src.AnvilSaveConverter;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.BehaviorArrowDispense;
@@ -319,6 +320,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
                 }
 
                 ++var5;
+//                CraftingFinder.spawn = var5 * 100 / 625;
                 var7.theChunkProviderServer.loadChunk(var8.posX + var11 >> 4, var8.posZ + var12 >> 4);
             }
         }
@@ -655,7 +657,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
                 }
                 catch (Throwable var8)
                 {
-                    var6 = CrashReport.func_85055_a(var8, "Exception ticking world");
+                    var6 = CrashReport.makeCrashReport(var8, "Exception ticking world");
                     var4.addWorldInfoToCrashReport(var6);
                     throw new ReportedException(var6);
                 }
@@ -666,7 +668,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
                 }
                 catch (Throwable var7)
                 {
-                    var6 = CrashReport.func_85055_a(var7, "Exception ticking world entities");
+                    var6 = CrashReport.makeCrashReport(var7, "Exception ticking world entities");
                     var4.addWorldInfoToCrashReport(var6);
                     throw new ReportedException(var6);
                 }

@@ -56,7 +56,7 @@ public abstract class NetworkListenThread
             {
                 if (var2.netManager instanceof MemoryConnection)
                 {
-                    CrashReport var4 = CrashReport.func_85055_a(var5, "Ticking memory connection");
+                    CrashReport var4 = CrashReport.makeCrashReport(var5, "Ticking memory connection");
                     throw new ReportedException(var4);
                 }
 

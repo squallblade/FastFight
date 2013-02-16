@@ -4,6 +4,8 @@ import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+
+
 public class RenderBlocks
 {
     /** The IBlockAccess used by this instance of RenderBlocks */
@@ -4079,9 +4081,9 @@ public class RenderBlocks
 
                 if (this.renderAllFaces || var12[var34])
                 {
-                    double var65;
                     double var50;
                     double var48;
+                    double var65;
 
                     if (var34 == 0)
                     {
@@ -4722,7 +4724,8 @@ public class RenderBlocks
 
             this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+        	//SDI/T
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -4863,7 +4866,8 @@ public class RenderBlocks
 
             this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+          //SDI/T
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5004,7 +5008,8 @@ public class RenderBlocks
 
             this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+          //SDI/T
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5145,7 +5150,8 @@ public class RenderBlocks
 
             this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+          //SDI/T
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5278,7 +5284,8 @@ public class RenderBlocks
 
             this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+        	//SDI/T
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var20 * par5, var23 * par6, var26 * par7);
                 this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5313,7 +5320,8 @@ public class RenderBlocks
 
             this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+          //SDI/T
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var20 * par5, var23 * par6, var26 * par7);
                 this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5348,7 +5356,8 @@ public class RenderBlocks
 
             this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+          //SDI/T
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var21 * par5, var24 * par6, var27 * par7);
                 this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5383,7 +5392,8 @@ public class RenderBlocks
 
             this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+          //SDI/T
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var21 * par5, var24 * par6, var27 * par7);
                 this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -7770,6 +7780,354 @@ public class RenderBlocks
             {
                 Reflector.callVoid(1, new Object[] {this, par1Block, Integer.valueOf(par2), Integer.valueOf(var6)});
             }
+            else if(var6 == 50 || var6 == 51) //ajout
+            {
+            	for (var10 = 0; var10 < 25; ++var10)
+            	{
+            		if (var10 == 0)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.23F,  0.8F, 0.585F, 0.27F);
+            		}
+
+            		if (var10 == 1)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.33F,  0.8F, 0.585F, 0.37F);
+            		}
+
+            		if (var10 == 2)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.43F,  0.8F, 0.585F, 0.47F);
+            		}
+
+            		if (var10 == 3)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.53F,  0.8F, 0.585F, 0.57F);
+            		}
+
+            		if (var10 == 4)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.63F,  0.8F, 0.585F, 0.67F);
+            		}
+
+            		if (var10 == 5)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.73F,  0.8F, 0.585F, 0.77F);
+            		}
+
+            		if (var10 == 6)
+            		{
+            			this.setRenderMinMax(0.23F, 0.525F, 0.2F,  0.27F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 7)
+            		{
+            			this.setRenderMinMax(0.33F, 0.525F, 0.2F,  0.37F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 8)
+            		{
+            			this.setRenderMinMax(0.43F, 0.525F, 0.2F,  0.47F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 9)
+            		{
+            			this.setRenderMinMax(0.53F, 0.525F, 0.2F,  0.57F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 10)
+            		{
+            			this.setRenderMinMax(0.63F, 0.525F, 0.2F,  0.67F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 11)
+            		{
+            			this.setRenderMinMax(0.73F, 0.525F, 0.2F,  0.77F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 12)
+            		{
+            			this.setRenderMinMax(0.8F, 0.5F, 0.2F,  0.9F, 0.6F, 0.8F);
+            		}
+
+            		if (var10 == 13)
+            		{
+            			this.setRenderMinMax(0.2F, 0.5F, 0.1F,  0.8F, 0.6F, 0.2F);
+            		}
+
+            		if (var10 == 14)
+            		{
+            			this.setRenderMinMax(0.1F, 0.5F, 0.2F,  0.2F, 0.6F, 0.8F);
+            		}
+
+            		if (var10 == 15)
+            		{
+            			this.setRenderMinMax(0.2F, 0.5F, 0.8F,  0.8F, 0.6F, 0.9F);
+            		}
+
+            		if (var10 == 16)
+            		{
+            			this.setRenderMinMax(0.83F, 0.30F, 0.2F,  0.87F, 0.34F, 0.8F);
+            		}
+
+            		if (var10 == 17)
+            		{
+            			this.setRenderMinMax(0.2F, 0.30F, 0.13F,  0.8F, 0.34F, 0.17F);
+            		}
+
+            		if (var10 == 18)
+            		{
+            			this.setRenderMinMax(0.13F, 0.30F, 0.2F,  0.17F, 0.34F, 0.8F);
+            		}
+
+            		if (var10 == 19)
+            		{
+            			this.setRenderMinMax(0.2F, 0.30F, 0.83F,  0.8F, 0.34F, 0.87F);
+            		}
+
+            		if (var10 == 20)
+            		{
+            			this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 1.5F, 0.2F);
+            		}
+
+            		if (var10 == 21)
+            		{
+            			this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 1.5F, 0.2F);
+            		}
+
+            		if (var10 == 22)
+            		{
+            			this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 0.6F, 0.9F);
+            		}
+
+            		if (var10 == 23)
+            		{
+            			this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 0.6F, 0.9F);
+            		}
+
+            		if (var10 == 24)
+            		{
+            			this.setRenderMinMax(0.2F, 1.2F, 0.1F,  0.8F, 1.4F, 0.2F);
+            		}
+
+            		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, -1.0F, 0.0F);
+            		this.renderBottomFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(0));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, 1.0F, 0.0F);
+            		this.renderTopFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(1));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, 0.0F, -1.0F);
+            		this.renderEastFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(2));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, 0.0F, 1.0F);
+            		this.renderWestFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(3));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(-1.0F, 0.0F, 0.0F);
+            		this.renderNorthFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(4));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(1.0F, 0.0F, 0.0F);
+            		this.renderSouthFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(5));
+            		var4.draw();
+            		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+            	}
+
+            	this.setRenderMinMax(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            }
+//            else if(var6 == 52)//ajout
+//            {
+//            	GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
+//            	GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+//            	FutItemRenderHelper.instance.renderFut(par1Block, par2, par3);
+//            	GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+//
+//            }
+//            else if (var6 == 53)//ajout
+//            {
+//            	GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
+//            	GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+//            	EtagereBoisItemRenderHelper.instance.renderEtagereBois(par1Block, par2, par3);
+//            	GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+//            }
+//            else if (var6 == 54)//ajout
+//            {
+//            	GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
+//            	GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+//            	PoubelleItemRenderHelper.instance.renderPoubelle(par1Block, par2, par3);
+//            	GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+//            }
+            else if (Reflector.hasClass(0))
+            {
+                Reflector.callVoid(1, new Object[] {this, par1Block, Integer.valueOf(par2), Integer.valueOf(var6)});
+            }
+            
+            
+            
+            
+            else if(var6 == 60) //ajout
+            {
+            	for (var10 = 0; var10 < 25; ++var10)
+            	{
+            		if (var10 == 0)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.23F,  0.8F, 0.585F, 0.27F);
+            		}
+
+            		if (var10 == 1)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.33F,  0.8F, 0.585F, 0.37F);
+            		}
+
+            		if (var10 == 2)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.43F,  0.8F, 0.585F, 0.47F);
+            		}
+
+            		if (var10 == 3)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.53F,  0.8F, 0.585F, 0.57F);
+            		}
+
+            		if (var10 == 4)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.63F,  0.8F, 0.585F, 0.67F);
+            		}
+
+            		if (var10 == 5)
+            		{
+            			this.setRenderMinMax(0.2F, 0.525F, 0.73F,  0.8F, 0.585F, 0.77F);
+            		}
+
+            		if (var10 == 6)
+            		{
+            			this.setRenderMinMax(0.23F, 0.525F, 0.2F,  0.27F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 7)
+            		{
+            			this.setRenderMinMax(0.33F, 0.525F, 0.2F,  0.37F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 8)
+            		{
+            			this.setRenderMinMax(0.43F, 0.525F, 0.2F,  0.47F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 9)
+            		{
+            			this.setRenderMinMax(0.53F, 0.525F, 0.2F,  0.57F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 10)
+            		{
+            			this.setRenderMinMax(0.63F, 0.525F, 0.2F,  0.67F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 11)
+            		{
+            			this.setRenderMinMax(0.73F, 0.525F, 0.2F,  0.77F, 0.585F, 0.8F);
+            		}
+
+            		if (var10 == 12)
+            		{
+            			this.setRenderMinMax(0.8F, 0.5F, 0.2F,  0.9F, 0.6F, 0.8F);
+            		}
+
+            		if (var10 == 13)
+            		{
+            			this.setRenderMinMax(0.2F, 0.5F, 0.1F,  0.8F, 0.6F, 0.2F);
+            		}
+
+            		if (var10 == 14)
+            		{
+            			this.setRenderMinMax(0.1F, 0.5F, 0.2F,  0.2F, 0.6F, 0.8F);
+            		}
+
+            		if (var10 == 15)
+            		{
+            			this.setRenderMinMax(0.2F, 0.5F, 0.8F,  0.8F, 0.6F, 0.9F);
+            		}
+
+            		if (var10 == 16)
+            		{
+            			this.setRenderMinMax(0.83F, 0.30F, 0.2F,  0.87F, 0.34F, 0.8F);
+            		}
+
+            		if (var10 == 17)
+            		{
+            			this.setRenderMinMax(0.2F, 0.30F, 0.13F,  0.8F, 0.34F, 0.17F);
+            		}
+
+            		if (var10 == 18)
+            		{
+            			this.setRenderMinMax(0.13F, 0.30F, 0.2F,  0.17F, 0.34F, 0.8F);
+            		}
+
+            		if (var10 == 19)
+            		{
+            			this.setRenderMinMax(0.2F, 0.30F, 0.83F,  0.8F, 0.34F, 0.87F);
+            		}
+
+            		if (var10 == 20)
+            		{
+            			this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 1.5F, 0.2F);
+            		}
+
+            		if (var10 == 21)
+            		{
+            			this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 1.5F, 0.2F);
+            		}
+
+            		if (var10 == 22)
+            		{
+            			this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 0.6F, 0.9F);
+            		}
+
+            		if (var10 == 23)
+            		{
+            			this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 0.6F, 0.9F);
+            		}
+
+            		if (var10 == 24)
+            		{
+            			this.setRenderMinMax(0.2F, 1.2F, 0.1F,  0.8F, 1.4F, 0.2F);
+            		}
+
+            		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, -1.0F, 0.0F);
+            		this.renderBottomFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(0));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, 1.0F, 0.0F);
+            		this.renderTopFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(1));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, 0.0F, -1.0F);
+            		this.renderEastFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(2));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(0.0F, 0.0F, 1.0F);
+            		this.renderWestFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(3));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(-1.0F, 0.0F, 0.0F);
+            		this.renderNorthFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(4));
+            		var4.draw();
+            		var4.startDrawingQuads();
+            		var4.setNormal(1.0F, 0.0F, 0.0F);
+            		this.renderSouthFace(par1Block, 0.0D, 0.0D, 0.0D, par1Block.getBlockTextureFromSide(5));
+            		var4.draw();
+            		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+            	}
+
+            	this.setRenderMinMax(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            }
         }
         else
         {
@@ -7901,6 +8259,20 @@ public class RenderBlocks
                 return true;
 
             case 35:
+                return true;
+            case 50://ajout
+                return true;
+                
+            case 51://ajout
+                return true;
+                
+            case 52://ajout
+                return true;
+                
+            case 53://ajout
+                return true;
+                
+            case 54://ajout
                 return true;
         }
     }
@@ -8035,6 +8407,10 @@ public class RenderBlocks
 
             case 35:
                 return this.renderBlockAnvil((BlockAnvil)par1Block, par2, par3, par4);
+//            case 50: //ajout
+//                return this.renderBlockChaise((BlockChaise)par1Block, par2, par3, par4);
+//            case 51://ajout
+//                return this.renderBlockChaiseModerne((BlockChaiseModerne)par1Block, par2, par3, par4);
         }
     }
 
@@ -8150,4 +8526,237 @@ public class RenderBlocks
             redstoneColors[var0] = new float[] {var2, var3, var4};
         }
     }
+    
+    /**
+     * Render BlockChaiseModerne
+     */
+//    private boolean renderBlockChaiseModerne(BlockChaiseModerne par1Block, int par2, int par3, int par4) //ajout
+//    {
+//        boolean flag = false;
+//        int var5 = this.blockAccess.getBlockMetadata(par2, par3, par4);
+//        int var6 = var5 & 3;
+//        
+//
+//        if (var6 == 0)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            //dossier
+//            this.overrideBlockTexture = 114;
+//            this.setRenderMinMax(0.8F, 1.2F, 0.2F,  0.9F, 1.4F, 0.8F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//        else if (var6 == 1)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            //dossier
+//            this.overrideBlockTexture = 114;
+//            this.setRenderMinMax(0.1F, 1.2F, 0.2F,  0.2F, 1.4F, 0.8F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//        else if (var6 == 2)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            //dossier
+//            this.overrideBlockTexture = 114;
+//            this.setRenderMinMax(0.2F, 1.2F, 0.8F,  0.8F, 1.4F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//        else if (var6 == 3)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            //dossier
+//            this.overrideBlockTexture = 114;
+//            this.setRenderMinMax(0.2F, 1.2F, 0.1F,  0.8F, 1.4F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//
+//        //grille
+//        
+//        this.setRenderMinMax(0.2F, 0.5F, 0.2F,  0.8F, 0.63F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//
+//        this.overrideBlockTexture = 113;
+//        //bords
+//        this.setRenderMinMax(0.8F, 0.5F, 0.2F,  0.9F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.5F, 0.1F,  0.8F, 0.6F, 0.2F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.1F, 0.5F, 0.2F,  0.2F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.5F, 0.8F,  0.8F, 0.6F, 0.9F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        //traverses
+//        this.overrideBlockTexture = 114;
+//        this.setRenderMinMax(0.83F, 0.30F, 0.2F,  0.87F, 0.34F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.30F, 0.13F,  0.8F, 0.34F, 0.17F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.13F, 0.30F, 0.2F,  0.17F, 0.34F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.30F, 0.83F,  0.8F, 0.34F, 0.87F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.overrideBlockTexture = 113;
+//        this.setRenderMinMax(0.0F, 0.0F, 0.0F, 1.0F, 0.6F, 1.0F);
+//        this.clearOverrideBlockTexture();
+//        return true;
+//    }
+
+    /**
+     * Render BlockChaise
+     */
+//    private boolean renderBlockChaise(BlockChaise par1Block, int par2, int par3, int par4)//ajout
+//    {
+//        boolean flag = false;
+//        int var5 = this.blockAccess.getBlockMetadata(par2, par3, par4);
+//        int var6 = var5 & 3;
+//
+//        if (var6 == 0)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.clearOverrideBlockTexture();
+//            //dossier
+//            this.overrideBlockTexture = 198;
+//            this.setRenderMinMax(0.8F, 1.2F, 0.2F,  0.9F, 1.4F, 0.8F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//        else if (var6 == 1)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.clearOverrideBlockTexture();
+//            //dossier
+//            this.overrideBlockTexture = 198;
+//            this.setRenderMinMax(0.1F, 1.2F, 0.2F,  0.2F, 1.4F, 0.8F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//        else if (var6 == 2)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 0.6F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 1.5F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.clearOverrideBlockTexture();
+//            //dossier
+//            this.overrideBlockTexture = 198;
+//            this.setRenderMinMax(0.2F, 1.2F, 0.8F,  0.8F, 1.4F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//        else if (var6 == 3)
+//        {
+//            //pieds
+//            this.setRenderMinMax(0.1F, 0.0F, 0.1F,  0.2F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.1F,  0.9F, 1.5F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.1F, 0.0F, 0.8F,  0.2F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.setRenderMinMax(0.8F, 0.0F, 0.8F,  0.9F, 0.6F, 0.9F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//            this.clearOverrideBlockTexture();
+//            //dossier
+//            this.overrideBlockTexture = 198;
+//            this.setRenderMinMax(0.2F, 1.2F, 0.1F,  0.8F, 1.4F, 0.2F);
+//            this.renderStandardBlock(par1Block, par2, par3, par4);
+//        }
+//        //grille
+//        this.setRenderMinMax(0.2F, 0.525F, 0.23F,  0.8F, 0.6F, 0.27F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.525F, 0.33F,  0.8F, 0.6F, 0.37F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.525F, 0.43F,  0.8F, 0.6F, 0.47F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.525F, 0.53F,  0.8F, 0.6F, 0.57F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.525F, 0.63F,  0.8F, 0.6F, 0.67F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.525F, 0.73F,  0.8F, 0.6F, 0.77F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.23F, 0.525F, 0.2F,  0.27F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.33F, 0.525F, 0.2F,  0.37F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.43F, 0.525F, 0.2F,  0.47F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.53F, 0.525F, 0.2F,  0.57F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.63F, 0.525F, 0.2F,  0.67F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.73F, 0.525F, 0.2F,  0.77F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.clearOverrideBlockTexture();
+//        //bords
+//        this.overrideBlockTexture = 4;
+//        this.setRenderMinMax(0.8F, 0.5F, 0.2F,  0.9F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.5F, 0.1F,  0.8F, 0.6F, 0.2F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.1F, 0.5F, 0.2F,  0.2F, 0.6F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.5F, 0.8F,  0.8F, 0.6F, 0.9F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        //traverses
+//        this.setRenderMinMax(0.83F, 0.30F, 0.2F,  0.87F, 0.34F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.30F, 0.13F,  0.8F, 0.34F, 0.17F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.13F, 0.30F, 0.2F,  0.17F, 0.34F, 0.8F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.2F, 0.30F, 0.83F,  0.8F, 0.34F, 0.87F);
+//        this.renderStandardBlock(par1Block, par2, par3, par4);
+//        this.setRenderMinMax(0.0F, 0.0F, 0.0F, 1.0F, 0.6F, 1.0F);
+//        this.clearOverrideBlockTexture();
+//        return true;
+//    }
 }

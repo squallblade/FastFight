@@ -228,7 +228,7 @@ public abstract class World implements IBlockAccess
             }
             catch (Throwable var10)
             {
-                CrashReport var7 = CrashReport.func_85055_a(var10, "Exception initializing level");
+                CrashReport var7 = CrashReport.makeCrashReport(var10, "Exception initializing level");
 
                 try
                 {
@@ -322,8 +322,8 @@ public abstract class World implements IBlockAccess
                 }
                 catch (Throwable var8)
                 {
-                    CrashReport var6 = CrashReport.func_85055_a(var8, "Exception getting block type in world");
-                    CrashReportCategory var7 = var6.func_85058_a("Requested block coordinates");
+                    CrashReport var6 = CrashReport.makeCrashReport(var8, "Exception getting block type in world");
+                    CrashReportCategory var7 = var6.makeCategory("Requested block coordinates");
                     var7.addCrashSection("Found chunk", Boolean.valueOf(var4 == null));
                     var7.addCrashSection("Location", CrashReportCategory.func_85071_a(par1, par2, par3));
                     throw new ReportedException(var6);
@@ -734,8 +734,8 @@ public abstract class World implements IBlockAccess
                 }
                 catch (Throwable var13)
                 {
-                    CrashReport var8 = CrashReport.func_85055_a(var13, "Exception while updating neighbours");
-                    CrashReportCategory var9 = var8.func_85058_a("Block being updated");
+                    CrashReport var8 = CrashReport.makeCrashReport(var13, "Exception while updating neighbours");
+                    CrashReportCategory var9 = var8.makeCategory("Block being updated");
                     int var10;
 
                     try
@@ -1871,7 +1871,8 @@ public abstract class World implements IBlockAccess
     /**
      * Updates (and cleans up) entities and tile entities
      */
-    public void updateEntities()
+    @SuppressWarnings("unused")
+	public void updateEntities()
     {
         this.theProfiler.startSection("entities");
         this.theProfiler.startSection("global");
@@ -1888,10 +1889,10 @@ public abstract class World implements IBlockAccess
             {
                 var2.onUpdate();
             }
-            catch (Throwable var8)
+            catch (Throwable var6)
             {
-                var4 = CrashReport.func_85055_a(var8, "Ticking entity");
-                var5 = var4.func_85058_a("Entity being ticked");
+                var4 = CrashReport.makeCrashReport(var6, "Ticking entity");
+                var5 = var4.makeCategory("Entity being ticked");
 
                 if (var2 == null)
                 {
@@ -1961,8 +1962,8 @@ public abstract class World implements IBlockAccess
                 }
                 catch (Throwable var7)
                 {
-                    var4 = CrashReport.func_85055_a(var7, "Ticking entity");
-                    var5 = var4.func_85058_a("Entity being ticked");
+                    var4 = CrashReport.makeCrashReport(var7, "Ticking entity");
+                    var5 = var4.makeCategory("Entity being ticked");
 
                     if (var2 == null)
                     {
@@ -2011,10 +2012,10 @@ public abstract class World implements IBlockAccess
                 {
                     var9.updateEntity();
                 }
-                catch (Throwable var6)
+                catch (Throwable var8)
                 {
-                    var4 = CrashReport.func_85055_a(var6, "Ticking tile entity");
-                    var5 = var4.func_85058_a("Tile entity being ticked");
+                    var4 = CrashReport.makeCrashReport(var8, "Ticking tile entity");
+                    var5 = var4.makeCategory("Tile entity being ticked");
 
                     if (var9 == null)
                     {
@@ -4133,7 +4134,7 @@ public abstract class World implements IBlockAccess
      */
     public CrashReportCategory addWorldInfoToCrashReport(CrashReport par1CrashReport)
     {
-        CrashReportCategory var2 = par1CrashReport.func_85057_a("Affected level", 1);
+        CrashReportCategory var2 = par1CrashReport.makeCategoryDepth("Affected level", 1);
         var2.addCrashSection("Level name", this.worldInfo == null ? "????" : this.worldInfo.getWorldName());
         var2.addCrashSectionCallable("All players", new CallableLvl2(this));
         var2.addCrashSectionCallable("Chunk stats", new CallableLvl3(this));

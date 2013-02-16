@@ -1475,8 +1475,8 @@ public abstract class Entity
         }
         catch (Throwable var5)
         {
-            CrashReport var3 = CrashReport.func_85055_a(var5, "Saving entity NBT");
-            CrashReportCategory var4 = var3.func_85058_a("Entity being saved");
+            CrashReport var3 = CrashReport.makeCrashReport(var5, "Saving entity NBT");
+            CrashReportCategory var4 = var3.makeCategory("Entity being saved");
             this.func_85029_a(var4);
             throw new ReportedException(var3);
         }
@@ -1529,8 +1529,8 @@ public abstract class Entity
         }
         catch (Throwable var5)
         {
-            CrashReport var3 = CrashReport.func_85055_a(var5, "Loading entity NBT");
-            CrashReportCategory var4 = var3.func_85058_a("Entity being loaded");
+            CrashReport var3 = CrashReport.makeCrashReport(var5, "Loading entity NBT");
+            CrashReportCategory var4 = var3.makeCategory("Entity being loaded");
             this.func_85029_a(var4);
             throw new ReportedException(var3);
         }

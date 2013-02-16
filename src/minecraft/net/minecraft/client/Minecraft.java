@@ -133,6 +133,7 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
 
+
 public abstract class Minecraft implements Runnable, IPlayerUsage
 {
     /** A 10MiB preallocation to ensure the heap is reasonably sized. */
@@ -543,7 +544,8 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
     {
         if (minecraftDir == null)
         {
-            minecraftDir = getAppDir("minecraft");
+//            minecraftDir = getAppDir("minecraft");
+        	 minecraftDir = getAppDir("losan");
         }
 
         return minecraftDir;
@@ -1495,8 +1497,8 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
             }
             catch (Throwable var6)
             {
-                var2 = CrashReport.func_85055_a(var6, "Updating screen events");
-                var3 = var2.func_85058_a("Affected screen");
+                var2 = CrashReport.makeCrashReport(var6, "Updating screen events");
+                var3 = var2.makeCategory("Affected screen");
                 var3.addCrashSectionCallable("Screen name", new CallableUpdatingScreenName(this));
                 throw new ReportedException(var2);
             }
@@ -1509,8 +1511,8 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
                 }
                 catch (Throwable var5)
                 {
-                    var2 = CrashReport.func_85055_a(var5, "Ticking screen particles");
-                    var3 = var2.func_85058_a("Affected screen");
+                    var2 = CrashReport.makeCrashReport(var5, "Ticking screen particles");
+                    var3 = var2.makeCategory("Affected screen");
                     var3.addCrashSectionCallable("Screen name", new CallableParticleScreenName(this));
                     throw new ReportedException(var2);
                 }
@@ -1521,8 +1523,8 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
                 }
                 catch (Throwable var4)
                 {
-                    var2 = CrashReport.func_85055_a(var4, "Ticking screen");
-                    var3 = var2.func_85058_a("Affected screen");
+                    var2 = CrashReport.makeCrashReport(var4, "Ticking screen");
+                    var3 = var2.makeCategory("Affected screen");
                     var3.addCrashSectionCallable("Screen name", new CallableTickingScreenName(this));
                     throw new ReportedException(var2);
                 }
@@ -1734,6 +1736,9 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
             while (this.gameSettings.keyBindInventory.isPressed())
             {
                 this.displayGuiScreen(new GuiInventory(this.thePlayer));
+//                if(this.theWorld.isRemote){ //ajout
+//                    this.getSendQueue().addToSendQueue(new Packet133Money(this.thePlayer));//ajout
+//                }
             }
 
             while (this.gameSettings.keyBindDrop.isPressed())
@@ -1856,11 +1861,11 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
                 }
                 catch (Throwable var7)
                 {
-                    var2 = CrashReport.func_85055_a(var7, "Exception in world tick");
+                    var2 = CrashReport.makeCrashReport(var7, "Exception in world tick");
 
                     if (this.theWorld == null)
                     {
-                        var3 = var2.func_85058_a("Affected level");
+                        var3 = var2.makeCategory("Affected level");
                         var3.addCrashSection("Problem", "Level is null!");
                     }
                     else
@@ -1941,30 +1946,30 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         this.integratedServerIsRunning = true;
         this.loadingScreen.displayProgressMessage(StatCollector.translateToLocal("menu.loadingLevel"));
 
-        while (!this.theIntegratedServer.serverIsInRunLoop())
-        {
-            String var6 = this.theIntegratedServer.getUserMessage();
-
-            if (var6 != null)
-            {
-                this.loadingScreen.resetProgresAndWorkingMessage(StatCollector.translateToLocal(var6));
-            }
-            else
-            {
-                this.loadingScreen.resetProgresAndWorkingMessage("");
-            }
-
-            try
-            {
-                Thread.sleep(200L);
-            }
-            catch (InterruptedException var9)
-            {
-                ;
-            }
-        }
-
-        this.displayGuiScreen((GuiScreen)null);
+//        while (!this.theIntegratedServer.serverIsInRunLoop())
+//        {
+//            String var6 = this.theIntegratedServer.getUserMessage();
+//
+//            if (var6 != null)
+//            {
+//                this.loadingScreen.resetProgresAndWorkingMessage(StatCollector.translateToLocal(var6));
+//            }
+//            else
+//            {
+//                this.loadingScreen.resetProgresAndWorkingMessage("");
+//            }
+//
+//            try
+//            {
+//                Thread.sleep(200L);
+//            }
+//            catch (InterruptedException var9)
+//            {
+//                ;
+//            }
+//        }
+//
+//        this.displayGuiScreen((GuiScreen)null);
 
         try
         {

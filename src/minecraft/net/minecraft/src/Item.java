@@ -3,6 +3,7 @@ package net.minecraft.src;
 import java.util.List;
 import java.util.Random;
 
+
 public class Item
 {
     private CreativeTabs tabToDisplayOn = null;
@@ -182,6 +183,42 @@ public class Item
     public static Item record11 = (new ItemRecord(2010, "11")).setIconCoord(10, 15).setItemName("record");
     public static Item field_85180_cf = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
 
+    //____________________________________________________________________________________________________________________________________________________________________________
+    public static Item iceCube = (new Item(200)).setIconCoord(8, 11).setFull3D().setItemName("iceCube").setCreativeTab(CreativeTabs.tabMaterials).setTextureFile("/gui/items1.png");//ajout
+    public static Item verreVide = (new Item(201)).setIconCoord(11, 12).setFull3D().setItemName("verreVide").setCreativeTab(CreativeTabs.tabMaterials).setTextureFile("/gui/items1.png");//ajout
+//    public static Item verrePlein = (new ItemVerrePlein(202, 10, 0.3F, false)).setPotionEffect(Potion.confusion.id, 60, 4, 0.8F).setIconCoord(12, 12).setItemName("verrePlein").setContainerItem(verreVide).setTextureFile("/gui/items1.png");//ajout
+//    public static Item orgeSeeds = (new ItemSeeds(203, Block.orgeCrops.blockID, Block.tilledField.blockID)).setIconCoord(9, 12).setItemName("orgeSeeds").setTextureFile("/gui/items1.png");//ajout
+    public static Item orge = (new Item(204)).setIconCoord(10, 12).setItemName("orge").setCreativeTab(CreativeTabs.tabMaterials).setTextureFile("/gui/items1.png");//ajout
+    public static Item lezardSkin = (new Item(205)).setIconCoord(7, 11).setItemName("LezardSkin").setCreativeTab(CreativeTabs.tabMaterials).setTextureFile("/gui/items1.png");//ajout
+    public static Item rubis = (new Item(206)).setIconCoord(10, 10).setItemName("rubis").setCreativeTab(CreativeTabs.tabMaterials);//ajout
+    public static Item cherry = (new ItemFood(208, 4, 0.3F, false)).setIconCoord(13, 13).setItemName("cherry").setTextureFile("/gui/items1.png");//ajout
+    public static Item glaceChocolat = (new ItemFood(209, 5, 0.6F, false)).setIconCoord(8, 10).setItemName("glaceChocolat").setTextureFile("/gui/items1.png");//ajout
+    public static Item glaceCherry = (new ItemFood(210, 5, 0.6F, false)).setIconCoord(7, 12).setItemName("glaceCherry").setTextureFile("/gui/items1.png");//ajout
+    public static Item glaceApple = (new ItemFood(211, 5, 0.6F, false)).setIconCoord(8, 12).setItemName("glaceApple").setTextureFile("/gui/items1.png");//ajout
+//    public static Item swordRubis = (new ItemSword(225, EnumToolMaterial.RUBIS)).setIconCoord(3, 9).setItemName("swordRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item shovelRubis = (new ItemSpade(226, EnumToolMaterial.RUBIS)).setIconCoord(3, 10).setItemName("shovelRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item pickaxeRubis = (new ItemPickaxe(227, EnumToolMaterial.RUBIS)).setIconCoord(3, 11).setItemName("pickaxeRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item axeRubis = (new ItemAxe(228, EnumToolMaterial.RUBIS)).setIconCoord(3, 12).setItemName("hatchetRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item hoeRubis = (new ItemHoe(229, EnumToolMaterial.RUBIS)).setIconCoord(3, 13).setItemName("hoeRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item helmetRubis = (new ItemArmor(230, EnumArmorMaterial.RUBIS, 5, 0)).setIconCoord(1, 9).setItemName("helmetRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item plateRubis = (new ItemArmor(231, EnumArmorMaterial.RUBIS, 5, 1)).setIconCoord(1, 10).setItemName("chestplateRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item legsRubis = (new ItemArmor(232, EnumArmorMaterial.RUBIS, 5, 2)).setIconCoord(1, 11).setItemName("leggingsRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item bootsRubis = (new ItemArmor(233, EnumArmorMaterial.RUBIS, 5, 3)).setIconCoord(1, 12).setItemName("bootsRubis").setTextureFile("/gui/items1.png");//ajout
+//    public static Item swordEmeraude = (new ItemSword(234, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 9).setItemName("swordEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item shovelEmeraude = (new ItemSpade(235, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 10).setItemName("shovelEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item pickaxeEmeraude = (new ItemPickaxe(236, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 11).setItemName("pickaxeEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item axeEmeraude = (new ItemAxe(237, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 12).setItemName("hatchetEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item hoeEmeraude = (new ItemHoe(238, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 13).setItemName("hoeEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item helmetEmeraude = (new ItemArmor(239, EnumArmorMaterial.EMERAUDE, 6, 0)).setIconCoord(2, 9).setItemName("helmetEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item plateEmeraude = (new ItemArmor(240, EnumArmorMaterial.EMERAUDE, 6, 1)).setIconCoord(2, 10).setItemName("chestplateEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item legsEmeraude = (new ItemArmor(241, EnumArmorMaterial.EMERAUDE, 6, 2)).setIconCoord(2, 11).setItemName("leggingsEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item bootsEmeraude = (new ItemArmor(242, EnumArmorMaterial.EMERAUDE, 6, 3)).setIconCoord(2, 12).setItemName("bootsEmeraude").setTextureFile("/gui/items1.png");//ajout
+//    public static Item helmetLezard = (new ItemArmor(243, EnumArmorMaterial.LEZARD, 7, 0)).setIconCoord(5, 9).setItemName("helmetLezard").setTextureFile("/gui/items1.png");//ajout
+//    public static Item plateLezard = (new ItemArmor(244, EnumArmorMaterial.LEZARD, 7, 1)).setIconCoord(5, 10).setItemName("plateLezard").setTextureFile("/gui/items1.png");//ajout
+//    public static Item legsLezard = (new ItemArmor(245, EnumArmorMaterial.LEZARD, 7, 2)).setIconCoord(5, 11).setItemName("legsLezard").setTextureFile("/gui/items1.png");//ajout
+//    public static Item bootsLezard = (new ItemArmor(246, EnumArmorMaterial.LEZARD, 7, 3)).setIconCoord(5, 12).setItemName("bootsLezard").setTextureFile("/gui/items1.png");//ajout
+    //____________________________________________________________________________________________________________________________________________________________________________
+    
     /** Item index + 256 */
     public final int shiftedIndex;
 
@@ -206,11 +243,17 @@ public class Item
 
     /** full name of item from language file */
     private String itemName;
+    
+    //SDI/T
+    private String textureFile;
 
     protected Item(int par1)
     {
         this.shiftedIndex = 256 + par1;
 
+    	//SDI/T
+        this.textureFile = "/gui/items.png";
+        
         if (itemsList[256 + par1] != null)
         {
             System.out.println("CONFLICT @ " + par1);
@@ -219,6 +262,21 @@ public class Item
         itemsList[256 + par1] = this;
     }
 
+    //SDI/T
+    /** Permet de changer la texture utilisée par cette Item */
+    public Item setTextureFile(String t)
+    {
+    	this.textureFile = t;
+    	return this;
+    }
+
+    //SDI/T
+    /** Renvoie le nom du fichier de texture que cette Item utilise */
+    public String getTextureFile()
+    {
+    	return this.textureFile;
+    }
+    
     /**
      * Sets the icon index for this item. Returns the item.
      */

@@ -220,12 +220,12 @@ public class CrashReport
         return this.field_85061_c;
     }
 
-    public CrashReportCategory func_85058_a(String par1Str)
+    public CrashReportCategory makeCategory(String par1Str)
     {
-        return this.func_85057_a(par1Str, 1);
+        return this.makeCategoryDepth(par1Str, 1);
     }
 
-    public CrashReportCategory func_85057_a(String par1Str, int par2)
+    public CrashReportCategory makeCategoryDepth(String par1Str, int par2)
     {
         CrashReportCategory var3 = new CrashReportCategory(this, par1Str);
 
@@ -285,7 +285,7 @@ public class CrashReport
         }
     }
 
-    public static CrashReport func_85055_a(Throwable par0Throwable, String par1Str)
+    public static CrashReport makeCrashReport(Throwable par0Throwable, String par1Str)
     {
         CrashReport var2;
 

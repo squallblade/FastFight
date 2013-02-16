@@ -86,8 +86,8 @@ public abstract class NBTBase
             }
             catch (IOException var7)
             {
-                CrashReport var5 = CrashReport.func_85055_a(var7, "Loading NBT data");
-                CrashReportCategory var6 = var5.func_85058_a("NBT Tag");
+                CrashReport var5 = CrashReport.makeCrashReport(var7, "Loading NBT data");
+                CrashReportCategory var6 = var5.makeCategory("NBT Tag");
                 var6.addCrashSection("Tag name", var2);
                 var6.addCrashSection("Tag type", Byte.valueOf(var1));
                 throw new ReportedException(var5);

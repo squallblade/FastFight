@@ -34,8 +34,8 @@ public abstract class MapGenStructure extends MapGenBase
             }
             catch (Throwable var10)
             {
-                CrashReport var8 = CrashReport.func_85055_a(var10, "Exception preparing structure feature");
-                CrashReportCategory var9 = var8.func_85058_a("Feature being prepared");
+                CrashReport var8 = CrashReport.makeCrashReport(var10, "Exception preparing structure feature");
+                CrashReportCategory var9 = var8.makeCategory("Feature being prepared");
                 var9.addCrashSectionCallable("Is feature chunk", new CallableIsFeatureChunk(this, par2, par3));
                 var9.addCrashSection("Chunk location", String.format("%d,%d", new Object[] {Integer.valueOf(par2), Integer.valueOf(par3)}));
                 var9.addCrashSectionCallable("Chunk pos hash", new CallableChunkPosHash(this, par2, par3));

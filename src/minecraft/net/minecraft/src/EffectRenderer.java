@@ -63,8 +63,8 @@ public class EffectRenderer
             }
             catch (Throwable var7)
             {
-                CrashReport var4 = CrashReport.func_85055_a(var7, "Uncaught exception while ticking particles");
-                CrashReportCategory var5 = var4.func_85058_a("Particle engine details");
+                CrashReport var4 = CrashReport.makeCrashReport(var7, "Uncaught exception while ticking particles");
+                CrashReportCategory var5 = var4.makeCategory("Particle engine details");
                 var5.addCrashSectionCallable("Last ticked particle", new CallableLastTickedParticle(this, var2));
                 var5.addCrashSection("Texture index", Integer.valueOf(var1));
                 throw new ReportedException(var4);
@@ -86,10 +86,18 @@ public class EffectRenderer
         EntityFX.interpPosY = par1Entity.lastTickPosY + (par1Entity.posY - par1Entity.lastTickPosY) * (double)par2;
         EntityFX.interpPosZ = par1Entity.lastTickPosZ + (par1Entity.posZ - par1Entity.lastTickPosZ) * (double)par2;
 
+        //SDI/T
+        int actualTexture = 0;
+        int fxTexture = 0;
+        
         for (int var8 = 0; var8 < 3; ++var8)
         {
             if (!this.fxLayers[var8].isEmpty())
             {
+            	
+            	//SDI/T
+                boolean haveToDraw = false;
+            	
                 int var9 = 0;
 
                 if (var8 == 0)
@@ -106,6 +114,10 @@ public class EffectRenderer
                 {
                     var9 = this.renderer.getTexture("/gui/items.png");
                 }
+                
+                //SDI/T
+                actualTexture = var9;
+                fxTexture = var9;
 
                 GL11.glBindTexture(GL11.GL_TEXTURE_2D, var9);
                 Tessellator var10 = Tessellator.instance;
@@ -114,11 +126,37 @@ public class EffectRenderer
                 GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
                 var10.startDrawingQuads();
 
+                //SDI/T
                 for (int var11 = 0; var11 < this.fxLayers[var8].size(); ++var11)
                 {
                     EntityFX var12 = (EntityFX)this.fxLayers[var8].get(var11);
                     var10.setBrightness(var12.getBrightnessForRender(par2));
                     var12.renderParticle(var10, par2, var3, var7, var4, var5, var6);
+                    
+                    if(var12 instanceof EntityBreakingFX)
+                    {                   
+                        var9 = renderer.getTexture(((EntityBreakingFX) var12).getEntityItemTexture());
+                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, var9);
+                        fxTexture = var9;
+                        haveToDraw = true;
+                    }
+                    
+                    if(var12 instanceof EntityDiggingFX)
+                    {
+                        var9 = renderer.getTexture(((EntityDiggingFX) var12).getEntityBlockTexture());
+                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, var9);
+                        fxTexture = var9;
+                        haveToDraw = true;
+                    }
+                    
+                    if(haveToDraw)
+                    {
+                        var10.draw();
+                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, var9);
+                        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+                        var10.startDrawingQuads();
+                        haveToDraw = false;
+                    }
                 }
 
                 var10.draw();
