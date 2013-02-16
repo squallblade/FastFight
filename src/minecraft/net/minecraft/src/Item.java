@@ -195,28 +195,31 @@ public class Item
     public static Item glaceChocolat = (new ItemFood(209, 5, 0.6F, false)).setIconCoord(8, 10).setItemName("glaceChocolat").setTextureFile("/gui/items1.png");//ajout
     public static Item glaceCherry = (new ItemFood(210, 5, 0.6F, false)).setIconCoord(7, 12).setItemName("glaceCherry").setTextureFile("/gui/items1.png");//ajout
     public static Item glaceApple = (new ItemFood(211, 5, 0.6F, false)).setIconCoord(8, 12).setItemName("glaceApple").setTextureFile("/gui/items1.png");//ajout
-//    public static Item swordRubis = (new ItemSword(225, EnumToolMaterial.RUBIS)).setIconCoord(3, 9).setItemName("swordRubis").setTextureFile("/gui/items1.png");//ajout
+    //    public static Item swordRubis = (new ItemSword(225, EnumToolMaterial.RUBIS)).setIconCoord(3, 9).setItemName("swordRubis").setTextureFile("/gui/items1.png");//ajout
 //    public static Item shovelRubis = (new ItemSpade(226, EnumToolMaterial.RUBIS)).setIconCoord(3, 10).setItemName("shovelRubis").setTextureFile("/gui/items1.png");//ajout
 //    public static Item pickaxeRubis = (new ItemPickaxe(227, EnumToolMaterial.RUBIS)).setIconCoord(3, 11).setItemName("pickaxeRubis").setTextureFile("/gui/items1.png");//ajout
 //    public static Item axeRubis = (new ItemAxe(228, EnumToolMaterial.RUBIS)).setIconCoord(3, 12).setItemName("hatchetRubis").setTextureFile("/gui/items1.png");//ajout
 //    public static Item hoeRubis = (new ItemHoe(229, EnumToolMaterial.RUBIS)).setIconCoord(3, 13).setItemName("hoeRubis").setTextureFile("/gui/items1.png");//ajout
-//    public static Item helmetRubis = (new ItemArmor(230, EnumArmorMaterial.RUBIS, 5, 0)).setIconCoord(1, 9).setItemName("helmetRubis").setTextureFile("/gui/items1.png");//ajout
-//    public static Item plateRubis = (new ItemArmor(231, EnumArmorMaterial.RUBIS, 5, 1)).setIconCoord(1, 10).setItemName("chestplateRubis").setTextureFile("/gui/items1.png");//ajout
-//    public static Item legsRubis = (new ItemArmor(232, EnumArmorMaterial.RUBIS, 5, 2)).setIconCoord(1, 11).setItemName("leggingsRubis").setTextureFile("/gui/items1.png");//ajout
-//    public static Item bootsRubis = (new ItemArmor(233, EnumArmorMaterial.RUBIS, 5, 3)).setIconCoord(1, 12).setItemName("bootsRubis").setTextureFile("/gui/items1.png");//ajout
+    public static Item helmetRubis = (new ItemArmor(230, EnumArmorMaterial.RUBIS, 5, 0)).setIconCoord(1, 9).setItemName("helmetRubis").setTextureFile("/gui/items1.png");//ajout
+    public static Item plateRubis = (new ItemArmor(231, EnumArmorMaterial.RUBIS, 5, 1)).setIconCoord(1, 10).setItemName("chestplateRubis").setTextureFile("/gui/items1.png");//ajout
+    public static Item legsRubis = (new ItemArmor(232, EnumArmorMaterial.RUBIS, 5, 2)).setIconCoord(1, 11).setItemName("leggingsRubis").setTextureFile("/gui/items1.png");//ajout
+    public static Item bootsRubis = (new ItemArmor(233, EnumArmorMaterial.RUBIS, 5, 3)).setIconCoord(1, 12).setItemName("bootsRubis").setTextureFile("/gui/items1.png");//ajout
 //    public static Item swordEmeraude = (new ItemSword(234, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 9).setItemName("swordEmeraude").setTextureFile("/gui/items1.png");//ajout
 //    public static Item shovelEmeraude = (new ItemSpade(235, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 10).setItemName("shovelEmeraude").setTextureFile("/gui/items1.png");//ajout
 //    public static Item pickaxeEmeraude = (new ItemPickaxe(236, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 11).setItemName("pickaxeEmeraude").setTextureFile("/gui/items1.png");//ajout
 //    public static Item axeEmeraude = (new ItemAxe(237, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 12).setItemName("hatchetEmeraude").setTextureFile("/gui/items1.png");//ajout
 //    public static Item hoeEmeraude = (new ItemHoe(238, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 13).setItemName("hoeEmeraude").setTextureFile("/gui/items1.png");//ajout
-//    public static Item helmetEmeraude = (new ItemArmor(239, EnumArmorMaterial.EMERAUDE, 6, 0)).setIconCoord(2, 9).setItemName("helmetEmeraude").setTextureFile("/gui/items1.png");//ajout
-//    public static Item plateEmeraude = (new ItemArmor(240, EnumArmorMaterial.EMERAUDE, 6, 1)).setIconCoord(2, 10).setItemName("chestplateEmeraude").setTextureFile("/gui/items1.png");//ajout
-//    public static Item legsEmeraude = (new ItemArmor(241, EnumArmorMaterial.EMERAUDE, 6, 2)).setIconCoord(2, 11).setItemName("leggingsEmeraude").setTextureFile("/gui/items1.png");//ajout
-//    public static Item bootsEmeraude = (new ItemArmor(242, EnumArmorMaterial.EMERAUDE, 6, 3)).setIconCoord(2, 12).setItemName("bootsEmeraude").setTextureFile("/gui/items1.png");//ajout
-//    public static Item helmetLezard = (new ItemArmor(243, EnumArmorMaterial.LEZARD, 7, 0)).setIconCoord(5, 9).setItemName("helmetLezard").setTextureFile("/gui/items1.png");//ajout
-//    public static Item plateLezard = (new ItemArmor(244, EnumArmorMaterial.LEZARD, 7, 1)).setIconCoord(5, 10).setItemName("plateLezard").setTextureFile("/gui/items1.png");//ajout
-//    public static Item legsLezard = (new ItemArmor(245, EnumArmorMaterial.LEZARD, 7, 2)).setIconCoord(5, 11).setItemName("legsLezard").setTextureFile("/gui/items1.png");//ajout
-//    public static Item bootsLezard = (new ItemArmor(246, EnumArmorMaterial.LEZARD, 7, 3)).setIconCoord(5, 12).setItemName("bootsLezard").setTextureFile("/gui/items1.png");//ajout
+    public static Item helmetPlatinium = (new ItemArmor(239, EnumArmorMaterial.PLATINUM, 6, 0)).setIconCoord(2, 9).setItemName("helmetPlatinium").setTextureFile("/gui/items1.png");//ajout
+    public static Item platePlatinium = (new ItemArmor(240, EnumArmorMaterial.PLATINUM, 6, 1)).setIconCoord(2, 10).setItemName("chestplatePlatinium").setTextureFile("/gui/items1.png");//ajout
+    public static Item legsPlatinium = (new ItemArmor(241, EnumArmorMaterial.PLATINUM, 6, 2)).setIconCoord(2, 11).setItemName("leggingsPlatinium").setTextureFile("/gui/items1.png");//ajout
+    public static Item bootsPlatinium = (new ItemArmor(242, EnumArmorMaterial.PLATINUM, 6, 3)).setIconCoord(2, 12).setItemName("bootsPlatinium").setTextureFile("/gui/items1.png");//ajout
+    public static Item helmetSaphir = (new ItemArmor(243, EnumArmorMaterial.SAPHIR, 7, 0)).setIconCoord(5, 9).setItemName("helmetSaphir").setTextureFile("/gui/items1.png");//ajout
+    public static Item plateSaphir = (new ItemArmor(244, EnumArmorMaterial.SAPHIR, 7, 1)).setIconCoord(5, 10).setItemName("plateSaphir").setTextureFile("/gui/items1.png");//ajout
+    public static Item legsSaphir = (new ItemArmor(245, EnumArmorMaterial.SAPHIR, 7, 2)).setIconCoord(5, 11).setItemName("legsSaphir").setTextureFile("/gui/items1.png");//ajout
+    public static Item bootsSaphir = (new ItemArmor(246, EnumArmorMaterial.SAPHIR, 7, 3)).setIconCoord(5, 12).setItemName("bootsSaphir").setTextureFile("/gui/items1.png");//ajout
+    public static Item ingotPlatinum = (new Item(247)).setIconCoord(0, 0).setFull3D().setItemName("ingotPlatinum").setCreativeTab(CreativeTabs.tabMaterials).setTextureFile("/gui/items1.png");//ajout
+    public static Item Saphir = (new Item(248)).setIconCoord(1, 0).setFull3D().setItemName("Saphir").setCreativeTab(CreativeTabs.tabMaterials).setTextureFile("/gui/items1.png");//ajout
+
     //____________________________________________________________________________________________________________________________________________________________________________
     
     /** Item index + 256 */

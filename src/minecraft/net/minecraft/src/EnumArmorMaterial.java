@@ -2,11 +2,15 @@ package net.minecraft.src;
 
 public enum EnumArmorMaterial
 {
-    CLOTH(5, new int[]{1, 3, 2, 1}, 15),
+	CLOTH(5, new int[]{1, 3, 2, 1}, 15),
     CHAIN(15, new int[]{2, 5, 4, 1}, 12),
     IRON(15, new int[]{2, 6, 5, 2}, 9),
     GOLD(7, new int[]{2, 5, 3, 1}, 25),
-    DIAMOND(33, new int[]{3, 8, 6, 3}, 10);
+    DIAMOND(33, new int[]{3, 8, 6, 3}, 10),
+//    M(40, new int[]{4, 10, 8, 5}, 9),
+    RUBIS(12, new int[]{2, 7, 5, 2}, 10),
+    PLATINUM(37, new int[]{4, 9, 7, 4}, 7),
+    SAPHIR(9, new int[]{2, 6, 4, 2}, 15);
 
     /**
      * Holds the maximum damage factor (each piece multiply this by it's own value) of the material, this is the item
@@ -61,6 +65,6 @@ public enum EnumArmorMaterial
      */
     public int getArmorCraftingMaterial()
     {
-        return this == CLOTH ? Item.leather.shiftedIndex : (this == CHAIN ? Item.ingotIron.shiftedIndex : (this == GOLD ? Item.ingotGold.shiftedIndex : (this == IRON ? Item.ingotIron.shiftedIndex : (this == DIAMOND ? Item.diamond.shiftedIndex : 0))));
+        return this == CLOTH ? Item.leather.shiftedIndex : (this == CHAIN ? Item.ingotIron.shiftedIndex : (this == GOLD ? Item.ingotGold.shiftedIndex : (this == IRON ? Item.ingotIron.shiftedIndex : (this == DIAMOND ? Item.diamond.shiftedIndex : (this == PLATINUM ? Item.ingotPlatinum.shiftedIndex :/* (this == LEZARD ? Item.lezardSkin.shiftedIndex :*/ (this == RUBIS ? Item.rubis.shiftedIndex : 0))))));
     }
 }

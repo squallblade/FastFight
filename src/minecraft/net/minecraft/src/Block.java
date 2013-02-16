@@ -206,15 +206,15 @@ public class Block
     //______________________________________________________________________________________________________________________________________________________________________________________________________________________
     
     public static final Block Color_Glass = (new BlockVitreColor()).setHardness(0.3F).setStepSound(soundGlassFootstep).setBlockName("coloredGlass").setRequiresSelfNotify();
-//    public static final Block coloredGlowStone = (new BlockGlowStoneColor()).setHardness(0.3F).setStepSound(soundGlassFootstep).setLightValue(1.0F).setBlockName("coloredGlowStone");
-//    public static final Block moquette = (new BlockMoquette()).setHardness(0.8F).setResistance(1.2F).setStepSound(soundClothFootstep).setBlockName("moquette").setCreativeTab(CreativeTabs.tabDecorations);
+    public static final Block coloredGlowStone = (new BlockGlowStoneColor()).setHardness(0.3F).setStepSound(soundGlassFootstep).setLightValue(1.0F).setBlockName("coloredGlowStone");
+    public static final Block moquette = (new BlockMoquette()).setHardness(0.8F).setResistance(1.2F).setStepSound(soundClothFootstep).setBlockName("moquette").setCreativeTab(CreativeTabs.tabDecorations);
 //    public static final Block chaise = (new BlockChaise(213, wood, 0)).setHardness(1.8F).setResistance(4.5F).setStepSound(soundWoodFootstep).setBlockName("chaise").setCreativeTab(CreativeTabs.tabDecorations);
 //    public static final Block chaiseModerne = (new BlockChaiseModerne(214, cloth, 0)).setHardness(1.8F).setResistance(4.5F).setStepSound(soundWoodFootstep).setBlockName("chaise").setCreativeTab(CreativeTabs.tabDecorations);  
-//    public static final Block blockRubis = (new BlockOreStorage(215, 26)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRubis").setTextureFile("/terrain1.png");
-//    public static final Block oreRubis = (new BlockOre(216, 27)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("oreRubis").setTextureFile("/terrain1.png");
+    public static final Block blockRubis = (new BlockOreStorage(215, 26)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRubis").setTextureFile("/terrain1.png");
+    public static final Block oreRubis = (new BlockOre(216, 27)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("oreRubis").setTextureFile("/terrain1.png");
 //    public static final Block football = (new BlockFoot(217, 442,  Material.cloth)).setHardness(5.0F).setResistance(5.0F).setStepSound(soundClothFootstep).setBlockName("football").setCreativeTab(CreativeTabs.tabDecorations);
 //    public static final Block Redstone = (new BlockOreStorage(218, 459)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundMetalFootstep).setBlockName("blockRedstone").setCreativeTab(CreativeTabs.tabRedstone).setTextureFile("/terrain1.png");
-//    public static final Block Charbon = (new BlockOreStorage(219, 460)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundMetalFootstep).setBlockName("blockCharbon").setCreativeTab(CreativeTabs.tabDecorations).setTextureFile("/terrain1.png");
+    public static final Block Charbon = (new BlockOreStorage(219, 460)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundMetalFootstep).setBlockName("blockCharbon").setCreativeTab(CreativeTabs.tabDecorations).setTextureFile("/terrain1.png");
 //    public static final Block Speeder = (new BlockSpeeder(220, 461)).setHardness(2.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("Speeder").setCreativeTab(CreativeTabs.tabBlock);
 //    public static final Block Jumper = (new BlockJumper(221, 476)).setHardness(2.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("Jumper").setCreativeTab(CreativeTabs.tabBlock);
 //    public static final Block freezera = (new BlockFreezer(222, false)).setHardness(3.9F).setStepSound(soundStoneFootstep).setBlockName("Freezer").setRequiresSelfNotify().setCreativeTab(CreativeTabs.tabDecorations);
@@ -242,6 +242,12 @@ public class Block
     public static final Block Escalier_Wool_ROUGE = (new BlockStairs(244, cloth, 14)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_ROUGE").setRequiresSelfNotify();
     public static final Block Escalier_Wool_BLACK = (new BlockStairs(245, cloth, 15)).setHardness(0.8F).setStepSound(soundClothFootstep).setBlockName("Escalier_Wool_BLACK").setRequiresSelfNotify();
     
+    public static final Block orePlatinum = (new BlockOre(246, 1)).setHardness(4.0F).setResistance(6.0F).setStepSound(soundStoneFootstep).setBlockName("orePlatinum").setTextureFile("/terrain1.png");
+    public static final Block blockPlatinum = (new BlockOreStorage(247, 0)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockPlatinum").setTextureFile("/terrain1.png");
+
+    public static final Block oreSaphir = (new BlockOre(248, 3)).setHardness(3.5F).setResistance(6.0F).setStepSound(soundStoneFootstep).setBlockName("oreSaphir").setTextureFile("/terrain1.png");
+    public static final Block blockSaphir = (new BlockOreStorage(249, 2)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockSaphir").setTextureFile("/terrain1.png");
+
     //______________________________________________________________________________________________________________________________________________________________________________________________________________________
    
     /**

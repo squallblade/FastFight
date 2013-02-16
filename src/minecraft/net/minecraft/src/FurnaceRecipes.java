@@ -38,6 +38,11 @@ public class FurnaceRecipes
         this.addSmelting(Block.oreCoal.blockID, new ItemStack(Item.coal), 0.1F);
         this.addSmelting(Block.oreRedstone.blockID, new ItemStack(Item.redstone), 0.7F);
         this.addSmelting(Block.oreLapis.blockID, new ItemStack(Item.dyePowder, 1, 4), 0.2F);
+        this.addSmelting(Block.oreRubis.blockID, new ItemStack(Item.rubis), 0.8F);
+        this.addSmelting(Block.oreSaphir.blockID, new ItemStack(Item.Saphir), 0.7F);
+        this.addSmelting(Block.orePlatinum.blockID, new ItemStack(Item.ingotPlatinum), 0.9F);
+
+
     }
 
     /**

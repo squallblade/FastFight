@@ -7,6 +7,8 @@ import java.util.List;
 
 public class CraftingManager
 {
+	public static boolean boost;
+	
     /** The static instance of this class */
     private static final CraftingManager instance = new CraftingManager();
 
@@ -125,6 +127,157 @@ public class CraftingManager
         this.addShapelessRecipe(new ItemStack(Item.eyeOfEnder, 1), new Object[] {Item.enderPearl, Item.blazePowder});
         this.addShapelessRecipe(new ItemStack(Item.fireballCharge, 3), new Object[] {Item.gunpowder, Item.blazePowder, Item.coal});
         this.addShapelessRecipe(new ItemStack(Item.fireballCharge, 3), new Object[] {Item.gunpowder, Item.blazePowder, new ItemStack(Item.coal, 1, 1)});
+        
+        //start craft custom
+        int[] dye = {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};//ajout
+        
+        /*Speeder*/
+//        this.addRecipe(new ItemStack(Block.Speeder, 1), new Object[] {"XXX", "XZX", "XXX", 'Z', Item.diamond, 'X', new ItemStack(Block.stone, 1)});//ajout
+        
+        /*Jumper*/
+//        this.addRecipe(new ItemStack(Block.Jumper, 1), new Object[] {"XXX", "XZX", "XXX", 'Z', Item.emerald, 'X', new ItemStack(Block.stone, 1)});//ajout
+        
+        /*coloredGlass*/
+        for (int x=0;x<16;x++)
+        	this.addRecipe(new ItemStack(Block.Color_Glass, 1, x), new Object[] {"X", "#", '#', Block.glass, 'X', new ItemStack(Item.dyePowder, 1, dye[x])});//ajout
+        for (int x=0;x<16;x++)
+        	this.addRecipe(new ItemStack(Block.Color_Glass, 1, x), new Object[] {"X", "#", '#', Block.Color_Glass, 'X', new ItemStack(Item.dyePowder, 1, dye[x])});//ajout
+        
+        /*Freezer*/
+//        this.addRecipe(new ItemStack(Block.freezera), new Object[] {"###", "#X#", "###", '#', new ItemStack(Item.ingotIron), 'X', new ItemStack(Item.redstone)});//ajout
+        
+        /*Moquette*/
+        for (int x=0;x<16;x++)
+        	this.addRecipe(new ItemStack(Block.moquette, 1, x), new Object[] {"X", "#", '#', Block.moquette, 'X', new ItemStack(Item.dyePowder, 1, dye[x])});//ajout
+        for (int x=0;x<16;x++)
+        	this.addRecipe(new ItemStack(Block.moquette, 1, x), new Object[] {"XXX", 'X', new ItemStack(Block.cloth, 1, x)});//ajout
+        
+        /*ColoredGlowStone*/
+        for (int x=0;x<16;x++)
+        	this.addRecipe(new ItemStack(Block.coloredGlowStone, 1, x), new Object[] {"X", "#", '#', Block.glowStone, 'X', new ItemStack(Item.dyePowder, 1, dye[x])});//ajout
+        for (int x=0;x<16;x++)
+        	this.addRecipe(new ItemStack(Block.coloredGlowStone, 1, x), new Object[] {"X", "#", '#', Block.coloredGlowStone, 'X', new ItemStack(Item.dyePowder, 1, dye[x])});//ajout
+       
+        /*Fut*/
+//        this.addRecipe(new ItemStack(Block.fut, 1), new Object[] {"###", "XXX", "###", '#', new ItemStack(Item.ingotIron), 'X', new ItemStack(Item.stick)});//ajout
+       
+        /*VerreVide*/
+        this.addRecipe(new ItemStack(Item.verreVide, 5), new Object[] {"#X#", "###", '#', new ItemStack(Block.glass)});//ajout
+        
+        /*IceCube*/
+        this.addRecipe(new ItemStack(Item.iceCube, 4), new Object[] {"#", '#', new ItemStack(Block.ice, 2)});//ajout
+        
+        /*Ice*/
+        this.addRecipe(new ItemStack(Block.ice), new Object[] {"##", "##", '#', new ItemStack(Item.iceCube)});//ajout
+        
+        /*Chaise*/
+//        this.addRecipe(new ItemStack(Block.chaise, 1), new Object[] {"OO#", "XXX", "#O#", '#', new ItemStack(Block.fence, 1), 'X', new ItemStack(Block.pressurePlatePlanks, 1)});//ajout
+//        this.addRecipe(new ItemStack(Block.chaise, 1), new Object[] {"#OO", "XXX", "#O#", '#', new ItemStack(Block.fence, 1), 'X', new ItemStack(Block.pressurePlatePlanks, 1)});//ajout
+        
+        /*ChaineModern*/
+//        this.addRecipe(new ItemStack(Block.chaiseModerne, 1), new Object[] {"OO#", "XXX", "#O#", '#', new ItemStack(Block.cloth, 1, 15), 'X', new ItemStack(Block.moquette, 1, 7)});//ajout
+//        this.addRecipe(new ItemStack(Block.chaiseModerne, 1), new Object[] {"#OO", "XXX", "#O#", '#', new ItemStack(Block.cloth, 1, 15), 'X', new ItemStack(Block.moquette, 1, 7)});//ajout
+        
+        /*Poubelle*/
+//        this.addRecipe(new ItemStack(Block.poubelle, 1), new Object[] {"###", "XoX", "XXX", '#', new ItemStack(Item.ingotIron), 'X', new ItemStack(Item.paper)});//ajout
+        
+        /*EtageresBois*/
+//        this.addRecipe(new ItemStack(Block.etagereBois, 1), new Object[] {"XXo", "#oo", 'X', new ItemStack(Block.pressurePlatePlanks), '#', new ItemStack(Item.stick)});//ajout
+//        this.addRecipe(new ItemStack(Block.etagereBois, 1), new Object[] {"oXX", "o#o", 'X', new ItemStack(Block.pressurePlatePlanks), '#', new ItemStack(Item.stick)});//ajout
+//        this.addRecipe(new ItemStack(Block.etagereBois, 1), new Object[] {"XXo", "o#o", 'X', new ItemStack(Block.pressurePlatePlanks), '#', new ItemStack(Item.stick)});//ajout
+//        this.addRecipe(new ItemStack(Block.etagereBois, 1), new Object[] {"oXX", "oo#", 'X', new ItemStack(Block.pressurePlatePlanks), '#', new ItemStack(Item.stick)});//ajout
+        
+        /*Glaces*/
+        this.addRecipe(new ItemStack(Item.glaceChocolat, 1), new Object[] {"X", "#", "G", '#', new ItemStack(Item.iceCube), 'G', new ItemStack(Item.stick), 'X', new ItemStack(Item.dyePowder, 1, 3)});//ajout      
+        this.addRecipe(new ItemStack(Item.glaceCherry, 1), new Object[] {"X", "#", "G", '#', new ItemStack(Item.iceCube), 'G', new ItemStack(Item.stick), 'X', new ItemStack(Item.cherry)});//ajout        
+        this.addRecipe(new ItemStack(Item.glaceApple, 1), new Object[] {"X", "#", "G", '#', new ItemStack(Item.iceCube), 'G', new ItemStack(Item.stick), 'X', new ItemStack(Item.appleRed)});//ajout
+        
+//        /*Armures lezardSkin*/
+//        this.addRecipe(new ItemStack(Item.helmetLezard, 1), new Object[] {"###", "#X#", '#', new ItemStack(Item.lezardSkin)});//ajout
+//        this.addRecipe(new ItemStack(Item.plateLezard, 1), new Object[] {"#X#", "###", "###", '#', new ItemStack(Item.lezardSkin)});//ajout
+//        this.addRecipe(new ItemStack(Item.legsLezard, 1), new Object[] {"###", "#X#", "#X#", '#', new ItemStack(Item.lezardSkin)});//ajout
+//        this.addRecipe(new ItemStack(Item.bootsLezard, 1), new Object[] {"#X#", "#X#", '#', new ItemStack(Item.lezardSkin)});//ajout
+//        
+//        /*Armures rubis*/
+//        this.addRecipe(new ItemStack(Item.helmetRubis, 1), new Object[] {"###", "#X#", '#', new ItemStack(Item.rubis, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.plateRubis, 1), new Object[] {"#X#", "###", "###", '#', new ItemStack(Item.rubis, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.legsRubis, 1), new Object[] {"###", "#X#", "#X#", '#', new ItemStack(Item.rubis, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.bootsRubis, 1), new Object[] {"#X#", "#X#", '#', new ItemStack(Item.rubis, 1)});//ajout
+//        
+//        /*Armes rubis*/
+//        this.addRecipe(new ItemStack(Item.pickaxeRubis, 1), new Object[] {"###", "OXO", "OXO", '#', new ItemStack(Item.rubis, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.axeRubis, 1), new Object[] {"##O", "#XO", "OXO", '#', new ItemStack(Item.rubis, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.shovelRubis, 1), new Object[] {"O#O", "OXO", "OXO", '#', new ItemStack(Item.rubis, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.hoeRubis, 1), new Object[] {"##O", "OXO", "OXO", '#', new ItemStack(Item.rubis, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.swordRubis, 1), new Object[] {"O#O", "O#O", "OXO", '#', new ItemStack(Item.rubis, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        
+//        /*Armures Emeraude*/
+//        this.addRecipe(new ItemStack(Item.helmetEmeraude, 1), new Object[] {"###", "#X#", '#', new ItemStack(Item.emerald, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.plateEmeraude, 1), new Object[] {"#X#", "###", "###", '#', new ItemStack(Item.emerald, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.legsEmeraude, 1), new Object[] {"###", "#X#", "#X#", '#', new ItemStack(Item.emerald, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.bootsEmeraude, 1), new Object[] {"#X#", "#X#", '#', new ItemStack(Item.emerald, 1)});//ajout
+//        
+//        /*Armes Emeraude*/
+//        this.addRecipe(new ItemStack(Item.pickaxeEmeraude, 1), new Object[] {"###", "OXO", "OXO", '#', new ItemStack(Item.emerald, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.axeEmeraude, 1), new Object[] {"##O", "#XO", "OXO", '#', new ItemStack(Item.emerald, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.shovelEmeraude, 1), new Object[] {"O#O", "OXO", "OXO", '#', new ItemStack(Item.emerald, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.hoeEmeraude, 1), new Object[] {"##O", "OXO", "OXO", '#', new ItemStack(Item.emerald, 1), 'X', new ItemStack(Item.stick, 1)});//ajout
+//        this.addRecipe(new ItemStack(Item.swordEmeraude, 1), new Object[] {"O#O", "O#O", "OXO", '#', new ItemStack(Item.emerald, 1), 'X', new ItemStack(Item.stick, 1)});//ajout      
+        
+        /*ColoredWoolStairs*/
+        Block ordres[] = {Block.Escalier_Wool_BLANC, Block.Escalier_Wool_ORANGE, Block.Escalier_Wool_MAGENTA, Block.Escalier_Wool_BLEUCIEL, Block.Escalier_Wool_JAUNE, Block.Escalier_Wool_VERTCLAIR, Block.Escalier_Wool_ROSE, Block.Escalier_Wool_GRIS, Block.Escalier_Wool_GRISCLAIR, Block.Escalier_Wool_AQUA, Block.Escalier_Wool_VIOLET, Block.Escalier_Wool_BLEU, Block.Escalier_Wool_MARRON, Block.Escalier_Wool_VERT, Block.Escalier_Wool_ROUGE, Block.Escalier_Wool_BLACK};
+        for(int x=0; x<16;x++){
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_BLANC, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 15)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_ORANGE, 1), new Object[] {"X", "#",  '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 14)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_MAGENTA, 1), new Object[] {"X", "#",  '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 13)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_BLEUCIEL, 1), new Object[] {"X", "#",  '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 12)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_JAUNE, 1), new Object[] {"X", "#",  '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 11)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_VERTCLAIR, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 10)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_ROSE, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 9)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_GRIS, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 7)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_GRISCLAIR, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 8)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_AQUA, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 6)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_VIOLET, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 5)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_BLEU, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 4)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_MARRON, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 3)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_VERT, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 2)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_ROUGE, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 1)});
+        	this.addRecipe(new ItemStack(Block.Escalier_Wool_BLACK, 1), new Object[] {"X", "#", '#', ordres[x], 'X', new ItemStack(Item.dyePowder, 1, 0)});
+        }
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_BLANC, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 0)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_ORANGE, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 1)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_MAGENTA, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 13)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_BLEUCIEL, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 3)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_JAUNE, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 4)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_VERTCLAIR, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 5)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_ROSE, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 6)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_GRIS, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 7)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_GRISCLAIR, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 8)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_AQUA, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 9)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_VIOLET, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 10)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_BLEU, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 11)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_MARRON, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 12)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_VERT, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 2)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_ROUGE, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 14)});
+        this.addRecipe(new ItemStack(Block.Escalier_Wool_BLACK, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.cloth, 0, 15)});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 0), new Object[] {"#", '#', Block.Escalier_Wool_BLANC});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 1), new Object[] {"#", '#', Block.Escalier_Wool_ORANGE});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 2), new Object[] {"#", '#', Block.Escalier_Wool_MAGENTA});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 3), new Object[] {"#", '#', Block.Escalier_Wool_BLEUCIEL});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 4), new Object[] {"#", '#', Block.Escalier_Wool_JAUNE});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 5), new Object[] {"#", '#', Block.Escalier_Wool_VERTCLAIR});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 6), new Object[] {"#", '#', Block.Escalier_Wool_ROSE});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 7), new Object[] {"#", '#', Block.Escalier_Wool_GRIS});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 8), new Object[] {"#", '#', Block.Escalier_Wool_GRISCLAIR});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 9), new Object[] {"#", '#', Block.Escalier_Wool_AQUA});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 10), new Object[] {"#", '#', Block.Escalier_Wool_VIOLET});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 11), new Object[] {"#", '#', Block.Escalier_Wool_BLEU});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 12), new Object[] {"#", '#', Block.Escalier_Wool_MARRON});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 13), new Object[] {"#", '#', Block.Escalier_Wool_VERT});
+        this.addRecipe(new ItemStack(Block.cloth, 4, 14), new Object[] {"#", '#', Block.Escalier_Wool_ROUGE});;
+        this.addRecipe(new ItemStack(Block.cloth, 4, 15), new Object[] {"#", '#', Block.Escalier_Wool_BLACK});
+        //end craft custom
+
         Collections.sort(this.recipes, new RecipeSorter(this));
         System.out.println(this.recipes.size() + " recipes");
     }
