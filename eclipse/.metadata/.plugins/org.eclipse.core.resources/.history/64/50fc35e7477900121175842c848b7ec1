@@ -75,10 +75,6 @@ public class BlockOre extends Block
             {
                 var8 = MathHelper.getRandomIntegerInRange(par1World.rand, 2, 5);
             }
-            else if (this.blockID == Block.oreRubi.blockID)
-            {
-                var8 = MathHelper.getRandomIntegerInRange(par1World.rand, 3, 7);
-            }
 
             this.dropXpOnBlockBreak(par1World, par2, par3, par4, var8);
         }

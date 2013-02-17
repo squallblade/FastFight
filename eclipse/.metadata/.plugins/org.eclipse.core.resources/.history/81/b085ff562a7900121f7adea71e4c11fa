@@ -206,11 +206,8 @@ public class Block
 
     public static final Block stairsObsidian = (new BlockStairs(150, obsidian, 0)).setBlockName("stairsobsidian").setRequiresSelfNotify();
     public static final BlockHalfSlab obsidianSingleSlab = (BlockHalfSlab)(new BlockStep2(151, false)).setHardness(50.0F).setResistance(2000.0F).setStepSound(soundStoneFootstep).setBlockName("obsidianSlab");
-    public static final Block invisibleBlock = (new BlockInvisible(152, 187)).setLightOpacity(0).setBlockName("invisibleBlock").setBlockUnbreakable().setResistance(6000000.0F).setStepSound(soundStoneFootstep).disableStats();
+    public static final Block invisibleBlock = (new BlockInvisible(152, 187)).setBlockName("invisibleBlock").setBlockUnbreakable().setResistance(6000000.0F).setStepSound(soundStoneFootstep).disableStats();
     
-    public static final Block blockRubi = (new BlockOreStorage(153, 188)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRubi");
-    public static final Block oreRubi = (new BlockOre(154, 189)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("oreRubi");
-
     
     
     

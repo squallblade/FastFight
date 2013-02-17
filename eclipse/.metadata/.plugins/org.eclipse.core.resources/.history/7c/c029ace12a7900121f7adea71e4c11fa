@@ -12,4 +12,9 @@ public class BlockInvisible extends BlockStone
     public boolean isOpaqueCube(){
     	return false;
     }
+    
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 }

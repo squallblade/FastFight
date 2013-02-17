@@ -185,8 +185,6 @@ public class Item
     public static Item record11 = (new ItemRecord(2010, "11")).setIconCoord(10, 15).setItemName("record");
     public static Item recordWait = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
 
-    
-    public static Item Rubi = (new Item(150)).setIconCoord(10, 10).setItemName("Rubi").setCreativeTab(CreativeTabs.tabMaterials);
     /** The ID of this item. */
     public final int itemID;
 
