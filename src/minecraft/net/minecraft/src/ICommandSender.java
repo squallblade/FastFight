@@ -20,7 +20,7 @@ public interface ICommandSender
     String translateString(String var1, Object ... var2);
 
     /**
-     * Return the position for this command sender.
+     * Return the coordinates for this player as ChunkCoordinates.
      */
     ChunkCoordinates getPlayerCoordinates();
 }

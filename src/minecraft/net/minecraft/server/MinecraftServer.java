@@ -188,7 +188,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
         BlockDispenser.dispenseBehaviorRegistry.putObject(Item.expBottle, new BehaviorExpBottleDispense(this));
         BlockDispenser.dispenseBehaviorRegistry.putObject(Item.potion, new BehaviorPotionDispense(this));
         BlockDispenser.dispenseBehaviorRegistry.putObject(Item.monsterPlacer, new BehaviorMobEggDispense(this));
-        BlockDispenser.dispenseBehaviorRegistry.putObject(Item.firework, new BehaviorDispenseFirework(this));
+        BlockDispenser.dispenseBehaviorRegistry.putObject(Item.field_92104_bU, new BehaviorDispenseFirework(this));
         BlockDispenser.dispenseBehaviorRegistry.putObject(Item.fireballCharge, new BehaviorDispenseFireball(this));
         BehaviorDispenseMinecart var1 = new BehaviorDispenseMinecart(this);
         BlockDispenser.dispenseBehaviorRegistry.putObject(Item.minecartEmpty, var1);
@@ -756,7 +756,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
     }
 
     /**
-     * Returns the server message of the day
+     * minecraftServer.getMOTD is used in 2 places instead (it is a non-virtual function which returns the same thing)
      */
     public String getServerMOTD()
     {
@@ -1314,7 +1314,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
     }
 
     /**
-     * Return the position for this command sender.
+     * Return the coordinates for this player as ChunkCoordinates.
      */
     public ChunkCoordinates getPlayerCoordinates()
     {

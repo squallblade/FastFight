@@ -190,7 +190,7 @@ public abstract class ServerConfigurationManager
     {
         this.writePlayerData(par1EntityPlayerMP);
         WorldServer var2 = par1EntityPlayerMP.getServerForPlayer();
-        var2.removeEntity(par1EntityPlayerMP);
+        var2.setEntityDead(par1EntityPlayerMP);
         var2.getPlayerManager().removePlayer(par1EntityPlayerMP);
         this.playerEntityList.remove(par1EntityPlayerMP);
         this.sendPacketToAllPlayers(new Packet201PlayerInfo(par1EntityPlayerMP.username, false, 9999));
@@ -293,7 +293,7 @@ public abstract class ServerConfigurationManager
         par1EntityPlayerMP.getServerForPlayer().getEntityTracker().removeEntityFromAllTrackingPlayers(par1EntityPlayerMP);
         par1EntityPlayerMP.getServerForPlayer().getPlayerManager().removePlayer(par1EntityPlayerMP);
         this.playerEntityList.remove(par1EntityPlayerMP);
-        this.mcServer.worldServerForDimension(par1EntityPlayerMP.dimension).removePlayerEntityDangerously(par1EntityPlayerMP);
+        this.mcServer.worldServerForDimension(par1EntityPlayerMP.dimension).removeEntity(par1EntityPlayerMP);
         ChunkCoordinates var4 = par1EntityPlayerMP.getBedLocation();
         boolean var5 = par1EntityPlayerMP.isSpawnForced();
         par1EntityPlayerMP.dimension = par2;
@@ -358,7 +358,7 @@ public abstract class ServerConfigurationManager
         par1EntityPlayerMP.dimension = par2;
         WorldServer var5 = this.mcServer.worldServerForDimension(par1EntityPlayerMP.dimension);
         par1EntityPlayerMP.playerNetServerHandler.sendPacketToPlayer(new Packet9Respawn(par1EntityPlayerMP.dimension, (byte)par1EntityPlayerMP.worldObj.difficultySetting, var5.getWorldInfo().getTerrainType(), var5.getHeight(), par1EntityPlayerMP.theItemInWorldManager.getGameType()));
-        var4.removePlayerEntityDangerously(par1EntityPlayerMP);
+        var4.removeEntity(par1EntityPlayerMP);
         par1EntityPlayerMP.isDead = false;
         this.transferEntityToWorld(par1EntityPlayerMP, var3, var4, var5);
         this.func_72375_a(par1EntityPlayerMP, var4);
@@ -865,10 +865,7 @@ public abstract class ServerConfigurationManager
         }
     }
 
-    /**
-     * Sends the given string to every player as chat message.
-     */
-    public void sendChatMsg(String par1Str)
+    public void func_92062_k(String par1Str)
     {
         this.mcServer.logInfo(par1Str);
         this.sendPacketToAllPlayers(new Packet3Chat(par1Str));

@@ -253,7 +253,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
      */
     public void onDeath(DamageSource par1DamageSource)
     {
-        this.mcServer.getConfigurationManager().sendChatMsg(par1DamageSource.getDeathMessage(this));
+        this.mcServer.getConfigurationManager().func_92062_k(par1DamageSource.getDeathMessage(this));
 
         if (!this.worldObj.getGameRules().getGameRuleBooleanValue("keepInventory"))
         {
@@ -321,7 +321,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
         if (this.dimension == 1 && par1 == 1)
         {
             this.triggerAchievement(AchievementList.theEnd2);
-            this.worldObj.removeEntity(this);
+            this.worldObj.setEntityDead(this);
             this.playerConqueredTheEnd = true;
             this.playerNetServerHandler.sendPacketToPlayer(new Packet70GameEvent(4, 0));
         }
@@ -850,7 +850,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
     }
 
     /**
-     * Return the position for this command sender.
+     * Return the coordinates for this player as ChunkCoordinates.
      */
     public ChunkCoordinates getPlayerCoordinates()
     {

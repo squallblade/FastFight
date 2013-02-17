@@ -14,7 +14,7 @@ public class TextureCompassFX extends TextureFX
     private int[] compassIconImageData = new int[256];
     public double field_76868_i;
     public double field_76866_j;
-    public static TextureCompassFX instance;
+    public static TextureCompassFX field_82391_c;
 
     public TextureCompassFX(Minecraft par1Minecraft)
     {
@@ -34,7 +34,7 @@ public class TextureCompassFX extends TextureFX
             var5.printStackTrace();
         }
 
-        instance = this;
+        field_82391_c = this;
     }
 
     public void onTick()
@@ -51,8 +51,8 @@ public class TextureCompassFX extends TextureFX
 
     public static void func_82390_a(double par0, double par2, double par4, boolean par6, boolean par7)
     {
-        int[] var8 = instance.compassIconImageData;
-        byte[] var9 = instance.imageData;
+        int[] var8 = field_82391_c.compassIconImageData;
+        byte[] var9 = field_82391_c.imageData;
         int var17;
         int var16;
 
@@ -63,7 +63,7 @@ public class TextureCompassFX extends TextureFX
             int var13 = var8[var10] >> 8 & 255;
             int var14 = var8[var10] >> 0 & 255;
 
-            if (instance.anaglyphEnabled)
+            if (field_82391_c.anaglyphEnabled)
             {
                 int var15 = (var12 * 30 + var13 * 59 + var14 * 11) / 100;
                 var16 = (var12 * 30 + var13 * 70) / 100;
@@ -81,14 +81,14 @@ public class TextureCompassFX extends TextureFX
 
         double var27 = 0.0D;
 
-        if (instance.mc.theWorld != null && !par6)
+        if (field_82391_c.mc.theWorld != null && !par6)
         {
-            ChunkCoordinates var29 = instance.mc.theWorld.getSpawnPoint();
+            ChunkCoordinates var29 = field_82391_c.mc.theWorld.getSpawnPoint();
             double var28 = (double)var29.posX - par0;
             double var32 = (double)var29.posZ - par2;
             var27 = (par4 - 90.0D) * Math.PI / 180.0D - Math.atan2(var32, var28);
 
-            if (!instance.mc.theWorld.provider.isSurfaceWorld())
+            if (!field_82391_c.mc.theWorld.provider.isSurfaceWorld())
             {
                 var27 = Math.random() * Math.PI * 2.0D;
             }
@@ -98,11 +98,11 @@ public class TextureCompassFX extends TextureFX
 
         if (par7)
         {
-            instance.field_76868_i = var27;
+            field_82391_c.field_76868_i = var27;
         }
         else
         {
-            for (var30 = var27 - instance.field_76868_i; var30 < -Math.PI; var30 += (Math.PI * 2D))
+            for (var30 = var27 - field_82391_c.field_76868_i; var30 < -Math.PI; var30 += (Math.PI * 2D))
             {
                 ;
             }
@@ -122,13 +122,13 @@ public class TextureCompassFX extends TextureFX
                 var30 = 1.0D;
             }
 
-            instance.field_76866_j += var30 * 0.1D;
-            instance.field_76866_j *= 0.8D;
-            instance.field_76868_i += instance.field_76866_j;
+            field_82391_c.field_76866_j += var30 * 0.1D;
+            field_82391_c.field_76866_j *= 0.8D;
+            field_82391_c.field_76868_i += field_82391_c.field_76866_j;
         }
 
-        var30 = Math.sin(instance.field_76868_i);
-        double var31 = Math.cos(instance.field_76868_i);
+        var30 = Math.sin(field_82391_c.field_76868_i);
+        double var31 = Math.cos(field_82391_c.field_76868_i);
         int var19;
         int var18;
         int var21;
@@ -149,7 +149,7 @@ public class TextureCompassFX extends TextureFX
             var22 = 100;
             var23 = 255;
 
-            if (instance.anaglyphEnabled)
+            if (field_82391_c.anaglyphEnabled)
             {
                 var24 = (var20 * 30 + var21 * 59 + var22 * 11) / 100;
                 var25 = (var20 * 30 + var21 * 70) / 100;
@@ -175,7 +175,7 @@ public class TextureCompassFX extends TextureFX
             var22 = var16 >= 0 ? 20 : 100;
             var23 = 255;
 
-            if (instance.anaglyphEnabled)
+            if (field_82391_c.anaglyphEnabled)
             {
                 var24 = (var20 * 30 + var21 * 59 + var22 * 11) / 100;
                 var25 = (var20 * 30 + var21 * 70) / 100;

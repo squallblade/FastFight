@@ -10,40 +10,31 @@ public enum EnumFacing
     WEST(5, 4, 1, 0, 0);
     private final int field_82603_g;
     private final int field_82613_h;
-    private final int frontOffsetX;
-    private final int frontOffsetY;
-    private final int frontOffsetZ;
+    private final int field_82614_i;
+    private final int field_82611_j;
+    private final int field_82612_k;
     private static final EnumFacing[] field_82609_l = new EnumFacing[6];
 
     private EnumFacing(int par3, int par4, int par5, int par6, int par7)
     {
         this.field_82603_g = par3;
         this.field_82613_h = par4;
-        this.frontOffsetX = par5;
-        this.frontOffsetY = par6;
-        this.frontOffsetZ = par7;
+        this.field_82614_i = par5;
+        this.field_82611_j = par6;
+        this.field_82612_k = par7;
     }
 
-    /**
-     * Returns a offset that addresses the block in front of this facing.
-     */
-    public int getFrontOffsetX()
+    public int func_82601_c()
     {
-        return this.frontOffsetX;
+        return this.field_82614_i;
     }
 
-    /**
-     * Returns a offset that addresses the block in front of this facing.
-     */
-    public int getFrontOffsetZ()
+    public int func_82599_e()
     {
-        return this.frontOffsetZ;
+        return this.field_82612_k;
     }
 
-    /**
-     * Returns the facing that represents the block in front of it.
-     */
-    public static EnumFacing getFront(int par0)
+    public static EnumFacing func_82600_a(int par0)
     {
         return field_82609_l[par0 % field_82609_l.length];
     }

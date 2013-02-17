@@ -8,34 +8,34 @@ import org.bouncycastle.crypto.StreamCipher;
 
 public class CipherOutputStream extends FilterOutputStream
 {
-    private BufferedBlockCipher theBufferedBlockCipher;
-    private StreamCipher theStreamCipher;
-    private byte[] oneByte = new byte[1];
-    private byte[] buf;
+    private BufferedBlockCipher field_74849_a;
+    private StreamCipher field_74847_b;
+    private byte[] field_74848_c = new byte[1];
+    private byte[] field_74846_d;
 
     public CipherOutputStream(OutputStream par1OutputStream, BufferedBlockCipher par2BufferedBlockCipher)
     {
         super(par1OutputStream);
-        this.theBufferedBlockCipher = par2BufferedBlockCipher;
-        this.buf = new byte[par2BufferedBlockCipher.getBlockSize()];
+        this.field_74849_a = par2BufferedBlockCipher;
+        this.field_74846_d = new byte[par2BufferedBlockCipher.func_71792_a()];
     }
 
     public void write(int par1) throws IOException
     {
-        this.oneByte[0] = (byte)par1;
+        this.field_74848_c[0] = (byte)par1;
 
-        if (this.theBufferedBlockCipher != null)
+        if (this.field_74849_a != null)
         {
-            int var2 = this.theBufferedBlockCipher.processByte(this.oneByte, 0, 1, this.buf, 0);
+            int var2 = this.field_74849_a.func_71791_a(this.field_74848_c, 0, 1, this.field_74846_d, 0);
 
             if (var2 != 0)
             {
-                this.out.write(this.buf, 0, var2);
+                this.out.write(this.field_74846_d, 0, var2);
             }
         }
         else
         {
-            this.out.write(this.theStreamCipher.returnByte((byte)par1));
+            this.out.write(this.field_74847_b.returnByte((byte)par1));
         }
     }
 
@@ -48,10 +48,10 @@ public class CipherOutputStream extends FilterOutputStream
     {
         byte[] var4;
 
-        if (this.theBufferedBlockCipher != null)
+        if (this.field_74849_a != null)
         {
-            var4 = new byte[this.theBufferedBlockCipher.getOutputSize(par3)];
-            int var5 = this.theBufferedBlockCipher.processByte(par1, par2, par3, var4, 0);
+            var4 = new byte[this.field_74849_a.func_71789_b(par3)];
+            int var5 = this.field_74849_a.func_71791_a(par1, par2, par3, var4, 0);
 
             if (var5 != 0)
             {
@@ -61,7 +61,7 @@ public class CipherOutputStream extends FilterOutputStream
         else
         {
             var4 = new byte[par3];
-            this.theStreamCipher.processBytes(par1, par2, par3, var4, 0);
+            this.field_74847_b.func_74850_a(par1, par2, par3, var4, 0);
             this.out.write(var4, 0, par3);
         }
     }
@@ -75,10 +75,10 @@ public class CipherOutputStream extends FilterOutputStream
     {
         try
         {
-            if (this.theBufferedBlockCipher != null)
+            if (this.field_74849_a != null)
             {
-                byte[] var1 = new byte[this.theBufferedBlockCipher.getOutputSize(0)];
-                int var2 = this.theBufferedBlockCipher.doFinal(var1, 0);
+                byte[] var1 = new byte[this.field_74849_a.func_71789_b(0)];
+                int var2 = this.field_74849_a.func_71790_a(var1, 0);
 
                 if (var2 != 0)
                 {

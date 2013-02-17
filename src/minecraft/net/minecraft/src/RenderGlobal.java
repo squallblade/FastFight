@@ -376,7 +376,7 @@ public class RenderGlobal implements IWorldAccess
                     for (int var9 = 0; var9 < this.renderChunksDeep; ++var9)
                     {
                         int var10 = (var9 * this.renderChunksTall + var12) * this.renderChunksWide + var7;
-                        this.worldRenderers[var10] = new WorldRenderer(this.theWorld, this.tileEntities, var7 * 16, var12 * 16, var9 * 16, this.glRenderListBase + var4);
+                        this.worldRenderers[var10] = WrUpdates.makeWorldRenderer(this.theWorld, this.tileEntities, var7 * 16, var12 * 16, var9 * 16, this.glRenderListBase + var4);
 
                         if (this.occlusionEnabled)
                         {
@@ -710,6 +710,7 @@ public class RenderGlobal implements IWorldAccess
         }
 
         RenderHelper.disableStandardItemLighting();
+        WrUpdates.preRender(this, par1EntityLiving);
 
         if (this.mc.gameSettings.ofSmoothFps && par2 == 0)
         {
@@ -877,6 +878,7 @@ public class RenderGlobal implements IWorldAccess
         }
 
         var5.endSection();
+        WrUpdates.postRender();
         return var20;
     }
 
@@ -1558,7 +1560,11 @@ public class RenderGlobal implements IWorldAccess
      */
     public boolean updateRenderers(EntityLiving par1EntityLiving, boolean par2)
     {
-        if (this.worldRenderersToUpdate.size() <= 0)
+        if (WrUpdates.hasWrUpdater())
+        {
+            return WrUpdates.updateRenderers(this, par1EntityLiving, par2);
+        }
+        else if (this.worldRenderersToUpdate.size() <= 0)
         {
             return false;
         }

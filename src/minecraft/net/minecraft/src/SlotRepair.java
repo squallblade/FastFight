@@ -4,11 +4,11 @@ class SlotRepair extends Slot
 {
     final World theWorld;
 
-    final int blockPosX;
+    final int field_82873_b;
 
-    final int blockPosY;
+    final int field_82874_c;
 
-    final int blockPosZ;
+    final int field_82871_d;
 
     /** The anvil this slot belongs to. */
     final ContainerRepair anvil;
@@ -18,9 +18,9 @@ class SlotRepair extends Slot
         super(par2IInventory, par3, par4, par5);
         this.anvil = par1ContainerRepair;
         this.theWorld = par6World;
-        this.blockPosX = par7;
-        this.blockPosY = par8;
-        this.blockPosZ = par9;
+        this.field_82873_b = par7;
+        this.field_82874_c = par8;
+        this.field_82871_d = par9;
     }
 
     /**
@@ -69,27 +69,27 @@ class SlotRepair extends Slot
 
         this.anvil.maximumCost = 0;
 
-        if (!par1EntityPlayer.capabilities.isCreativeMode && !this.theWorld.isRemote && this.theWorld.getBlockId(this.blockPosX, this.blockPosY, this.blockPosZ) == Block.anvil.blockID && par1EntityPlayer.getRNG().nextFloat() < 0.12F)
+        if (!par1EntityPlayer.capabilities.isCreativeMode && !this.theWorld.isRemote && this.theWorld.getBlockId(this.field_82873_b, this.field_82874_c, this.field_82871_d) == Block.anvil.blockID && par1EntityPlayer.getRNG().nextFloat() < 0.12F)
         {
-            int var6 = this.theWorld.getBlockMetadata(this.blockPosX, this.blockPosY, this.blockPosZ);
+            int var6 = this.theWorld.getBlockMetadata(this.field_82873_b, this.field_82874_c, this.field_82871_d);
             int var4 = var6 & 3;
             int var5 = var6 >> 2;
             ++var5;
 
             if (var5 > 2)
             {
-                this.theWorld.setBlockWithNotify(this.blockPosX, this.blockPosY, this.blockPosZ, 0);
-                this.theWorld.playAuxSFX(1020, this.blockPosX, this.blockPosY, this.blockPosZ, 0);
+                this.theWorld.setBlockWithNotify(this.field_82873_b, this.field_82874_c, this.field_82871_d, 0);
+                this.theWorld.playAuxSFX(1020, this.field_82873_b, this.field_82874_c, this.field_82871_d, 0);
             }
             else
             {
-                this.theWorld.setBlockMetadataWithNotify(this.blockPosX, this.blockPosY, this.blockPosZ, var4 | var5 << 2);
-                this.theWorld.playAuxSFX(1021, this.blockPosX, this.blockPosY, this.blockPosZ, 0);
+                this.theWorld.setBlockMetadataWithNotify(this.field_82873_b, this.field_82874_c, this.field_82871_d, var4 | var5 << 2);
+                this.theWorld.playAuxSFX(1021, this.field_82873_b, this.field_82874_c, this.field_82871_d, 0);
             }
         }
         else if (!this.theWorld.isRemote)
         {
-            this.theWorld.playAuxSFX(1021, this.blockPosX, this.blockPosY, this.blockPosZ, 0);
+            this.theWorld.playAuxSFX(1021, this.field_82873_b, this.field_82874_c, this.field_82871_d, 0);
         }
     }
 }

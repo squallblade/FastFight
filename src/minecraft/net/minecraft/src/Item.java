@@ -169,9 +169,9 @@ public class Item
     public static Item carrotOnAStick = (new ItemCarrotOnAStick(142)).setIconCoord(6, 6).setItemName("carrotOnAStick");
     public static Item netherStar = (new ItemSimpleFoiled(143)).setIconCoord(9, 11).setItemName("netherStar").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item pumpkinPie = (new ItemFood(144, 8, 0.3F, false)).setIconCoord(8, 9).setItemName("pumpkinPie").setCreativeTab(CreativeTabs.tabFood);
-    public static Item firework = (new ItemFirework(145)).setIconCoord(9, 12).setItemName("fireworks");
-    public static Item fireworkCharge = (new ItemFireworkCharge(146)).setIconCoord(10, 12).setItemName("fireworksCharge").setCreativeTab(CreativeTabs.tabMisc);
-    public static ItemEnchantedBook enchantedBook = (ItemEnchantedBook)(new ItemEnchantedBook(147)).setIconCoord(15, 12).setMaxStackSize(1).setItemName("enchantedBook");
+    public static Item field_92104_bU = (new ItemFirework(145)).setIconCoord(9, 12).setItemName("fireworks");
+    public static Item field_92106_bV = (new ItemFireworkCharge(146)).setIconCoord(10, 12).setItemName("fireworksCharge").setCreativeTab(CreativeTabs.tabMisc);
+    public static ItemEnchantedBook field_92105_bW = (ItemEnchantedBook)(new ItemEnchantedBook(147)).setIconCoord(15, 12).setMaxStackSize(1).setItemName("enchantedBook");
     public static Item record13 = (new ItemRecord(2000, "13")).setIconCoord(0, 15).setItemName("record");
     public static Item recordCat = (new ItemRecord(2001, "cat")).setIconCoord(1, 15).setItemName("record");
     public static Item recordBlocks = (new ItemRecord(2002, "blocks")).setIconCoord(2, 15).setItemName("record");
@@ -184,7 +184,7 @@ public class Item
     public static Item recordWard = (new ItemRecord(2009, "ward")).setIconCoord(9, 15).setItemName("record");
     public static Item record11 = (new ItemRecord(2010, "11")).setIconCoord(10, 15).setItemName("record");
     public static Item recordWait = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
-    private String textureFile;
+
     /** The ID of this item. */
     public final int itemID;
 
@@ -212,24 +212,14 @@ public class Item
 
     protected Item(int par1)
     {
-    this.textureFile = "/gui/items.png";//ajout on définie le fichier de texture par defaut
-    this.itemID = 256 + par1;
+        this.itemID = 256 + par1;
 
-    if (itemsList[256 + par1] != null)
-    {
-    System.out.println("CONFLICT @ " + par1);
-    }
-    itemsList[256 + par1] = this;
-    }
-    public Item setTextureFile(String tf)
-    {
-    this.textureFile = tf;
-    return this;
-    }
+        if (itemsList[256 + par1] != null)
+        {
+            System.out.println("CONFLICT @ " + par1);
+        }
 
-    public String getTextureFile()
-    {
-    return this.textureFile;
+        itemsList[256 + par1] = this;
     }
 
     /**
@@ -380,7 +370,7 @@ public class Item
     }
 
     /**
-     * Called when a player right clicks an entity with an item.
+     * dye sheep, place saddles, etc ...
      */
     public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving)
     {

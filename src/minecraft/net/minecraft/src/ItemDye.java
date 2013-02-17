@@ -224,7 +224,7 @@ public class ItemDye extends Item
     }
 
     /**
-     * Called when a player right clicks an entity with an item.
+     * dye sheep, place saddles, etc ...
      */
     public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving)
     {

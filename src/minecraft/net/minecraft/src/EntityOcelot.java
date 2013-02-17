@@ -38,7 +38,7 @@ public class EntityOcelot extends EntityTameable
      */
     public void updateAITick()
     {
-        if (this.getMoveHelper().isUpdating())
+        if (this.getMoveHelper().func_75640_a())
         {
             float var1 = this.getMoveHelper().getSpeed();
 

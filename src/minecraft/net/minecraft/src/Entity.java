@@ -861,7 +861,7 @@ public abstract class Entity
 
                 if (var32 == 0)
                 {
-                    int var33 = this.worldObj.blockGetRenderType(var37, var30 - 1, var31);
+                    int var33 = this.worldObj.func_85175_e(var37, var30 - 1, var31);
 
                     if (var33 == 11 || var33 == 32 || var33 == 21)
                     {
@@ -1911,7 +1911,7 @@ public abstract class Entity
 
             if (!this.worldObj.isRemote && !this.inPortal)
             {
-                this.field_82152_aq = Direction.getMovementDirection(var1, var3);
+                this.field_82152_aq = Direction.func_82372_a(var1, var3);
             }
 
             this.inPortal = true;
@@ -2281,7 +2281,7 @@ public abstract class Entity
             WorldServer var4 = var2.worldServerForDimension(var3);
             WorldServer var5 = var2.worldServerForDimension(par1);
             this.dimension = par1;
-            this.worldObj.removeEntity(this);
+            this.worldObj.setEntityDead(this);
             this.isDead = false;
             this.worldObj.theProfiler.startSection("reposition");
             var2.getConfigurationManager().transferEntityToWorld(this, var3, var4, var5);

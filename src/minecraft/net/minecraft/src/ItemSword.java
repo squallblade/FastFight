@@ -114,10 +114,7 @@ public class ItemSword extends Item
         return this.toolMaterial.getEnchantability();
     }
 
-    /**
-     * Return the name for this tool's material.
-     */
-    public String getToolMaterialName()
+    public String func_77825_f()
     {
         return this.toolMaterial.toString();
     }

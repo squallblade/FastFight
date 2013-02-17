@@ -16,10 +16,10 @@ public final class BouncyCastleProvider extends Provider implements Configurable
     public static String PROVIDER_NAME = "BC";
     public static final ProviderConfiguration CONFIGURATION = new BouncyCastleProviderConfiguration();
     private static final Map keyInfoConverters = new HashMap();
-    private static final String[] SYMMETRIC_CIPHERS = new String[] {"AES", "ARC4", "Blowfish", "Camellia", "CAST5", "CAST6", "DES", "DESede", "GOST28147", "Grainv1", "Grain128", "HC128", "HC256", "IDEA", "Noekeon", "RC2", "RC5", "RC6", "Rijndael", "Salsa20", "SEED", "Serpent", "Skipjack", "TEA", "Twofish", "VMPC", "VMPCKSA3", "XTEA"};
-    private static final String[] ASYMMETRIC_GENERIC = new String[] {"X509"};
-    private static final String[] ASYMMETRIC_CIPHERS = new String[] {"DSA", "DH", "EC", "RSA", "GOST", "ECGOST", "ElGamal"};
-    private static final String[] DIGESTS = new String[] {"GOST3411", "MD2", "MD4", "MD5", "SHA1", "RIPEMD128", "RIPEMD160", "RIPEMD256", "RIPEMD320", "SHA224", "SHA256", "SHA384", "SHA512", "Tiger", "Whirlpool"};
+    private static final String[] field_74825_e = new String[] {"AES", "ARC4", "Blowfish", "Camellia", "CAST5", "CAST6", "DES", "DESede", "GOST28147", "Grainv1", "Grain128", "HC128", "HC256", "IDEA", "Noekeon", "RC2", "RC5", "RC6", "Rijndael", "Salsa20", "SEED", "Serpent", "Skipjack", "TEA", "Twofish", "VMPC", "VMPCKSA3", "XTEA"};
+    private static final String[] field_74822_f = new String[] {"X509"};
+    private static final String[] field_74823_g = new String[] {"DSA", "DH", "EC", "RSA", "GOST", "ECGOST", "ElGamal"};
+    private static final String[] field_74829_h = new String[] {"GOST3411", "MD2", "MD4", "MD5", "SHA1", "RIPEMD128", "RIPEMD160", "RIPEMD256", "RIPEMD320", "SHA224", "SHA256", "SHA384", "SHA512", "Tiger", "Whirlpool"};
 
     public BouncyCastleProvider()
     {
@@ -27,12 +27,12 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         AccessController.doPrivileged(new BouncyCastleProviderAction(this));
     }
 
-    private void setup()
+    private void func_74818_a()
     {
-        this.loadAlgorithms("org.bouncycastle.jcajce.provider.digest.", DIGESTS);
-        this.loadAlgorithms("org.bouncycastle.jcajce.provider.symmetric.", SYMMETRIC_CIPHERS);
-        this.loadAlgorithms("org.bouncycastle.jcajce.provider.asymmetric.", ASYMMETRIC_GENERIC);
-        this.loadAlgorithms("org.bouncycastle.jcajce.provider.asymmetric.", ASYMMETRIC_CIPHERS);
+        this.func_74819_a("org.bouncycastle.jcajce.provider.digest.", field_74829_h);
+        this.func_74819_a("org.bouncycastle.jcajce.provider.symmetric.", field_74825_e);
+        this.func_74819_a("org.bouncycastle.jcajce.provider.asymmetric.", field_74822_f);
+        this.func_74819_a("org.bouncycastle.jcajce.provider.asymmetric.", field_74823_g);
         this.put("X509Store.CERTIFICATE/COLLECTION", "org.bouncycastle.jce.provider.X509StoreCertCollection");
         this.put("X509Store.ATTRIBUTECERTIFICATE/COLLECTION", "org.bouncycastle.jce.provider.X509StoreAttrCertCollection");
         this.put("X509Store.CRL/COLLECTION", "org.bouncycastle.jce.provider.X509StoreCRLCollection");
@@ -59,7 +59,7 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Alg.Alias.KeyStore.bouncycastle", "BouncyCastle");
         this.put("AlgorithmParameters.IES", "org.bouncycastle.jce.provider.JDKAlgorithmParameters$IES");
         this.put("AlgorithmParameters.PKCS12PBE", "org.bouncycastle.jce.provider.JDKAlgorithmParameters$PKCS12PBE");
-        this.put("AlgorithmParameters." + PKCSObjectIdentifiers.id_PBKDF2, "org.bouncycastle.jce.provider.JDKAlgorithmParameters$PBKDF2");
+        this.put("AlgorithmParameters." + PKCSObjectIdentifiers.field_71662_z, "org.bouncycastle.jce.provider.JDKAlgorithmParameters$PBKDF2");
         this.put("Alg.Alias.AlgorithmParameters.PBEWITHSHA1ANDRC2", "PKCS12PBE");
         this.put("Alg.Alias.AlgorithmParameters.PBEWITHSHAAND3-KEYTRIPLEDES", "PKCS12PBE");
         this.put("Alg.Alias.AlgorithmParameters.PBEWITHSHAAND2-KEYTRIPLEDES", "PKCS12PBE");
@@ -84,12 +84,12 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Alg.Alias.AlgorithmParameters.1.2.840.113549.1.12.1.5", "PKCS12PBE");
         this.put("Alg.Alias.AlgorithmParameters.1.2.840.113549.1.12.1.6", "PKCS12PBE");
         this.put("Alg.Alias.AlgorithmParameters.PBEWithSHAAnd3KeyTripleDES", "PKCS12PBE");
-        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes128_cbc.getId(), "PKCS12PBE");
-        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes192_cbc.getId(), "PKCS12PBE");
-        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes256_cbc.getId(), "PKCS12PBE");
-        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes128_cbc.getId(), "PKCS12PBE");
-        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes192_cbc.getId(), "PKCS12PBE");
-        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes256_cbc.getId(), "PKCS12PBE");
+        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.field_71598_l.func_71609_b(), "PKCS12PBE");
+        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.field_71599_m.func_71609_b(), "PKCS12PBE");
+        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.field_71596_n.func_71609_b(), "PKCS12PBE");
+        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.field_71597_o.func_71609_b(), "PKCS12PBE");
+        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.field_71605_p.func_71609_b(), "PKCS12PBE");
+        this.put("Alg.Alias.AlgorithmParameters." + BCObjectIdentifiers.field_71604_q.func_71609_b(), "PKCS12PBE");
         this.put("Alg.Alias.AlgorithmParameters.PBEWITHSHAAND128BITAES-CBC-BC", "PKCS12PBE");
         this.put("Alg.Alias.AlgorithmParameters.PBEWITHSHAAND192BITAES-CBC-BC", "PKCS12PBE");
         this.put("Alg.Alias.AlgorithmParameters.PBEWITHSHAAND256BITAES-CBC-BC", "PKCS12PBE");
@@ -129,12 +129,12 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Alg.Alias.Cipher.PBEWITHSHA1AND40BITRC2-CBC", "PBEWITHSHAAND40BITRC2-CBC");
         this.put("Alg.Alias.Cipher.PBEWITHSHA1AND128BITRC4", "PBEWITHSHAAND128BITRC4");
         this.put("Alg.Alias.Cipher.PBEWITHSHA1AND40BITRC4", "PBEWITHSHAAND40BITRC4");
-        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes128_cbc.getId(), "PBEWITHSHAAND128BITAES-CBC-BC");
-        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes192_cbc.getId(), "PBEWITHSHAAND192BITAES-CBC-BC");
-        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes256_cbc.getId(), "PBEWITHSHAAND256BITAES-CBC-BC");
-        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes128_cbc.getId(), "PBEWITHSHA256AND128BITAES-CBC-BC");
-        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes192_cbc.getId(), "PBEWITHSHA256AND192BITAES-CBC-BC");
-        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes256_cbc.getId(), "PBEWITHSHA256AND256BITAES-CBC-BC");
+        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.field_71598_l.func_71609_b(), "PBEWITHSHAAND128BITAES-CBC-BC");
+        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.field_71599_m.func_71609_b(), "PBEWITHSHAAND192BITAES-CBC-BC");
+        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.field_71596_n.func_71609_b(), "PBEWITHSHAAND256BITAES-CBC-BC");
+        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.field_71597_o.func_71609_b(), "PBEWITHSHA256AND128BITAES-CBC-BC");
+        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.field_71605_p.func_71609_b(), "PBEWITHSHA256AND192BITAES-CBC-BC");
+        this.put("Alg.Alias.Cipher." + BCObjectIdentifiers.field_71604_q.func_71609_b(), "PBEWITHSHA256AND256BITAES-CBC-BC");
         this.put("Cipher.PBEWITHSHAAND128BITAES-CBC-BC", "org.bouncycastle.jce.provider.JCEBlockCipher$PBEWithAESCBC");
         this.put("Cipher.PBEWITHSHAAND192BITAES-CBC-BC", "org.bouncycastle.jce.provider.JCEBlockCipher$PBEWithAESCBC");
         this.put("Cipher.PBEWITHSHAAND256BITAES-CBC-BC", "org.bouncycastle.jce.provider.JCEBlockCipher$PBEWithAESCBC");
@@ -155,23 +155,23 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Cipher.PBEWITHMD5AND256BITAES-CBC-OPENSSL", "org.bouncycastle.jce.provider.JCEBlockCipher$PBEWithAESCBC");
         this.put("Cipher.PBEWITHSHAANDTWOFISH-CBC", "org.bouncycastle.jce.provider.JCEBlockCipher$PBEWithSHAAndTwofish");
         this.put("Cipher.OLDPBEWITHSHAANDTWOFISH-CBC", "org.bouncycastle.jce.provider.BrokenJCEBlockCipher$OldPBEWithSHAAndTwofish");
-        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.pbeWithMD2AndDES_CBC, "PBEWITHMD2ANDDES");
-        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.pbeWithMD2AndRC2_CBC, "PBEWITHMD2ANDRC2");
-        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.pbeWithMD5AndDES_CBC, "PBEWITHMD5ANDDES");
-        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.pbeWithMD5AndRC2_CBC, "PBEWITHMD5ANDDES");
-        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.pbeWithSHA1AndDES_CBC, "PBEWITHSHA1ANDDES");
-        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.pbeWithSHA1AndRC2_CBC, "PBEWITHSHA1ANDRC2");
+        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.field_71658_s, "PBEWITHMD2ANDDES");
+        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.field_71657_t, "PBEWITHMD2ANDRC2");
+        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.field_71656_u, "PBEWITHMD5ANDDES");
+        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.field_71655_v, "PBEWITHMD5ANDDES");
+        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.field_71654_w, "PBEWITHSHA1ANDDES");
+        this.put("Alg.Alias.Cipher." + PKCSObjectIdentifiers.field_71664_x, "PBEWITHSHA1ANDRC2");
         this.put("Alg.Alias.Cipher.1.2.840.113549.1.12.1.1", "PBEWITHSHAAND128BITRC4");
         this.put("Alg.Alias.Cipher.1.2.840.113549.1.12.1.2", "PBEWITHSHAAND40BITRC4");
         this.put("Alg.Alias.Cipher.1.2.840.113549.1.12.1.5", "PBEWITHSHAAND128BITRC2-CBC");
         this.put("Alg.Alias.Cipher.1.2.840.113549.1.12.1.6", "PBEWITHSHAAND40BITRC2-CBC");
         this.put("SecretKeyFactory.PBEWITHMD2ANDDES", "org.bouncycastle.jce.provider.JCESecretKeyFactory$PBEWithMD2AndDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD2AndDES_CBC, "PBEWITHMD2ANDDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD2AndRC2_CBC, "PBEWITHMD2ANDRC2");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD5AndDES_CBC, "PBEWITHMD5ANDDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD5AndRC2_CBC, "PBEWITHMD5ANDDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithSHA1AndDES_CBC, "PBEWITHSHA1ANDDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithSHA1AndRC2_CBC, "PBEWITHSHA1ANDRC2");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71658_s, "PBEWITHMD2ANDDES");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71657_t, "PBEWITHMD2ANDRC2");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71656_u, "PBEWITHMD5ANDDES");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71655_v, "PBEWITHMD5ANDDES");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71654_w, "PBEWITHSHA1ANDDES");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71664_x, "PBEWITHSHA1ANDRC2");
         this.put("SecretKeyFactory.PBEWITHMD2ANDRC2", "org.bouncycastle.jce.provider.JCESecretKeyFactory$PBEWithMD2AndRC2");
         this.put("SecretKeyFactory.PBEWITHMD5ANDDES", "org.bouncycastle.jce.provider.JCESecretKeyFactory$PBEWithMD5AndDES");
         this.put("SecretKeyFactory.PBEWITHMD5ANDRC2", "org.bouncycastle.jce.provider.JCESecretKeyFactory$PBEWithMD5AndRC2");
@@ -203,12 +203,12 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Alg.Alias.SecretKeyFactory.PBEWITHMD5ANDRC2-CBC", "PBEWITHMD5ANDRC2");
         this.put("Alg.Alias.SecretKeyFactory.PBEWITHSHA1ANDDES-CBC", "PBEWITHSHA1ANDDES");
         this.put("Alg.Alias.SecretKeyFactory.PBEWITHSHA1ANDRC2-CBC", "PBEWITHSHA1ANDRC2");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD2AndDES_CBC, "PBEWITHMD2ANDDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD2AndRC2_CBC, "PBEWITHMD2ANDRC2");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD5AndDES_CBC, "PBEWITHMD5ANDDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD5AndRC2_CBC, "PBEWITHMD5ANDRC2");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithSHA1AndDES_CBC, "PBEWITHSHA1ANDDES");
-        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithSHA1AndRC2_CBC, "PBEWITHSHA1ANDRC2");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71658_s, "PBEWITHMD2ANDDES");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71657_t, "PBEWITHMD2ANDRC2");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71656_u, "PBEWITHMD5ANDDES");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71655_v, "PBEWITHMD5ANDRC2");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71654_w, "PBEWITHSHA1ANDDES");
+        this.put("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.field_71664_x, "PBEWITHSHA1ANDRC2");
         this.put("Alg.Alias.SecretKeyFactory.1.2.840.113549.1.12.1.1", "PBEWITHSHAAND128BITRC4");
         this.put("Alg.Alias.SecretKeyFactory.1.2.840.113549.1.12.1.2", "PBEWITHSHAAND40BITRC4");
         this.put("Alg.Alias.SecretKeyFactory.1.2.840.113549.1.12.1.3", "PBEWITHSHAAND3-KEYTRIPLEDES-CBC");
@@ -233,13 +233,13 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Alg.Alias.SecretKeyFactory.PBEWITHSHA-256AND128BITAES-CBC-BC", "PBEWITHSHA256AND128BITAES-CBC-BC");
         this.put("Alg.Alias.SecretKeyFactory.PBEWITHSHA-256AND192BITAES-CBC-BC", "PBEWITHSHA256AND192BITAES-CBC-BC");
         this.put("Alg.Alias.SecretKeyFactory.PBEWITHSHA-256AND256BITAES-CBC-BC", "PBEWITHSHA256AND256BITAES-CBC-BC");
-        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes128_cbc.getId(), "PBEWITHSHAAND128BITAES-CBC-BC");
-        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes192_cbc.getId(), "PBEWITHSHAAND192BITAES-CBC-BC");
-        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.bc_pbe_sha1_pkcs12_aes256_cbc.getId(), "PBEWITHSHAAND256BITAES-CBC-BC");
-        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes128_cbc.getId(), "PBEWITHSHA256AND128BITAES-CBC-BC");
-        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes192_cbc.getId(), "PBEWITHSHA256AND192BITAES-CBC-BC");
-        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.bc_pbe_sha256_pkcs12_aes256_cbc.getId(), "PBEWITHSHA256AND256BITAES-CBC-BC");
-        this.addMacAlgorithms();
+        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.field_71598_l.func_71609_b(), "PBEWITHSHAAND128BITAES-CBC-BC");
+        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.field_71599_m.func_71609_b(), "PBEWITHSHAAND192BITAES-CBC-BC");
+        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.field_71596_n.func_71609_b(), "PBEWITHSHAAND256BITAES-CBC-BC");
+        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.field_71597_o.func_71609_b(), "PBEWITHSHA256AND128BITAES-CBC-BC");
+        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.field_71605_p.func_71609_b(), "PBEWITHSHA256AND192BITAES-CBC-BC");
+        this.put("Alg.Alias.SecretKeyFactory." + BCObjectIdentifiers.field_71604_q.func_71609_b(), "PBEWITHSHA256AND256BITAES-CBC-BC");
+        this.func_74820_b();
         this.put("CertPathValidator.RFC3281", "org.bouncycastle.jce.provider.PKIXAttrCertPathValidatorSpi");
         this.put("CertPathBuilder.RFC3281", "org.bouncycastle.jce.provider.PKIXAttrCertPathBuilderSpi");
         this.put("CertPathValidator.RFC3280", "org.bouncycastle.jce.provider.PKIXCertPathValidatorSpi");
@@ -252,7 +252,7 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Alg.Alias.CertStore.X509LDAP", "LDAP");
     }
 
-    private void loadAlgorithms(String par1Str, String[] par2ArrayOfStr)
+    private void func_74819_a(String par1Str, String[] par2ArrayOfStr)
     {
         for (int var3 = 0; var3 != par2ArrayOfStr.length; ++var3)
         {
@@ -291,7 +291,7 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         }
     }
 
-    private void addMacAlgorithms()
+    private void func_74820_b()
     {
         this.put("Mac.DESWITHISO9797", "org.bouncycastle.jce.provider.JCEMac$DES9797Alg3");
         this.put("Alg.Alias.Mac.DESISO9797MAC", "DESWITHISO9797");
@@ -307,8 +307,8 @@ public final class BouncyCastleProvider extends Provider implements Configurable
         this.put("Alg.Alias.Mac.1.3.14.3.2.26", "PBEWITHHMACSHA");
     }
 
-    static void doSetup(BouncyCastleProvider par0BouncyCastleProvider)
+    static void func_74821_a(BouncyCastleProvider par0BouncyCastleProvider)
     {
-        par0BouncyCastleProvider.setup();
+        par0BouncyCastleProvider.func_74818_a();
     }
 }

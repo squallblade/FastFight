@@ -49,7 +49,7 @@ public class RConConsoleSource implements ICommandSender
     }
 
     /**
-     * Return the position for this command sender.
+     * Return the coordinates for this player as ChunkCoordinates.
      */
     public ChunkCoordinates getPlayerCoordinates()
     {

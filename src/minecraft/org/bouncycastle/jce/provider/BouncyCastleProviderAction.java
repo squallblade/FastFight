@@ -4,16 +4,16 @@ import java.security.PrivilegedAction;
 
 class BouncyCastleProviderAction implements PrivilegedAction
 {
-    final BouncyCastleProvider theBouncyCastleProvider;
+    final BouncyCastleProvider field_74801_a;
 
     BouncyCastleProviderAction(BouncyCastleProvider par1BouncyCastleProvider)
     {
-        this.theBouncyCastleProvider = par1BouncyCastleProvider;
+        this.field_74801_a = par1BouncyCastleProvider;
     }
 
     public Object run()
     {
-        BouncyCastleProvider.doSetup(this.theBouncyCastleProvider);
+        BouncyCastleProvider.func_74821_a(this.field_74801_a);
         return null;
     }
 }

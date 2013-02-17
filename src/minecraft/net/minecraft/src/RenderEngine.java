@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -26,9 +27,13 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GLContext;
+import org.lwjgl.opengl.PixelFormat;
 
 public class RenderEngine
 {
@@ -82,14 +87,49 @@ public class RenderEngine
 
     public RenderEngine(TexturePackList par1TexturePackList, GameSettings par2GameSettings)
     {
+        if (Config.isMultiTexture())
+        {
+            int var3 = Config.getAntialiasingLevel();
+            Config.dbg("FSAA Samples: " + var3);
+
+            try
+            {
+                Display.destroy();
+                Display.create((new PixelFormat()).withDepthBits(24).withSamples(var3));
+            }
+            catch (LWJGLException var9)
+            {
+                Config.dbg("Error setting FSAA: " + var3 + "x");
+                var9.printStackTrace();
+
+                try
+                {
+                    Display.create((new PixelFormat()).withDepthBits(24));
+                }
+                catch (LWJGLException var8)
+                {
+                    var8.printStackTrace();
+
+                    try
+                    {
+                        Display.create();
+                    }
+                    catch (LWJGLException var7)
+                    {
+                        var7.printStackTrace();
+                    }
+                }
+            }
+        }
+
         this.texturePack = par1TexturePackList;
         this.options = par2GameSettings;
-        Graphics var3 = this.missingTextureImage.getGraphics();
-        var3.setColor(Color.WHITE);
-        var3.fillRect(0, 0, 64, 64);
-        var3.setColor(Color.BLACK);
-        var3.drawString("missingtex", 1, 10);
-        var3.dispose();
+        Graphics var10 = this.missingTextureImage.getGraphics();
+        var10.setColor(Color.WHITE);
+        var10.fillRect(0, 0, 64, 64);
+        var10.setColor(Color.BLACK);
+        var10.drawString("missingtex", 1, 10);
+        var10.dispose();
         this.allocateImageData(256, 256);
     }
 
@@ -352,6 +392,17 @@ public class RenderEngine
 
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL12.GL_TEXTURE_MAX_LEVEL, var5);
             }
+
+            if (GLContext.getCapabilities().GL_EXT_texture_filter_anisotropic)
+            {
+                FloatBuffer var21 = BufferUtils.createFloatBuffer(16);
+                var21.rewind();
+                GL11.glGetFloat(34047, var21);
+                float var20 = var21.get(0);
+                float var7 = (float)Config.getAnisotropicFilterLevel();
+                var7 = Math.min(var7, var20);
+                GL11.glTexParameterf(GL11.GL_TEXTURE_2D, 34046, var7);
+            }
         }
         else
         {
@@ -386,7 +437,7 @@ public class RenderEngine
         }
 
         int[] var19 = new int[var4 * var5];
-        byte[] var7 = new byte[var4 * var5 * 4];
+        byte[] var22 = new byte[var4 * var5 * 4];
         par1BufferedImage.getRGB(0, 0, var4, var5, var19, 0, var4);
         int[] var8 = null;
         int var9;
@@ -413,14 +464,19 @@ public class RenderEngine
             }
         }
 
+        int var11;
+        int var12;
+        int var13;
+        int var14;
+        int var15;
+        int var17;
+
         for (var9 = 0; var9 < var19.length; ++var9)
         {
             var10 = var19[var9] >> 24 & 255;
-            int var11 = var19[var9] >> 16 & 255;
-            int var12 = var19[var9] >> 8 & 255;
-            int var13 = var19[var9] & 255;
-            int var14;
-            int var15;
+            var11 = var19[var9] >> 16 & 255;
+            var12 = var19[var9] >> 8 & 255;
+            var13 = var19[var9] & 255;
             int var16;
 
             if (this.options != null && this.options.anaglyph)
@@ -447,7 +503,7 @@ public class RenderEngine
 
                     if (var3)
                     {
-                        boolean var20 = false;
+                        boolean var24 = false;
 
                         if (this.singleTileTexture)
                         {
@@ -457,7 +513,7 @@ public class RenderEngine
                         {
                             var15 = var9 % var4;
                             var16 = var9 / var4;
-                            int var17 = var15 / (var4 / 16);
+                            var17 = var15 / (var4 / 16);
                             int var18 = var16 / (var5 / 16);
                             var14 = var8[var18 * 16 + var17];
                         }
@@ -472,21 +528,60 @@ public class RenderEngine
                 }
             }
 
-            var7[var9 * 4 + 0] = (byte)var11;
-            var7[var9 * 4 + 1] = (byte)var12;
-            var7[var9 * 4 + 2] = (byte)var13;
-            var7[var9 * 4 + 3] = (byte)var10;
+            var22[var9 * 4 + 0] = (byte)var11;
+            var22[var9 * 4 + 1] = (byte)var12;
+            var22[var9 * 4 + 2] = (byte)var13;
+            var22[var9 * 4 + 3] = (byte)var10;
         }
 
         this.checkImageDataSize(var4, var5);
         this.imageData.clear();
-        this.imageData.put(var7);
-        this.imageData.position(0).limit(var7.length);
+        this.imageData.put(var22);
+        this.imageData.position(0).limit(var22.length);
         GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, var4, var5, 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, this.imageData);
 
         if (var3)
         {
             this.generateMipMaps(this.imageData, var4, var5);
+        }
+
+        if (Config.isMultiTexture() && TextureUtils.isAtlasId(par2))
+        {
+            int[] var23 = Tessellator.getTileTextures(par2);
+
+            if (var23 == null)
+            {
+                var23 = new int[256];
+            }
+
+            var10 = var4 / 16;
+            var11 = var5 / 16;
+
+            for (var12 = 0; var12 < 16; ++var12)
+            {
+                for (var13 = 0; var13 < 16; ++var13)
+                {
+                    var14 = var13 * var10;
+                    var15 = var12 * var11;
+                    BufferedImage var25 = par1BufferedImage.getSubimage(var14, var15, var10, var11);
+                    var17 = var12 * 16 + var13;
+
+                    if (var23[var17] <= 0)
+                    {
+                        this.singleIntBuffer.clear();
+                        GLAllocation.generateTextureNames(this.singleIntBuffer);
+                        var23[var17] = this.singleIntBuffer.get(0);
+                    }
+
+                    this.clampTexture = this.isTileClamped(par2, var17);
+                    this.singleTileTexture = true;
+                    this.setupTexture(var25, var23[var17]);
+                    this.singleTileTexture = false;
+                }
+            }
+
+            this.clampTexture = false;
+            Tessellator.setTileTextures(par2, var23);
         }
     }
 
@@ -753,9 +848,9 @@ public class RenderEngine
                         {
                             continue;
                         }
-                        int var23 = var8 * var9 * 4;
+                        int var26 = var8 * var9 * 4;
 
-                        if (var5.imageData.length == var23)
+                        if (var5.imageData.length == var26)
                         {
                             this.imageData.clear();
                             this.imageData.put(var5.imageData);
@@ -774,10 +869,12 @@ public class RenderEngine
                     }
 
                     var11 = this.scalesWithFastColor(var5);
+                    int var12;
+                    int var13;
 
-                    for (int var12 = 0; var12 < var5.tileSize; ++var12)
+                    for (var12 = 0; var12 < var5.tileSize; ++var12)
                     {
-                        for (int var13 = 0; var13 < var5.tileSize; ++var13)
+                        for (var13 = 0; var13 < var5.tileSize; ++var13)
                         {
                             int var14 = var5.iconIndex % 16 * var8 + var12 * var8;
                             int var15 = var5.iconIndex / 16 * var9 + var13 * var9;
@@ -794,34 +891,62 @@ public class RenderEngine
                             }
                         }
                     }
+
+                    if (Config.isMultiTexture() && (var6 == this.terrainTextureId || var6 == this.guiItemsTextureId))
+                    {
+                        for (var12 = 0; var12 < var5.tileSize; ++var12)
+                        {
+                            for (var13 = 0; var13 < var5.tileSize; ++var13)
+                            {
+                                byte var28 = 0;
+                                byte var27 = 0;
+                                int var29 = var13 * 16 + var12;
+                                int[] var17 = Tessellator.getTileTextures(var6);
+                                int var18 = var17[var5.iconIndex + var29];
+                                GL11.glBindTexture(GL11.GL_TEXTURE_2D, var18);
+                                var3 = var18;
+                                GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, var28, var27, var8, var9, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, this.imageData);
+
+                                if (var1)
+                                {
+                                    String var19 = var2.toString();
+
+                                    if (var12 == 0 && var13 == 0)
+                                    {
+                                        this.generateMipMapsSub(var28, var27, var8, var9, this.imageData, var5.tileSize, var11, var6, var5.iconIndex, var19);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
 
         if (this.textureAnimations != null)
         {
-            boolean var17 = this.options.ofAnimatedTextures;
+            boolean var20 = this.options.ofAnimatedTextures;
 
-            for (int var18 = 0; var18 < this.textureAnimations.length; ++var18)
+            for (int var21 = 0; var21 < this.textureAnimations.length; ++var21)
             {
-                CustomAnimation var19 = this.textureAnimations[var18];
-                int var20 = this.getTexture(var19.destTexture);
+                CustomAnimation var22 = this.textureAnimations[var21];
+                int var23 = this.getTexture(var22.destTexture);
 
-                if (var20 >= 0)
+                if (var23 >= 0)
                 {
-                    Dimension var21 = this.getTextureDimensions(var20);
+                    Dimension var24 = this.getTextureDimensions(var23);
 
-                    if (var21 != null)
+                    if (var24 != null)
                     {
-                        this.checkImageDataSize(var21.width, var21.height);
+                        this.checkImageDataSize(var24.width, var24.height);
                         this.imageData.limit(0);
                         var2.setLength(0);
-                        boolean var22 = var19.updateCustomTexture(this.imageData, var17, this.dynamicTexturesUpdated, var2);
+                        boolean var25 = var22.updateCustomTexture(this.imageData, var20, this.dynamicTexturesUpdated, var2);
 
-                        if ((!var22 || this.imageData.limit() > 0) && this.imageData.limit() > 0)
+                        if ((!var25 || this.imageData.limit() > 0) && this.imageData.limit() > 0)
                         {
-                            this.bindTexture(var20);
-                            GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, var19.destX, var19.destY, var19.frameWidth, var19.frameHeight, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, this.imageData);
+                            this.bindTexture(var23);
+                            GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, var22.destX, var22.destY, var22.frameWidth, var22.frameHeight, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, this.imageData);
                         }
                     }
                 }
@@ -887,6 +1012,7 @@ public class RenderEngine
         this.textureFxMap.clear();
         this.dynamicTexturesUpdated = false;
         Config.setTextureUpdateTime(System.currentTimeMillis());
+        WrUpdates.finishCurrentUpdate();
         this.mipDataBufsMap.clear();
         this.customAnimationMap.clear();
         ITexturePack var1 = this.texturePack.getSelectedTexturePack();
@@ -1825,6 +1951,11 @@ public class RenderEngine
         return !var1.getClass().getName().equals("ModTextureStatic");
     }
 
+    private boolean isTileClamped(int var1, int var2)
+    {
+        return var1 != this.terrainTextureId || !Config.between(var2, 0, 2) && !Config.between(var2, 4, 10) && !Config.between(var2, 16, 21) && !Config.between(var2, 32, 37) && !Config.between(var2, 40, 40) && !Config.between(var2, 48, 53) && !Config.between(var2, 64, 67) && !Config.between(var2, 69, 75) && !Config.between(var2, 86, 87) && !Config.between(var2, 102, 107) && !Config.between(var2, 109, 110) && !Config.between(var2, 113, 114) && !Config.between(var2, 116, 121) && !Config.between(var2, 129, 133) && !Config.between(var2, 144, 147) && !Config.between(var2, 160, 165) && !Config.between(var2, 176, 181) && !Config.between(var2, 192, 195) && !Config.between(var2, 205, 207) && !Config.between(var2, 208, 210) && !Config.between(var2, 222, 223) && !Config.between(var2, 225, 225) && !Config.between(var2, 237, 239) && !Config.between(var2, 240, 249) && !Config.between(var2, 254, 255);
+    }
+
     private void generateMipMapsSub(int var1, int var2, int var3, int var4, ByteBuffer var5, int var6, boolean var7, int var8, int var9, String var10)
     {
         ByteBuffer var11 = var5;
@@ -1871,6 +2002,7 @@ public class RenderEngine
             int var21;
             int var23;
             int var22;
+            int var25;
             int var24;
 
             if (var20 == null)
@@ -1886,7 +2018,7 @@ public class RenderEngine
                     {
                         var23 = var11.getInt((var21 * 2 + 0 + (var22 * 2 + 0) * var14) * 4);
                         var24 = var11.getInt((var21 * 2 + 1 + (var22 * 2 + 0) * var14) * 4);
-                        int var25 = var11.getInt((var21 * 2 + 1 + (var22 * 2 + 1) * var14) * 4);
+                        var25 = var11.getInt((var21 * 2 + 1 + (var22 * 2 + 1) * var14) * 4);
                         int var26 = var11.getInt((var21 * 2 + 0 + (var22 * 2 + 1) * var14) * 4);
                         int var27;
 
@@ -1925,6 +2057,15 @@ public class RenderEngine
                 {
                     var23 = var21 * var15;
                     var24 = var22 * var16;
+
+                    if (Config.isMultiTexture() && var8 == this.terrainTextureId)
+                    {
+                        var25 = var22 * 16 + var21;
+                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, Tessellator.getTileTextures(this.terrainTextureId)[var9 + var25]);
+                        var23 = 0;
+                        var24 = 0;
+                    }
+
                     GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, var13, var17 + var23, var18 + var24, var15, var16, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, var19);
                 }
             }

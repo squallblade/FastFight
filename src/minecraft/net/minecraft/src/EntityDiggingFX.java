@@ -29,10 +29,6 @@ public class EntityDiggingFX extends EntityFX
             return this;
         }
     }
-    public String getEntityBlockTexture()
-    {
-    return blockInstance.getTextureFile();
-    }
 
     /**
      * Creates a new EntityDiggingFX with the block render color applied to the base particle color

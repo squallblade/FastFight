@@ -4,11 +4,11 @@ import java.util.concurrent.Callable;
 
 class CallableLevelStorageVersion implements Callable
 {
-    final WorldInfo worldInfoInstance;
+    final WorldInfo field_85113_a;
 
     CallableLevelStorageVersion(WorldInfo par1WorldInfo)
     {
-        this.worldInfoInstance = par1WorldInfo;
+        this.field_85113_a = par1WorldInfo;
     }
 
     public String func_85112_a()
@@ -17,7 +17,7 @@ class CallableLevelStorageVersion implements Callable
 
         try
         {
-            switch (WorldInfo.func_85121_j(this.worldInfoInstance))
+            switch (WorldInfo.func_85121_j(this.field_85113_a))
             {
                 case 19132:
                     var1 = "McRegion";
@@ -32,7 +32,7 @@ class CallableLevelStorageVersion implements Callable
             ;
         }
 
-        return String.format("0x%05X - %s", new Object[] {Integer.valueOf(WorldInfo.func_85121_j(this.worldInfoInstance)), var1});
+        return String.format("0x%05X - %s", new Object[] {Integer.valueOf(WorldInfo.func_85121_j(this.field_85113_a)), var1});
     }
 
     public Object call()

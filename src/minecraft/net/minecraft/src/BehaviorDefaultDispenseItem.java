@@ -9,7 +9,7 @@ public class BehaviorDefaultDispenseItem implements IBehaviorDispenseItem
     {
         ItemStack var3 = this.dispenseStack(par1IBlockSource, par2ItemStack);
         this.playDispenseSound(par1IBlockSource);
-        this.spawnDispenseParticles(par1IBlockSource, EnumFacing.getFront(par1IBlockSource.func_82620_h()));
+        this.spawnDispenseParticles(par1IBlockSource, EnumFacing.func_82600_a(par1IBlockSource.func_82620_h()));
         return var3;
     }
 
@@ -18,7 +18,7 @@ public class BehaviorDefaultDispenseItem implements IBehaviorDispenseItem
      */
     protected ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack)
     {
-        EnumFacing var3 = EnumFacing.getFront(par1IBlockSource.func_82620_h());
+        EnumFacing var3 = EnumFacing.func_82600_a(par1IBlockSource.func_82620_h());
         IPosition var4 = BlockDispenser.func_82525_a(par1IBlockSource);
         ItemStack var5 = par2ItemStack.splitStack(1);
         func_82486_a(par1IBlockSource.getWorld(), var5, 6, var3, var4);
@@ -32,9 +32,9 @@ public class BehaviorDefaultDispenseItem implements IBehaviorDispenseItem
         double var9 = par4IPosition.getZ();
         EntityItem var11 = new EntityItem(par0World, var5, var7 - 0.3D, var9, par1ItemStack);
         double var12 = par0World.rand.nextDouble() * 0.1D + 0.2D;
-        var11.motionX = (double)par3EnumFacing.getFrontOffsetX() * var12;
+        var11.motionX = (double)par3EnumFacing.func_82601_c() * var12;
         var11.motionY = 0.20000000298023224D;
-        var11.motionZ = (double)par3EnumFacing.getFrontOffsetZ() * var12;
+        var11.motionZ = (double)par3EnumFacing.func_82599_e() * var12;
         var11.motionX += par0World.rand.nextGaussian() * 0.007499999832361937D * (double)par2;
         var11.motionY += par0World.rand.nextGaussian() * 0.007499999832361937D * (double)par2;
         var11.motionZ += par0World.rand.nextGaussian() * 0.007499999832361937D * (double)par2;
@@ -59,6 +59,6 @@ public class BehaviorDefaultDispenseItem implements IBehaviorDispenseItem
 
     private int func_82488_a(EnumFacing par1EnumFacing)
     {
-        return par1EnumFacing.getFrontOffsetX() + 1 + (par1EnumFacing.getFrontOffsetZ() + 1) * 3;
+        return par1EnumFacing.func_82601_c() + 1 + (par1EnumFacing.func_82599_e() + 1) * 3;
     }
 }

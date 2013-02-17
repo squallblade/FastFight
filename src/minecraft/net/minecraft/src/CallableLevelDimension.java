@@ -4,16 +4,16 @@ import java.util.concurrent.Callable;
 
 class CallableLevelDimension implements Callable
 {
-    final WorldInfo worldInfoInstance;
+    final WorldInfo field_85115_a;
 
     CallableLevelDimension(WorldInfo par1WorldInfo)
     {
-        this.worldInfoInstance = par1WorldInfo;
+        this.field_85115_a = par1WorldInfo;
     }
 
     public String func_85114_a()
     {
-        return String.valueOf(WorldInfo.func_85122_i(this.worldInfoInstance));
+        return String.valueOf(WorldInfo.func_85122_i(this.field_85115_a));
     }
 
     public Object call()

@@ -3,9 +3,6 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
-import net.minecraft.client.Minecraft;
-
 import org.lwjgl.opengl.GL11;
 
 public class WorldRenderer
@@ -137,8 +134,6 @@ public class WorldRenderer
     {
         if (this.worldObj != null)
         {
-        	String firstTexture = "";//sera la texture de la première passe.
-        	String lastTexture = "";//sera la texture de la dèrnière passe.
             if (this.needsUpdate)
             {
                 if (this.needsBoxUpdate)
@@ -213,16 +208,12 @@ public class WorldRenderer
                                             {
                                                 Reflector.callVoid(Reflector.ForgeHooksClient_beforeRenderPass, new Object[] {Integer.valueOf(var13)});
                                             }
-                                            
-                                            firstTexture = Block.blocksList[var20].getTextureFile();
-                                            		GL11.glBindTexture(GL11.GL_TEXTURE_2D, Minecraft.getMinecraft().renderEngine.getTexture(firstTexture ));
 
                                             var11.startDrawingQuads();
                                             var11.setTranslation((double)(-globalChunkOffsetX), 0.0D, (double)(-globalChunkOffsetZ));
                                         }
 
                                         Block var21 = Block.blocksList[var20];
-                                        lastTexture = var21.getTextureFile();
 
                                         if (var21 != null)
                                         {
@@ -255,16 +246,6 @@ public class WorldRenderer
                                                 if (var12)
                                                 {
                                                     Reflector.callVoid(Reflector.ForgeHooksClient_beforeBlockRender, new Object[] {var21, var10});
-                                                }
-
-                                                if(lastTexture != firstTexture)
-                                                {
-                                                bytesDrawn += var11.draw();
-                                                GL11.glBindTexture(GL11.GL_TEXTURE_2D, Minecraft.getMinecraft().renderEngine.getTexture(lastTexture));
-                                                firstTexture = lastTexture;
-
-                                                var11.startDrawingQuads();
-                                                var11.setTranslation((double)(-this.posX), (double)(-this.posY), (double)(-this.posZ));
                                                 }
 
                                                 var15 |= var10.renderBlockByRenderType(var21, var19, var17, var18);

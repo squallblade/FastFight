@@ -100,7 +100,7 @@ public class ContainerRepair extends Container
 
             if (var6 != null)
             {
-                var8 = var6.itemID == Item.enchantedBook.itemID && Item.enchantedBook.func_92110_g(var6).tagCount() > 0;
+                var8 = var6.itemID == Item.field_92105_bW.itemID && Item.field_92105_bW.func_92110_g(var6).tagCount() > 0;
 
                 if (var5.isItemStackDamageable() && Item.itemsList[var5.itemID].getIsRepairable(var1, var6))
                 {

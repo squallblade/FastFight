@@ -557,10 +557,7 @@ public class WorldInfo
         return this.theGameRules;
     }
 
-    /**
-     * Adds this WorldInfo instance to the crash report.
-     */
-    public void addToCrashReport(CrashReportCategory par1CrashReportCategory)
+    public void func_85118_a(CrashReportCategory par1CrashReportCategory)
     {
         par1CrashReportCategory.addCrashSectionCallable("Level seed", new CallableLevelSeed(this));
         par1CrashReportCategory.addCrashSectionCallable("Level generator", new CallableLevelGenerator(this));

@@ -2576,29 +2576,29 @@ public class RenderBlocks
         double var18 = (double)(((float)var14 + 15.99F) / 256.0F);
         double var20 = (double)((float)var15 / 256.0F);
         double var22 = (double)(((float)var15 + 15.99F) / 256.0F);
-        boolean var24 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 - 1, par3, par4, 1) || !this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 - 1, par3 - 1, par4, -1);
-        boolean var25 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 + 1, par3, par4, 3) || !this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 + 1, par3 - 1, par4, -1);
-        boolean var26 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3, par4 - 1, 2) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 - 1, par4 - 1, -1);
-        boolean var27 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3, par4 + 1, 0) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 - 1, par4 + 1, -1);
+        boolean var24 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 - 1, par3, par4, 1) || !this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 - 1, par3 - 1, par4, -1);
+        boolean var25 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 + 1, par3, par4, 3) || !this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 + 1, par3 - 1, par4, -1);
+        boolean var26 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3, par4 - 1, 2) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 - 1, par4 - 1, -1);
+        boolean var27 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3, par4 + 1, 0) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 - 1, par4 + 1, -1);
 
         if (!this.blockAccess.isBlockNormalCube(par2, par3 + 1, par4))
         {
-            if (this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 - 1, par3 + 1, par4, -1))
+            if (this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 - 1, par3 + 1, par4, -1))
             {
                 var24 = true;
             }
 
-            if (this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 + 1, par3 + 1, par4, -1))
+            if (this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 + 1, par3 + 1, par4, -1))
             {
                 var25 = true;
             }
 
-            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 + 1, par4 - 1, -1))
+            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 + 1, par4 - 1, -1))
             {
                 var26 = true;
             }
 
-            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 + 1, par4 + 1, -1))
+            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 + 1, par4 + 1, -1))
             {
                 var27 = true;
             }
@@ -4763,7 +4763,7 @@ public class RenderBlocks
 
             this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -4904,7 +4904,7 @@ public class RenderBlocks
 
             this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5045,7 +5045,7 @@ public class RenderBlocks
 
             this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5186,7 +5186,7 @@ public class RenderBlocks
 
             this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5319,7 +5319,7 @@ public class RenderBlocks
 
             this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
             {
                 var10.setColorOpaque_F(var20 * par5, var23 * par6, var26 * par7);
                 this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5354,7 +5354,7 @@ public class RenderBlocks
 
             this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
             {
                 var10.setColorOpaque_F(var20 * par5, var23 * par6, var26 * par7);
                 this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5389,7 +5389,7 @@ public class RenderBlocks
 
             this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
             {
                 var10.setColorOpaque_F(var21 * par5, var24 * par6, var27 * par7);
                 this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5424,7 +5424,7 @@ public class RenderBlocks
 
             this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
             {
                 var10.setColorOpaque_F(var21 * par5, var24 * par6, var27 * par7);
                 this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, 38);

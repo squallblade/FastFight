@@ -31,9 +31,9 @@ public class Config
 {
     public static final String OF_NAME = "OptiFine";
     public static final String MC_VERSION = "1.4.6";
-    public static final String OF_EDITION = "HD";
+    public static final String OF_EDITION = "HD_U";
     public static final String OF_RELEASE = "C3";
-    public static final String VERSION = "OptiFine_1.4.6_HD_C3";
+    public static final String VERSION = "OptiFine_1.4.6_HD_U_C3";
     private static String newRelease = null;
     private static GameSettings gameSettings = null;
     private static Minecraft minecraft = null;
@@ -43,6 +43,7 @@ public class Config
     private static Map foundClassesMap = new HashMap();
     private static long textureUpdateTime = 0L;
     private static DisplayMode desktopDisplayMode = null;
+    private static int antialiasingLevel = 0;
     private static int availableProcessors = 0;
     public static boolean zoomMode = false;
     private static File logFile = null;
@@ -61,7 +62,7 @@ public class Config
 
     public static String getVersion()
     {
-        return "OptiFine_1.4.6_HD_C3";
+        return "OptiFine_1.4.6_HD_U_C3";
     }
 
     private static void checkOpenGlCaps()
@@ -125,6 +126,12 @@ public class Config
         gameSettings = var0;
         minecraft = gameSettings.mc;
         minecraftThread = Thread.currentThread();
+
+        if (gameSettings != null)
+        {
+            antialiasingLevel = gameSettings.ofAaLevel;
+        }
+
         updateThreadPriorities();
     }
 
@@ -660,9 +667,24 @@ public class Config
         return gameSettings == null ? false : gameSettings.ofClearWater;
     }
 
+    public static int getAnisotropicFilterLevel()
+    {
+        return gameSettings == null ? 1 : gameSettings.ofAfLevel;
+    }
+
+    public static int getAntialiasingLevel()
+    {
+        return antialiasingLevel;
+    }
+
     public static boolean between(int var0, int var1, int var2)
     {
         return var0 >= var1 && var0 <= var2;
+    }
+
+    public static boolean isMultiTexture()
+    {
+        return getAnisotropicFilterLevel() > 1 ? true : getAntialiasingLevel() > 0;
     }
 
     public static boolean isDrippingWaterLava()

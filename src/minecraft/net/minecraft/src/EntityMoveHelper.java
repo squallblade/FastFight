@@ -10,7 +10,7 @@ public class EntityMoveHelper
 
     /** The speed at which the entity should move */
     private float speed;
-    private boolean update = false;
+    private boolean field_75643_f = false;
 
     public EntityMoveHelper(EntityLiving par1EntityLiving)
     {
@@ -20,9 +20,9 @@ public class EntityMoveHelper
         this.posZ = par1EntityLiving.posZ;
     }
 
-    public boolean isUpdating()
+    public boolean func_75640_a()
     {
-        return this.update;
+        return this.field_75643_f;
     }
 
     public float getSpeed()
@@ -39,16 +39,16 @@ public class EntityMoveHelper
         this.posY = par3;
         this.posZ = par5;
         this.speed = par7;
-        this.update = true;
+        this.field_75643_f = true;
     }
 
     public void onUpdateMoveHelper()
     {
         this.entity.setMoveForward(0.0F);
 
-        if (this.update)
+        if (this.field_75643_f)
         {
-            this.update = false;
+            this.field_75643_f = false;
             int var1 = MathHelper.floor_double(this.entity.boundingBox.minY + 0.5D);
             double var2 = this.posX - this.entity.posX;
             double var4 = this.posZ - this.entity.posZ;
@@ -58,7 +58,7 @@ public class EntityMoveHelper
             if (var8 >= 2.500000277905201E-7D)
             {
                 float var10 = (float)(Math.atan2(var4, var2) * 180.0D / Math.PI) - 90.0F;
-                this.entity.rotationYaw = this.limitAngle(this.entity.rotationYaw, var10, 30.0F);
+                this.entity.rotationYaw = this.func_75639_a(this.entity.rotationYaw, var10, 30.0F);
                 this.entity.setAIMoveSpeed(this.speed * this.entity.getSpeedModifier());
 
                 if (var6 > 0.0D && var2 * var2 + var4 * var4 < 1.0D)
@@ -69,10 +69,7 @@ public class EntityMoveHelper
         }
     }
 
-    /**
-     * Limits the given angle to a upper and lower limit.
-     */
-    private float limitAngle(float par1, float par2, float par3)
+    private float func_75639_a(float par1, float par2, float par3)
     {
         float var4 = MathHelper.wrapAngleTo180_float(par2 - par1);
 

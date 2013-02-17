@@ -38,7 +38,7 @@ public interface IServer
     int getPort();
 
     /**
-     * Returns the server message of the day
+     * minecraftServer.getMOTD is used in 2 places instead (it is a non-virtual function which returns the same thing)
      */
     String getServerMOTD();
 

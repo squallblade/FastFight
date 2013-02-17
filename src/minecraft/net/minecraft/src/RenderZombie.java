@@ -73,7 +73,7 @@ public class RenderZombie extends RenderBiped
 
     protected void func_82430_a(EntityZombie par1EntityZombie, float par2, float par3, float par4)
     {
-        if (par1EntityZombie.isConverting())
+        if (par1EntityZombie.func_82230_o())
         {
             par3 += (float)(Math.cos((double)par1EntityZombie.ticksExisted * 3.25D) * Math.PI * 0.25D);
         }

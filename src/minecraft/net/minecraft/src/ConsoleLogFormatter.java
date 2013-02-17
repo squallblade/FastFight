@@ -9,13 +9,13 @@ import java.util.logging.LogRecord;
 
 final class ConsoleLogFormatter extends Formatter
 {
-    /** The date format to use in the console log. */
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    /** Date Formatter of Log/Console. */
+    private SimpleDateFormat simpleDateFormatLogFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public String format(LogRecord par1LogRecord)
     {
         StringBuilder var2 = new StringBuilder();
-        var2.append(this.dateFormat.format(Long.valueOf(par1LogRecord.getMillis())));
+        var2.append(this.simpleDateFormatLogFormatter.format(Long.valueOf(par1LogRecord.getMillis())));
         Level var3 = par1LogRecord.getLevel();
 
         if (var3 == Level.FINEST)

@@ -19,7 +19,7 @@ public class DataWatcher
 
     /** true if one or more object was changed */
     private boolean objectChanged;
-    private ReadWriteLock lock = new ReentrantReadWriteLock();
+    private ReadWriteLock field_75694_d = new ReentrantReadWriteLock();
 
     /**
      * adds a new object to dataWatcher to watch, to update an already existing object see updateObject. Arguments: data
@@ -44,9 +44,9 @@ public class DataWatcher
         else
         {
             WatchableObject var4 = new WatchableObject(var3.intValue(), par1, par2Obj);
-            this.lock.writeLock().lock();
+            this.field_75694_d.writeLock().lock();
             this.watchedObjects.put(Integer.valueOf(par1), var4);
-            this.lock.writeLock().unlock();
+            this.field_75694_d.writeLock().unlock();
             this.field_92086_a = false;
         }
     }
@@ -57,9 +57,9 @@ public class DataWatcher
     public void addObjectByDataType(int par1, int par2)
     {
         WatchableObject var3 = new WatchableObject(par2, par1, (Object)null);
-        this.lock.writeLock().lock();
+        this.field_75694_d.writeLock().lock();
         this.watchedObjects.put(Integer.valueOf(par1), var3);
-        this.lock.writeLock().unlock();
+        this.field_75694_d.writeLock().unlock();
         this.field_92086_a = false;
     }
 
@@ -105,7 +105,7 @@ public class DataWatcher
      */
     private WatchableObject getWatchedObject(int par1)
     {
-        this.lock.readLock().lock();
+        this.field_75694_d.readLock().lock();
         WatchableObject var2;
 
         try
@@ -120,7 +120,7 @@ public class DataWatcher
             throw new ReportedException(var4);
         }
 
-        this.lock.readLock().unlock();
+        this.field_75694_d.readLock().unlock();
         return var2;
     }
 
@@ -175,7 +175,7 @@ public class DataWatcher
 
         if (this.objectChanged)
         {
-            this.lock.readLock().lock();
+            this.field_75694_d.readLock().lock();
             Iterator var2 = this.watchedObjects.values().iterator();
 
             while (var2.hasNext())
@@ -195,7 +195,7 @@ public class DataWatcher
                 }
             }
 
-            this.lock.readLock().unlock();
+            this.field_75694_d.readLock().unlock();
         }
 
         this.objectChanged = false;
@@ -204,7 +204,7 @@ public class DataWatcher
 
     public void writeWatchableObjects(DataOutputStream par1DataOutputStream) throws IOException
     {
-        this.lock.readLock().lock();
+        this.field_75694_d.readLock().lock();
         Iterator var2 = this.watchedObjects.values().iterator();
 
         while (var2.hasNext())
@@ -213,14 +213,14 @@ public class DataWatcher
             writeWatchableObject(par1DataOutputStream, var3);
         }
 
-        this.lock.readLock().unlock();
+        this.field_75694_d.readLock().unlock();
         par1DataOutputStream.writeByte(127);
     }
 
     public List func_75685_c()
     {
         ArrayList var1 = null;
-        this.lock.readLock().lock();
+        this.field_75694_d.readLock().lock();
         WatchableObject var3;
 
         for (Iterator var2 = this.watchedObjects.values().iterator(); var2.hasNext(); var1.add(var3))
@@ -233,7 +233,7 @@ public class DataWatcher
             }
         }
 
-        this.lock.readLock().unlock();
+        this.field_75694_d.readLock().unlock();
         return var1;
     }
 
@@ -333,7 +333,7 @@ public class DataWatcher
 
     public void updateWatchedObjectsFromList(List par1List)
     {
-        this.lock.writeLock().lock();
+        this.field_75694_d.writeLock().lock();
         Iterator var2 = par1List.iterator();
 
         while (var2.hasNext())
@@ -347,7 +347,7 @@ public class DataWatcher
             }
         }
 
-        this.lock.writeLock().unlock();
+        this.field_75694_d.writeLock().unlock();
     }
 
     public boolean func_92085_d()

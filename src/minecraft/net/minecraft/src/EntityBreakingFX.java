@@ -2,15 +2,14 @@ package net.minecraft.src;
 
 public class EntityBreakingFX extends EntityFX
 {
-	public EntityBreakingFX(World par1World, double par2, double par4, double par6, Item par8Item)
-	{
-	super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
-	this.setParticleTextureIndex(par8Item.getIconFromDamage(0));
-	this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
-	this.particleGravity = Block.blockSnow.blockParticleGravity;
-	this.particleScale /= 2.0F;
-	this.itemInstance = par8Item;// ajout
-	}
+    public EntityBreakingFX(World par1World, double par2, double par4, double par6, Item par8Item)
+    {
+        super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
+        this.setParticleTextureIndex(par8Item.getIconFromDamage(0));
+        this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
+        this.particleGravity = Block.blockSnow.blockParticleGravity;
+        this.particleScale /= 2.0F;
+    }
 
     public EntityBreakingFX(World par1World, double par2, double par4, double par6, double par8, double par10, double par12, Item par14Item)
     {
@@ -26,12 +25,6 @@ public class EntityBreakingFX extends EntityFX
     public int getFXLayer()
     {
         return 2;
-    }
-    private Item itemInstance;
-    
-    public String getEntityItemTexture()
-    {
-    return itemInstance.getTextureFile();
     }
 
     public void renderParticle(Tessellator par1Tessellator, float par2, float par3, float par4, float par5, float par6, float par7)

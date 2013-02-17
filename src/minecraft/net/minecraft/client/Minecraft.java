@@ -1335,7 +1335,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
                     }
                     else if (var3.stackSize != var8 || this.playerController.isInCreativeMode())
                     {
-                        this.entityRenderer.itemRenderer.resetEquippedProgress();
+                        this.entityRenderer.itemRenderer.func_78444_b();
                     }
                 }
             }
@@ -1346,7 +1346,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
 
                 if (var9 != null && this.playerController.sendUseItem(this.thePlayer, this.theWorld, var9))
                 {
-                    this.entityRenderer.itemRenderer.resetEquippedProgress2();
+                    this.entityRenderer.itemRenderer.func_78445_c();
                 }
             }
         }
@@ -2142,7 +2142,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         if (this.thePlayer != null)
         {
             var2 = this.thePlayer.entityId;
-            this.theWorld.removeEntity(this.thePlayer);
+            this.theWorld.setEntityDead(this.thePlayer);
         }
 
         this.renderViewEntity = null;

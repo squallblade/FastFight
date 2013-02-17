@@ -158,11 +158,12 @@ public class WorldClient extends World
     }
 
     /**
-     * Schedule the entity for removal during the next tick. Marks the entity dead in anticipation.
+     * Dismounts the entity (and anything riding the entity), sets the dead flag, and removes the player entity from the
+     * player entity list. Called by the playerLoggedOut function.
      */
-    public void removeEntity(Entity par1Entity)
+    public void setEntityDead(Entity par1Entity)
     {
-        super.removeEntity(par1Entity);
+        super.setEntityDead(par1Entity);
         this.entityList.remove(par1Entity);
     }
 
@@ -208,7 +209,7 @@ public class WorldClient extends World
 
         if (var3 != null)
         {
-            this.removeEntity(var3);
+            this.setEntityDead(var3);
         }
 
         this.entityList.add(par2Entity);
@@ -237,7 +238,7 @@ public class WorldClient extends World
         if (var2 != null)
         {
             this.entityList.remove(var2);
-            this.removeEntity(var2);
+            this.setEntityDead(var2);
         }
 
         return var2;

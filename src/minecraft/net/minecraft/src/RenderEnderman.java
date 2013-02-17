@@ -23,9 +23,9 @@ public class RenderEnderman extends RenderLiving
     public void renderEnderman(EntityEnderman par1EntityEnderman, double par2, double par4, double par6, float par8, float par9)
     {
         this.endermanModel.isCarrying = par1EntityEnderman.getCarried() > 0;
-        this.endermanModel.isAttacking = par1EntityEnderman.isScreaming();
+        this.endermanModel.isAttacking = par1EntityEnderman.func_70823_r();
 
-        if (par1EntityEnderman.isScreaming())
+        if (par1EntityEnderman.func_70823_r())
         {
             double var10 = 0.02D;
             par2 += this.rnd.nextGaussian() * var10;

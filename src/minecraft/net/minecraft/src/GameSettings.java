@@ -54,6 +54,8 @@ public class GameSettings
     public boolean ofSmoothWorld = Config.isSingleProcessor();
     public boolean ofLazyChunkLoading = Config.isSingleProcessor();
     public float ofAoLevel = 1.0F;
+    public int ofAaLevel = 0;
+    public int ofAfLevel = 1;
     public int ofClouds = 0;
     public float ofCloudsHeight = 0.0F;
     public int ofTrees = 0;
@@ -70,6 +72,7 @@ public class GameSettings
     public boolean ofStars = true;
     public boolean ofSunMoon = true;
     public int ofChunkUpdates = 1;
+    public int ofChunkLoading = 0;
     public boolean ofChunkUpdatesDynamic = false;
     public int ofTime = 0;
     public boolean ofClearWater = false;
@@ -431,6 +434,28 @@ public class GameSettings
 
                 this.mc.renderGlobal.loadRenderers();
             }
+        }
+    }
+
+    public void updateChunkLoading()
+    {
+        switch (this.ofChunkLoading)
+        {
+            case 1:
+                WrUpdates.setWrUpdater(new WrUpdaterSmooth());
+                break;
+
+            case 2:
+                WrUpdates.setWrUpdater(new WrUpdaterThreaded());
+                break;
+
+            default:
+                WrUpdates.setWrUpdater((IWrUpdater)null);
+        }
+
+        if (this.mc.renderGlobal != null)
+        {
+            this.mc.renderGlobal.loadRenderers();
         }
     }
 
@@ -863,6 +888,18 @@ public class GameSettings
             }
         }
 
+        if (par1EnumOptions == EnumOptions.CHUNK_LOADING)
+        {
+            ++this.ofChunkLoading;
+
+            if (this.ofChunkLoading > 2)
+            {
+                this.ofChunkLoading = 0;
+            }
+
+            this.updateChunkLoading();
+        }
+
         if (par1EnumOptions == EnumOptions.CHUNK_UPDATES_DYNAMIC)
         {
             this.ofChunkUpdatesDynamic = !this.ofChunkUpdatesDynamic;
@@ -887,6 +924,41 @@ public class GameSettings
         if (par1EnumOptions == EnumOptions.DEPTH_FOG)
         {
             this.ofDepthFog = !this.ofDepthFog;
+        }
+
+        if (par1EnumOptions == EnumOptions.AA_LEVEL)
+        {
+            int[] var3 = new int[] {0, 2, 4, 6, 8, 12, 16};
+            boolean var4 = false;
+
+            for (int var5 = 0; var5 < var3.length - 1; ++var5)
+            {
+                if (this.ofAaLevel == var3[var5])
+                {
+                    this.ofAaLevel = var3[var5 + 1];
+                    var4 = true;
+                    break;
+                }
+            }
+
+            if (!var4)
+            {
+                this.ofAaLevel = 0;
+            }
+        }
+
+        if (par1EnumOptions == EnumOptions.AF_LEVEL)
+        {
+            this.ofAfLevel *= 2;
+
+            if (this.ofAfLevel > 16)
+            {
+                this.ofAfLevel = 1;
+            }
+
+            this.ofAfLevel = Config.limit(this.ofAfLevel, 1, 16);
+            this.mc.renderEngine.refreshTextures();
+            this.mc.renderGlobal.loadRenderers();
         }
 
         if (par1EnumOptions == EnumOptions.PROFILER)
@@ -952,31 +1024,31 @@ public class GameSettings
 
         if (par1EnumOptions == EnumOptions.FULLSCREEN_MODE)
         {
-            List var3 = Arrays.asList(Config.getFullscreenModes());
+            List var6 = Arrays.asList(Config.getFullscreenModes());
 
             if (this.ofFullscreenMode.equals("Default"))
             {
-                this.ofFullscreenMode = (String)var3.get(0);
+                this.ofFullscreenMode = (String)var6.get(0);
             }
             else
             {
-                int var4 = var3.indexOf(this.ofFullscreenMode);
+                int var7 = var6.indexOf(this.ofFullscreenMode);
 
-                if (var4 < 0)
+                if (var7 < 0)
                 {
                     this.ofFullscreenMode = "Default";
                 }
                 else
                 {
-                    ++var4;
+                    ++var7;
 
-                    if (var4 >= var3.size())
+                    if (var7 >= var6.size())
                     {
                         this.ofFullscreenMode = "Default";
                     }
                     else
                     {
-                        this.ofFullscreenMode = (String)var3.get(var4);
+                        this.ofFullscreenMode = (String)var6.get(var7);
                     }
                 }
             }
@@ -1481,7 +1553,7 @@ public class GameSettings
         }
         else
         {
-            return par1EnumOptions == EnumOptions.WEATHER ? (this.ofWeather ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SKY ? (this.ofSky ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.STARS ? (this.ofStars ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SUN_MOON ? (this.ofSunMoon ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.CHUNK_UPDATES ? var4 + this.ofChunkUpdates : (par1EnumOptions == EnumOptions.CHUNK_UPDATES_DYNAMIC ? (this.ofChunkUpdatesDynamic ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.TIME ? (this.ofTime == 1 ? var4 + "Day Only" : (this.ofTime == 3 ? var4 + "Night Only" : var4 + "Default")) : (par1EnumOptions == EnumOptions.CLEAR_WATER ? (this.ofClearWater ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.DEPTH_FOG ? (this.ofDepthFog ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.PROFILER ? (this.ofProfiler ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.BETTER_SNOW ? (this.ofBetterSnow ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SWAMP_COLORS ? (this.ofSwampColors ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.RANDOM_MOBS ? (this.ofRandomMobs ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SMOOTH_BIOMES ? (this.ofSmoothBiomes ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.CUSTOM_FONTS ? (this.ofCustomFonts ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.CUSTOM_COLORS ? (this.ofCustomColors ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SHOW_CAPES ? (this.ofShowCapes ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.NATURAL_TEXTURES ? (this.ofNaturalTextures ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.LAZY_CHUNK_LOADING ? (this.ofLazyChunkLoading ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.FULLSCREEN_MODE ? var4 + this.ofFullscreenMode : (par1EnumOptions == EnumOptions.HELD_ITEM_TOOLTIPS ? (this.field_92117_D ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.GRAPHICS ? (this.fancyGraphics ? var4 + var2.translateKey("options.graphics.fancy") : var4 + var2.translateKey("options.graphics.fast")) : var4)))))))))))))))))))));
+            return par1EnumOptions == EnumOptions.WEATHER ? (this.ofWeather ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SKY ? (this.ofSky ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.STARS ? (this.ofStars ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SUN_MOON ? (this.ofSunMoon ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.CHUNK_UPDATES ? var4 + this.ofChunkUpdates : (par1EnumOptions == EnumOptions.CHUNK_LOADING ? (this.ofChunkLoading == 1 ? var4 + "Smooth" : (this.ofChunkLoading == 2 ? var4 + "Multi-Core" : var4 + "Default")) : (par1EnumOptions == EnumOptions.CHUNK_UPDATES_DYNAMIC ? (this.ofChunkUpdatesDynamic ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.TIME ? (this.ofTime == 1 ? var4 + "Day Only" : (this.ofTime == 3 ? var4 + "Night Only" : var4 + "Default")) : (par1EnumOptions == EnumOptions.CLEAR_WATER ? (this.ofClearWater ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.DEPTH_FOG ? (this.ofDepthFog ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.AA_LEVEL ? (this.ofAaLevel == 0 ? var4 + "OFF" : var4 + this.ofAaLevel) : (par1EnumOptions == EnumOptions.AF_LEVEL ? (this.ofAfLevel == 1 ? var4 + "OFF" : var4 + this.ofAfLevel) : (par1EnumOptions == EnumOptions.PROFILER ? (this.ofProfiler ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.BETTER_SNOW ? (this.ofBetterSnow ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SWAMP_COLORS ? (this.ofSwampColors ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.RANDOM_MOBS ? (this.ofRandomMobs ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SMOOTH_BIOMES ? (this.ofSmoothBiomes ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.CUSTOM_FONTS ? (this.ofCustomFonts ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.CUSTOM_COLORS ? (this.ofCustomColors ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.SHOW_CAPES ? (this.ofShowCapes ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.NATURAL_TEXTURES ? (this.ofNaturalTextures ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.LAZY_CHUNK_LOADING ? (this.ofLazyChunkLoading ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.FULLSCREEN_MODE ? var4 + this.ofFullscreenMode : (par1EnumOptions == EnumOptions.HELD_ITEM_TOOLTIPS ? (this.field_92117_D ? var4 + "ON" : var4 + "OFF") : (par1EnumOptions == EnumOptions.GRAPHICS ? (this.fancyGraphics ? var4 + var2.translateKey("options.graphics.fancy") : var4 + var2.translateKey("options.graphics.fast")) : var4))))))))))))))))))))))));
         }
     }
 
@@ -2020,6 +2092,13 @@ public class GameSettings
                         this.ofChunkUpdates = Config.limit(this.ofChunkUpdates, 1, 5);
                     }
 
+                    if (var12[0].equals("ofChunkLoading") && var12.length >= 2)
+                    {
+                        this.ofChunkLoading = Integer.valueOf(var12[1]).intValue();
+                        this.ofChunkLoading = Config.limit(this.ofChunkLoading, 0, 2);
+                        this.updateChunkLoading();
+                    }
+
                     if (var12[0].equals("ofChunkUpdatesDynamic") && var12.length >= 2)
                     {
                         this.ofChunkUpdatesDynamic = Boolean.valueOf(var12[1]).booleanValue();
@@ -2040,6 +2119,18 @@ public class GameSettings
                     if (var12[0].equals("ofDepthFog") && var12.length >= 2)
                     {
                         this.ofDepthFog = Boolean.valueOf(var12[1]).booleanValue();
+                    }
+
+                    if (var12[0].equals("ofAaLevel") && var12.length >= 2)
+                    {
+                        this.ofAaLevel = Integer.valueOf(var12[1]).intValue();
+                        this.ofAaLevel = Config.limit(this.ofAaLevel, 0, 16);
+                    }
+
+                    if (var12[0].equals("ofAfLevel") && var12.length >= 2)
+                    {
+                        this.ofAfLevel = Integer.valueOf(var12[1]).intValue();
+                        this.ofAfLevel = Config.limit(this.ofAfLevel, 1, 16);
                     }
 
                     if (var12[0].equals("ofProfiler") && var12.length >= 2)
@@ -2240,10 +2331,13 @@ public class GameSettings
             var5.println("ofStars:" + this.ofStars);
             var5.println("ofSunMoon:" + this.ofSunMoon);
             var5.println("ofChunkUpdates:" + this.ofChunkUpdates);
+            var5.println("ofChunkLoading:" + this.ofChunkLoading);
             var5.println("ofChunkUpdatesDynamic:" + this.ofChunkUpdatesDynamic);
             var5.println("ofTime:" + this.ofTime);
             var5.println("ofClearWater:" + this.ofClearWater);
             var5.println("ofDepthFog:" + this.ofDepthFog);
+            var5.println("ofAaLevel:" + this.ofAaLevel);
+            var5.println("ofAfLevel:" + this.ofAfLevel);
             var5.println("ofProfiler:" + this.ofProfiler);
             var5.println("ofBetterSnow:" + this.ofBetterSnow);
             var5.println("ofSwampColors:" + this.ofSwampColors);
@@ -2316,6 +2410,8 @@ public class GameSettings
             this.ofAoLevel = 0.0F;
         }
 
+        this.ofAaLevel = 0;
+        this.ofAfLevel = 1;
         this.ofClouds = 0;
         this.ofCloudsHeight = 0.0F;
         this.ofTrees = 0;
@@ -2331,6 +2427,7 @@ public class GameSettings
         this.ofStars = true;
         this.ofSunMoon = true;
         this.ofChunkUpdates = 1;
+        this.ofChunkLoading = 0;
         this.ofChunkUpdatesDynamic = false;
         this.ofTime = 0;
         this.ofClearWater = false;
