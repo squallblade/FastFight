@@ -31,7 +31,7 @@ public class Gui
     }
 
     /**
-     * Draws a solid color rectangle with the specified coordinates and color.
+     * Draws a solid color rectangle with the specified coordinates and color. Args: x1, y1, x2, y2, color
      */
     public static void drawRect(int par0, int par1, int par2, int par3, int par4)
     {

@@ -86,7 +86,7 @@ public class TileEntityCommandBlock extends TileEntity implements ICommandSender
     }
 
     /**
-     * Return the coordinates for this player as ChunkCoordinates.
+     * Return the position for this command sender.
      */
     public ChunkCoordinates getPlayerCoordinates()
     {

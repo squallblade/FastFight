@@ -335,7 +335,7 @@ public class TileEntityFurnace extends TileEntity implements IInventory
                 }
             }
 
-            return var2 instanceof ItemTool && ((ItemTool)var2).getToolMaterialName().equals("WOOD") ? 200 : (var2 instanceof ItemSword && ((ItemSword)var2).func_77825_f().equals("WOOD") ? 200 : (var2 instanceof ItemHoe && ((ItemHoe)var2).func_77842_f().equals("WOOD") ? 200 : (var1 == Item.stick.itemID ? 100 : (var1 == Item.coal.itemID ? 1600 : (var1 == Item.bucketLava.itemID ? 20000 : (var1 == Block.sapling.blockID ? 100 : (var1 == Item.blazeRod.itemID ? 2400 : 0)))))));
+            return var2 instanceof ItemTool && ((ItemTool)var2).getToolMaterialName().equals("WOOD") ? 200 : (var2 instanceof ItemSword && ((ItemSword)var2).getToolMaterialName().equals("WOOD") ? 200 : (var2 instanceof ItemHoe && ((ItemHoe)var2).func_77842_f().equals("WOOD") ? 200 : (var1 == Item.stick.itemID ? 100 : (var1 == Item.coal.itemID ? 1600 : (var1 == Item.bucketLava.itemID ? 20000 : (var1 == Block.sapling.blockID ? 100 : (var1 == Item.blazeRod.itemID ? 2400 : 0)))))));
         }
     }
 

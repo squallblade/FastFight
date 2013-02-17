@@ -7,8 +7,8 @@ public class ASN1ObjectIdentifier extends DERObjectIdentifier
         super(par1Str);
     }
 
-    public ASN1ObjectIdentifier func_71612_a(String par1Str)
+    public ASN1ObjectIdentifier branch(String par1Str)
     {
-        return new ASN1ObjectIdentifier(this.func_71609_b() + "." + par1Str);
+        return new ASN1ObjectIdentifier(this.getId() + "." + par1Str);
     }
 }

@@ -479,7 +479,7 @@ public class EntityVillager extends EntityAgeable implements INpc, IMerchant
                 {
                     Enchantment var8 = Enchantment.field_92090_c[this.rand.nextInt(Enchantment.field_92090_c.length)];
                     int var10 = MathHelper.getRandomIntegerInRange(this.rand, var8.getMinLevel(), var8.getMaxLevel());
-                    ItemStack var11 = Item.field_92105_bW.func_92111_a(new EnchantmentData(var8, var10));
+                    ItemStack var11 = Item.enchantedBook.func_92111_a(new EnchantmentData(var8, var10));
                     var6 = 2 + this.rand.nextInt(5 + var10 * 10) + 3 * var10;
                     var2.add(new MerchantRecipe(new ItemStack(Item.book), new ItemStack(Item.emerald, var6), var11));
                 }

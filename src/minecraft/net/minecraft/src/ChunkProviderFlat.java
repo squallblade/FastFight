@@ -13,11 +13,11 @@ public class ChunkProviderFlat implements IChunkProvider
     private final byte[] field_82700_c = new byte[256];
     private final byte[] field_82698_d = new byte[256];
     private final FlatGeneratorInfo field_82699_e;
-    private final List field_82696_f = new ArrayList();
+    private final List structureGenerators = new ArrayList();
     private final boolean field_82697_g;
     private final boolean field_82702_h;
-    private WorldGenLakes field_82703_i;
-    private WorldGenLakes field_82701_j;
+    private WorldGenLakes waterLakeGenerator;
+    private WorldGenLakes lavaLakeGenerator;
 
     public ChunkProviderFlat(World par1World, long par2, boolean par4, String par5Str)
     {
@@ -38,22 +38,22 @@ public class ChunkProviderFlat implements IChunkProvider
                     var7.put("size", "1");
                 }
 
-                this.field_82696_f.add(new MapGenVillage(var7));
+                this.structureGenerators.add(new MapGenVillage(var7));
             }
 
             if (var6.containsKey("biome_1"))
             {
-                this.field_82696_f.add(new MapGenScatteredFeature((Map)var6.get("biome_1")));
+                this.structureGenerators.add(new MapGenScatteredFeature((Map)var6.get("biome_1")));
             }
 
             if (var6.containsKey("mineshaft"))
             {
-                this.field_82696_f.add(new MapGenMineshaft((Map)var6.get("mineshaft")));
+                this.structureGenerators.add(new MapGenMineshaft((Map)var6.get("mineshaft")));
             }
 
             if (var6.containsKey("stronghold"))
             {
-                this.field_82696_f.add(new MapGenStronghold((Map)var6.get("stronghold")));
+                this.structureGenerators.add(new MapGenStronghold((Map)var6.get("stronghold")));
             }
         }
 
@@ -61,12 +61,12 @@ public class ChunkProviderFlat implements IChunkProvider
 
         if (this.field_82699_e.getWorldFeatures().containsKey("lake"))
         {
-            this.field_82703_i = new WorldGenLakes(Block.waterStill.blockID);
+            this.waterLakeGenerator = new WorldGenLakes(Block.waterStill.blockID);
         }
 
         if (this.field_82699_e.getWorldFeatures().containsKey("lava_lake"))
         {
-            this.field_82701_j = new WorldGenLakes(Block.lavaStill.blockID);
+            this.lavaLakeGenerator = new WorldGenLakes(Block.lavaStill.blockID);
         }
 
         this.field_82702_h = this.field_82699_e.getWorldFeatures().containsKey("dungeon");
@@ -130,7 +130,7 @@ public class ChunkProviderFlat implements IChunkProvider
             var10[var11] = (byte)var9[var11].biomeID;
         }
 
-        Iterator var12 = this.field_82696_f.iterator();
+        Iterator var12 = this.structureGenerators.iterator();
 
         while (var12.hasNext())
         {
@@ -163,7 +163,7 @@ public class ChunkProviderFlat implements IChunkProvider
         long var8 = this.random.nextLong() / 2L * 2L + 1L;
         long var10 = this.random.nextLong() / 2L * 2L + 1L;
         this.random.setSeed((long)par2 * var8 + (long)par3 * var10 ^ this.worldObj.getSeed());
-        Iterator var12 = this.field_82696_f.iterator();
+        Iterator var12 = this.structureGenerators.iterator();
 
         while (var12.hasNext())
         {
@@ -180,15 +180,15 @@ public class ChunkProviderFlat implements IChunkProvider
         int var16;
         int var18;
 
-        if (this.field_82703_i != null && !var7 && this.random.nextInt(4) == 0)
+        if (this.waterLakeGenerator != null && !var7 && this.random.nextInt(4) == 0)
         {
             var16 = var4 + this.random.nextInt(16) + 8;
             var17 = this.random.nextInt(128);
             var18 = var5 + this.random.nextInt(16) + 8;
-            this.field_82703_i.generate(this.worldObj, this.random, var16, var17, var18);
+            this.waterLakeGenerator.generate(this.worldObj, this.random, var16, var17, var18);
         }
 
-        if (this.field_82701_j != null && !var7 && this.random.nextInt(8) == 0)
+        if (this.lavaLakeGenerator != null && !var7 && this.random.nextInt(8) == 0)
         {
             var16 = var4 + this.random.nextInt(16) + 8;
             var17 = this.random.nextInt(this.random.nextInt(120) + 8);
@@ -196,7 +196,7 @@ public class ChunkProviderFlat implements IChunkProvider
 
             if (var17 < 63 || this.random.nextInt(10) == 0)
             {
-                this.field_82701_j.generate(this.worldObj, this.random, var16, var17, var18);
+                this.lavaLakeGenerator.generate(this.worldObj, this.random, var16, var17, var18);
             }
         }
 
@@ -267,7 +267,7 @@ public class ChunkProviderFlat implements IChunkProvider
     {
         if ("Stronghold".equals(par2Str))
         {
-            Iterator var6 = this.field_82696_f.iterator();
+            Iterator var6 = this.structureGenerators.iterator();
 
             while (var6.hasNext())
             {
@@ -290,7 +290,7 @@ public class ChunkProviderFlat implements IChunkProvider
 
     public void recreateStructures(int par1, int par2)
     {
-        Iterator var3 = this.field_82696_f.iterator();
+        Iterator var3 = this.structureGenerators.iterator();
 
         while (var3.hasNext())
         {

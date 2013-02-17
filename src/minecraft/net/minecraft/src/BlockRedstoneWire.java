@@ -538,7 +538,7 @@ public class BlockRedstoneWire extends Block
      * Returns true if redstone wire can connect to the specified block. Params: World, X, Y, Z, side (not a normal
      * notch-side, this can be 0, 1, 2, 3 or -1)
      */
-    public static boolean canConnectRedstone(IBlockAccess par0IBlockAccess, int par1, int par2, int par3, int par4)
+    public static boolean isPowerProviderOrWire(IBlockAccess par0IBlockAccess, int par1, int par2, int par3, int par4)
     {
         int var5 = par0IBlockAccess.getBlockId(par1, par2, par3);
 
@@ -567,7 +567,7 @@ public class BlockRedstoneWire extends Block
      */
     public static boolean isPoweredOrRepeater(IBlockAccess par0IBlockAccess, int par1, int par2, int par3, int par4)
     {
-        if (canConnectRedstone(par0IBlockAccess, par1, par2, par3, par4))
+        if (isPowerProviderOrWire(par0IBlockAccess, par1, par2, par3, par4))
         {
             return true;
         }

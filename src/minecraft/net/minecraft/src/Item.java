@@ -169,9 +169,9 @@ public class Item
     public static Item carrotOnAStick = (new ItemCarrotOnAStick(142)).setIconCoord(6, 6).setItemName("carrotOnAStick");
     public static Item netherStar = (new ItemSimpleFoiled(143)).setIconCoord(9, 11).setItemName("netherStar").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item pumpkinPie = (new ItemFood(144, 8, 0.3F, false)).setIconCoord(8, 9).setItemName("pumpkinPie").setCreativeTab(CreativeTabs.tabFood);
-    public static Item field_92104_bU = (new ItemFirework(145)).setIconCoord(9, 12).setItemName("fireworks");
-    public static Item field_92106_bV = (new ItemFireworkCharge(146)).setIconCoord(10, 12).setItemName("fireworksCharge").setCreativeTab(CreativeTabs.tabMisc);
-    public static ItemEnchantedBook field_92105_bW = (ItemEnchantedBook)(new ItemEnchantedBook(147)).setIconCoord(15, 12).setMaxStackSize(1).setItemName("enchantedBook");
+    public static Item firework = (new ItemFirework(145)).setIconCoord(9, 12).setItemName("fireworks");
+    public static Item fireworkCharge = (new ItemFireworkCharge(146)).setIconCoord(10, 12).setItemName("fireworksCharge").setCreativeTab(CreativeTabs.tabMisc);
+    public static ItemEnchantedBook enchantedBook = (ItemEnchantedBook)(new ItemEnchantedBook(147)).setIconCoord(15, 12).setMaxStackSize(1).setItemName("enchantedBook");
     public static Item record13 = (new ItemRecord(2000, "13")).setIconCoord(0, 15).setItemName("record");
     public static Item recordCat = (new ItemRecord(2001, "cat")).setIconCoord(1, 15).setItemName("record");
     public static Item recordBlocks = (new ItemRecord(2002, "blocks")).setIconCoord(2, 15).setItemName("record");
@@ -370,7 +370,7 @@ public class Item
     }
 
     /**
-     * dye sheep, place saddles, etc ...
+     * Called when a player right clicks an entity with an item.
      */
     public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving)
     {

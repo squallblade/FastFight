@@ -84,17 +84,7 @@ public class ItemRenderer
                     var5 = "/terrain.png";
                 }
 
-                if (Config.isMultiTexture() && var5.equals("/terrain.png"))
-                {
-                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, Tessellator.getTileTextures(this.mc.renderEngine.getTexture(var5))[var9]);
-                    var9 = 0;
-                    var10 = 16.0F;
-                }
-                else
-                {
-                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
-                }
-
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
                 var8 = Config.getIconWidthTerrain();
             }
             else
@@ -104,17 +94,7 @@ public class ItemRenderer
                     var5 = "/gui/items.png";
                 }
 
-                if (Config.isMultiTexture() && var5.equals("/gui/items.png"))
-                {
-                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, Tessellator.getTileTextures(this.mc.renderEngine.getTexture(var5))[var9]);
-                    var9 = 0;
-                    var10 = 16.0F;
-                }
-                else
-                {
-                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
-                }
-
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
                 var8 = Config.getIconWidthItems();
             }
 
@@ -769,12 +749,18 @@ public class ItemRenderer
         }
     }
 
-    public void func_78444_b()
+    /**
+     * Resets equippedProgress
+     */
+    public void resetEquippedProgress()
     {
         this.equippedProgress = 0.0F;
     }
 
-    public void func_78445_c()
+    /**
+     * Resets equippedProgress
+     */
+    public void resetEquippedProgress2()
     {
         this.equippedProgress = 0.0F;
     }

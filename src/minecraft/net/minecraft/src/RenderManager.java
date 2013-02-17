@@ -78,7 +78,7 @@ public class RenderManager
         this.entityRenderMap.put(EntityEgg.class, new RenderSnowball(Item.egg.getIconFromDamage(0)));
         this.entityRenderMap.put(EntityPotion.class, new RenderSnowball(154));
         this.entityRenderMap.put(EntityExpBottle.class, new RenderSnowball(Item.expBottle.getIconFromDamage(0)));
-        this.entityRenderMap.put(EntityFireworkRocket.class, new RenderSnowball(Item.field_92104_bU.getIconFromDamage(0)));
+        this.entityRenderMap.put(EntityFireworkRocket.class, new RenderSnowball(Item.firework.getIconFromDamage(0)));
         this.entityRenderMap.put(EntityLargeFireball.class, new RenderFireball(2.0F));
         this.entityRenderMap.put(EntitySmallFireball.class, new RenderFireball(0.5F));
         this.entityRenderMap.put(EntityWitherSkull.class, new RenderWitherSkull());

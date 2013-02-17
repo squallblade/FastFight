@@ -16,7 +16,7 @@ public class GuiVideoSettings extends GuiScreen
     private boolean is64bit = false;
 
     /** An array of all of EnumOption's video options. */
-    private static EnumOptions[] videoOptions = new EnumOptions[] {EnumOptions.GRAPHICS, EnumOptions.RENDER_DISTANCE_FINE, EnumOptions.AO_LEVEL, EnumOptions.FRAMERATE_LIMIT_FINE, EnumOptions.ANAGLYPH, EnumOptions.VIEW_BOBBING, EnumOptions.GUI_SCALE, EnumOptions.ADVANCED_OPENGL, EnumOptions.GAMMA, EnumOptions.CHUNK_LOADING, EnumOptions.FOG_FANCY, EnumOptions.FOG_START};
+    private static EnumOptions[] videoOptions = new EnumOptions[] {EnumOptions.GRAPHICS, EnumOptions.RENDER_DISTANCE_FINE, EnumOptions.AO_LEVEL, EnumOptions.FRAMERATE_LIMIT_FINE, EnumOptions.ANAGLYPH, EnumOptions.VIEW_BOBBING, EnumOptions.GUI_SCALE, EnumOptions.ADVANCED_OPENGL, EnumOptions.GAMMA, EnumOptions.RENDER_CLOUDS, EnumOptions.FOG_FANCY, EnumOptions.FOG_START};
     private int lastMouseX = 0;
     private int lastMouseY = 0;
     private long mouseStillTime = 0L;

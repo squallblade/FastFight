@@ -4,16 +4,16 @@ import java.util.concurrent.Callable;
 
 class CallableLevelSeed implements Callable
 {
-    final WorldInfo field_85143_a;
+    final WorldInfo worldInfoInstance;
 
     CallableLevelSeed(WorldInfo par1WorldInfo)
     {
-        this.field_85143_a = par1WorldInfo;
+        this.worldInfoInstance = par1WorldInfo;
     }
 
     public String func_85142_a()
     {
-        return String.valueOf(this.field_85143_a.getSeed());
+        return String.valueOf(this.worldInfoInstance.getSeed());
     }
 
     public Object call()

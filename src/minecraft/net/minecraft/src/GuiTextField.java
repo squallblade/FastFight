@@ -35,7 +35,11 @@ public class GuiTextField extends Gui
      * If this value is true along isFocused, keyTyped will process the keys.
      */
     private boolean isEnabled = true;
-    private int field_73816_n = 0;
+
+    /**
+     * The current character index that should be used as start of the rendered text.
+     */
+    private int lineScrollOffset = 0;
     private int cursorPosition = 0;
 
     /** other selection position, maybe the same as the cursor */
@@ -461,8 +465,8 @@ public class GuiTextField extends Gui
                 var5 -= 4;
             }
 
-            String var6 = this.fontRenderer.trimStringToWidth(this.text.substring(this.field_73816_n), this.getWidth());
-            this.setCursorPosition(this.fontRenderer.trimStringToWidth(var6, var5).length() + this.field_73816_n);
+            String var6 = this.fontRenderer.trimStringToWidth(this.text.substring(this.lineScrollOffset), this.getWidth());
+            this.setCursorPosition(this.fontRenderer.trimStringToWidth(var6, var5).length() + this.lineScrollOffset);
         }
     }
 
@@ -480,9 +484,9 @@ public class GuiTextField extends Gui
             }
 
             int var1 = this.isEnabled ? this.enabledColor : this.disabledColor;
-            int var2 = this.cursorPosition - this.field_73816_n;
-            int var3 = this.selectionEnd - this.field_73816_n;
-            String var4 = this.fontRenderer.trimStringToWidth(this.text.substring(this.field_73816_n), this.getWidth());
+            int var2 = this.cursorPosition - this.lineScrollOffset;
+            int var3 = this.selectionEnd - this.lineScrollOffset;
+            String var4 = this.fontRenderer.trimStringToWidth(this.text.substring(this.lineScrollOffset), this.getWidth());
             boolean var5 = var2 >= 0 && var2 <= var4.length();
             boolean var6 = this.isFocused && this.cursorCounter / 6 % 2 == 0 && var5;
             int var7 = this.enableBackgroundDrawing ? this.xPos + 4 : this.xPos;
@@ -692,37 +696,37 @@ public class GuiTextField extends Gui
 
         if (this.fontRenderer != null)
         {
-            if (this.field_73816_n > var2)
+            if (this.lineScrollOffset > var2)
             {
-                this.field_73816_n = var2;
+                this.lineScrollOffset = var2;
             }
 
             int var3 = this.getWidth();
-            String var4 = this.fontRenderer.trimStringToWidth(this.text.substring(this.field_73816_n), var3);
-            int var5 = var4.length() + this.field_73816_n;
+            String var4 = this.fontRenderer.trimStringToWidth(this.text.substring(this.lineScrollOffset), var3);
+            int var5 = var4.length() + this.lineScrollOffset;
 
-            if (par1 == this.field_73816_n)
+            if (par1 == this.lineScrollOffset)
             {
-                this.field_73816_n -= this.fontRenderer.trimStringToWidth(this.text, var3, true).length();
+                this.lineScrollOffset -= this.fontRenderer.trimStringToWidth(this.text, var3, true).length();
             }
 
             if (par1 > var5)
             {
-                this.field_73816_n += par1 - var5;
+                this.lineScrollOffset += par1 - var5;
             }
-            else if (par1 <= this.field_73816_n)
+            else if (par1 <= this.lineScrollOffset)
             {
-                this.field_73816_n -= this.field_73816_n - par1;
-            }
-
-            if (this.field_73816_n < 0)
-            {
-                this.field_73816_n = 0;
+                this.lineScrollOffset -= this.lineScrollOffset - par1;
             }
 
-            if (this.field_73816_n > var2)
+            if (this.lineScrollOffset < 0)
             {
-                this.field_73816_n = var2;
+                this.lineScrollOffset = 0;
+            }
+
+            if (this.lineScrollOffset > var2)
+            {
+                this.lineScrollOffset = var2;
             }
         }
     }

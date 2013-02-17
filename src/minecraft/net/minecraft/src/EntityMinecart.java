@@ -8,7 +8,7 @@ public class EntityMinecart extends Entity implements IInventory
     /** Array of item stacks stored in minecart (for storage minecarts). */
     private ItemStack[] cargoItems;
     private int fuel;
-    private boolean field_70499_f;
+    private boolean isInReverse;
 
     /** The type of minecart, 2 for powered, 1 for storage. */
     public int minecartType;
@@ -36,7 +36,7 @@ public class EntityMinecart extends Entity implements IInventory
         super(par1World);
         this.cargoItems = new ItemStack[36];
         this.fuel = 0;
-        this.field_70499_f = false;
+        this.isInReverse = false;
         this.field_82345_h = true;
         this.preventEntitySpawning = true;
         this.setSize(0.98F, 0.7F);
@@ -120,8 +120,8 @@ public class EntityMinecart extends Entity implements IInventory
             }
             else
             {
-                this.func_70494_i(-this.func_70493_k());
-                this.func_70497_h(10);
+                this.setRollingDirection(-this.getRollingDirection());
+                this.setRollingAmplitude(10);
                 this.setBeenAttacked();
                 this.setDamage(this.getDamage() + par2 * 10);
 
@@ -196,8 +196,8 @@ public class EntityMinecart extends Entity implements IInventory
      */
     public void performHurtAnimation()
     {
-        this.func_70494_i(-this.func_70493_k());
-        this.func_70497_h(10);
+        this.setRollingDirection(-this.getRollingDirection());
+        this.setRollingAmplitude(10);
         this.setDamage(this.getDamage() + this.getDamage() * 10);
     }
 
@@ -240,7 +240,7 @@ public class EntityMinecart extends Entity implements IInventory
 
                         if (var2.hasTagCompound())
                         {
-                            var7.func_92059_d().setTagCompound((NBTTagCompound)var2.getTagCompound().copy());
+                            var7.getEntityItem().setTagCompound((NBTTagCompound)var2.getTagCompound().copy());
                         }
 
                         float var8 = 0.05F;
@@ -280,9 +280,9 @@ public class EntityMinecart extends Entity implements IInventory
             this.field_82344_g.update();
         }
 
-        if (this.func_70496_j() > 0)
+        if (this.getRollingAmplitude() > 0)
         {
-            this.func_70497_h(this.func_70496_j() - 1);
+            this.setRollingAmplitude(this.getRollingAmplitude() - 1);
         }
 
         if (this.getDamage() > 0)
@@ -727,7 +727,7 @@ public class EntityMinecart extends Entity implements IInventory
             {
                 this.rotationYaw = (float)(Math.atan2(var50, var49) * 180.0D / Math.PI);
 
-                if (this.field_70499_f)
+                if (this.isInReverse)
                 {
                     this.rotationYaw += 180.0F;
                 }
@@ -738,7 +738,7 @@ public class EntityMinecart extends Entity implements IInventory
             if (var51 < -170.0D || var51 >= 170.0D)
             {
                 this.rotationYaw += 180.0F;
-                this.field_70499_f = !this.field_70499_f;
+                this.isInReverse = !this.isInReverse;
             }
 
             this.setRotation(this.rotationYaw, this.rotationPitch);
@@ -1304,22 +1304,34 @@ public class EntityMinecart extends Entity implements IInventory
         return this.dataWatcher.getWatchableObjectInt(19);
     }
 
-    public void func_70497_h(int par1)
+    /**
+     * Sets the rolling amplitude the cart rolls while being attacked.
+     */
+    public void setRollingAmplitude(int par1)
     {
         this.dataWatcher.updateObject(17, Integer.valueOf(par1));
     }
 
-    public int func_70496_j()
+    /**
+     * Gets the rolling amplitude the cart rolls while being attacked.
+     */
+    public int getRollingAmplitude()
     {
         return this.dataWatcher.getWatchableObjectInt(17);
     }
 
-    public void func_70494_i(int par1)
+    /**
+     * Sets the rolling direction the cart rolls while being attacked. Can be 1 or -1.
+     */
+    public void setRollingDirection(int par1)
     {
         this.dataWatcher.updateObject(18, Integer.valueOf(par1));
     }
 
-    public int func_70493_k()
+    /**
+     * Gets the rolling direction the cart rolls while being attacked. Can be 1 or -1.
+     */
+    public int getRollingDirection()
     {
         return this.dataWatcher.getWatchableObjectInt(18);
     }

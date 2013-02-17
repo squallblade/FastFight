@@ -80,10 +80,10 @@ public class GuiInventory extends InventoryEffectRenderer
         int var5 = this.guiLeft;
         int var6 = this.guiTop;
         this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
-        func_74223_a(this.mc, var5 + 51, var6 + 75, 30, (float)(var5 + 51) - this.xSize_lo, (float)(var6 + 75 - 50) - this.ySize_lo);
+        drawPlayerOnGui(this.mc, var5 + 51, var6 + 75, 30, (float)(var5 + 51) - this.xSize_lo, (float)(var6 + 75 - 50) - this.ySize_lo);
     }
 
-    public static void func_74223_a(Minecraft par0Minecraft, int par1, int par2, int par3, float par4, float par5)
+    public static void drawPlayerOnGui(Minecraft par0Minecraft, int par1, int par2, int par3, float par4, float par5)
     {
         GL11.glEnable(GL11.GL_COLOR_MATERIAL);
         GL11.glPushMatrix();

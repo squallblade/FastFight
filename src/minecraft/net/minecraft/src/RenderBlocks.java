@@ -2576,29 +2576,29 @@ public class RenderBlocks
         double var18 = (double)(((float)var14 + 15.99F) / 256.0F);
         double var20 = (double)((float)var15 / 256.0F);
         double var22 = (double)(((float)var15 + 15.99F) / 256.0F);
-        boolean var24 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 - 1, par3, par4, 1) || !this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 - 1, par3 - 1, par4, -1);
-        boolean var25 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 + 1, par3, par4, 3) || !this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 + 1, par3 - 1, par4, -1);
-        boolean var26 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3, par4 - 1, 2) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 - 1, par4 - 1, -1);
-        boolean var27 = BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3, par4 + 1, 0) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 - 1, par4 + 1, -1);
+        boolean var24 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 - 1, par3, par4, 1) || !this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 - 1, par3 - 1, par4, -1);
+        boolean var25 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 + 1, par3, par4, 3) || !this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 + 1, par3 - 1, par4, -1);
+        boolean var26 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3, par4 - 1, 2) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 - 1, par4 - 1, -1);
+        boolean var27 = BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3, par4 + 1, 0) || !this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 - 1, par4 + 1, -1);
 
         if (!this.blockAccess.isBlockNormalCube(par2, par3 + 1, par4))
         {
-            if (this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 - 1, par3 + 1, par4, -1))
+            if (this.blockAccess.isBlockNormalCube(par2 - 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 - 1, par3 + 1, par4, -1))
             {
                 var24 = true;
             }
 
-            if (this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2 + 1, par3 + 1, par4, -1))
+            if (this.blockAccess.isBlockNormalCube(par2 + 1, par3, par4) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2 + 1, par3 + 1, par4, -1))
             {
                 var25 = true;
             }
 
-            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 + 1, par4 - 1, -1))
+            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 - 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 + 1, par4 - 1, -1))
             {
                 var26 = true;
             }
 
-            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.canConnectRedstone(this.blockAccess, par2, par3 + 1, par4 + 1, -1))
+            if (this.blockAccess.isBlockNormalCube(par2, par3, par4 + 1) && BlockRedstoneWire.isPowerProviderOrWire(this.blockAccess, par2, par3 + 1, par4 + 1, -1))
             {
                 var27 = true;
             }

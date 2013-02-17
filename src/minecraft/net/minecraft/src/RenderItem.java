@@ -29,7 +29,7 @@ public class RenderItem extends Render
     public void doRenderItem(EntityItem par1EntityItem, double par2, double par4, double par6, float par8, float par9)
     {
         this.random.setSeed(187L);
-        ItemStack var10 = par1EntityItem.func_92059_d();
+        ItemStack var10 = par1EntityItem.getEntityItem();
 
         if (var10.getItem() != null)
         {
@@ -248,7 +248,7 @@ public class RenderItem extends Render
 
             float var17 = 0.0625F;
             var16 = 0.021875F;
-            ItemStack var18 = par1EntityItem.func_92059_d();
+            ItemStack var18 = par1EntityItem.getEntityItem();
             int var19 = var18.stackSize;
             byte var20 = this.getMiniItemCountForItemStack(var18);
             GL11.glTranslatef(-var14, -var15, -((var17 + var16) * (float)var20 / 2.0F));

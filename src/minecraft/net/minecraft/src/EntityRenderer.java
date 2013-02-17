@@ -962,7 +962,7 @@ public class EntityRenderer
 
         if (var2 != null && Config.getNewRelease() != null)
         {
-            String var3 = "HD_U " + Config.getNewRelease();
+            String var3 = "HD " + Config.getNewRelease();
             this.mc.ingameGUI.getChatGUI().printChatMessage("A new \u00a7eOptiFine\u00a7f version is available: \u00a7e" + var3 + "\u00a7f");
             Config.setNewRelease((String)null);
         }
@@ -1584,7 +1584,6 @@ public class EntityRenderer
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glDisable(GL11.GL_CULL_FACE);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
-            WrUpdates.resumeBackgroundUpdates();
 
             if (Config.isWaterFancy())
             {
@@ -1627,7 +1626,6 @@ public class EntityRenderer
                 var5.renderAllSortedRenderers(1, (double)par1);
             }
 
-            WrUpdates.pauseBackgroundUpdates();
             GL11.glDepthMask(true);
             GL11.glEnable(GL11.GL_CULL_FACE);
             GL11.glDisable(GL11.GL_BLEND);

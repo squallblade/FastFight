@@ -13,7 +13,7 @@ public class VersionCheckThread extends Thread
         try
         {
             Config.dbg("Checking for new version");
-            URL var2 = new URL("http://optifine.net/version/1.4.6/HD_U.txt");
+            URL var2 = new URL("http://optifine.net/version/1.4.6/HD.txt");
             var1 = (HttpURLConnection)var2.openConnection();
             var1.setDoInput(true);
             var1.setDoOutput(false);

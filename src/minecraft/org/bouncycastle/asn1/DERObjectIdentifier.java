@@ -2,42 +2,42 @@ package org.bouncycastle.asn1;
 
 public class DERObjectIdentifier extends ASN1Primitive
 {
-    String field_71611_a;
-    private static ASN1ObjectIdentifier[][] field_71610_b = new ASN1ObjectIdentifier[255][];
+    String identifier;
+    private static ASN1ObjectIdentifier[][] cache = new ASN1ObjectIdentifier[255][];
 
     public DERObjectIdentifier(String par1Str)
     {
-        if (!func_71608_a(par1Str))
+        if (!isValidIdentifier(par1Str))
         {
             throw new IllegalArgumentException("string " + par1Str + " not an OID");
         }
         else
         {
-            this.field_71611_a = par1Str;
+            this.identifier = par1Str;
         }
     }
 
-    public String func_71609_b()
+    public String getId()
     {
-        return this.field_71611_a;
+        return this.identifier;
     }
 
     public int hashCode()
     {
-        return this.field_71611_a.hashCode();
+        return this.identifier.hashCode();
     }
 
     boolean asn1Equals(ASN1Primitive par1ASN1Primitive)
     {
-        return !(par1ASN1Primitive instanceof DERObjectIdentifier) ? false : this.field_71611_a.equals(((DERObjectIdentifier)par1ASN1Primitive).field_71611_a);
+        return !(par1ASN1Primitive instanceof DERObjectIdentifier) ? false : this.identifier.equals(((DERObjectIdentifier)par1ASN1Primitive).identifier);
     }
 
     public String toString()
     {
-        return this.func_71609_b();
+        return this.getId();
     }
 
-    private static boolean func_71608_a(String par0Str)
+    private static boolean isValidIdentifier(String par0Str)
     {
         if (par0Str.length() >= 3 && par0Str.charAt(1) == 46)
         {

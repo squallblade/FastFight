@@ -4,16 +4,16 @@ import java.util.concurrent.Callable;
 
 class CallableLevelTime implements Callable
 {
-    final WorldInfo field_85137_a;
+    final WorldInfo worldInfoInstance;
 
     CallableLevelTime(WorldInfo par1WorldInfo)
     {
-        this.field_85137_a = par1WorldInfo;
+        this.worldInfoInstance = par1WorldInfo;
     }
 
     public String func_85136_a()
     {
-        return String.format("%d game time, %d day time", new Object[] {Long.valueOf(WorldInfo.func_85126_g(this.field_85137_a)), Long.valueOf(WorldInfo.func_85129_h(this.field_85137_a))});
+        return String.format("%d game time, %d day time", new Object[] {Long.valueOf(WorldInfo.func_85126_g(this.worldInfoInstance)), Long.valueOf(WorldInfo.func_85129_h(this.worldInfoInstance))});
     }
 
     public Object call()

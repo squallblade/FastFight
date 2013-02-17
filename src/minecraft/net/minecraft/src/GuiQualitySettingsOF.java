@@ -5,7 +5,7 @@ public class GuiQualitySettingsOF extends GuiScreen
     private GuiScreen prevScreen;
     protected String title = "Quality Settings";
     private GameSettings settings;
-    private static EnumOptions[] enumOptions = new EnumOptions[] {EnumOptions.MIPMAP_LEVEL, EnumOptions.MIPMAP_TYPE, EnumOptions.AF_LEVEL, EnumOptions.AA_LEVEL, EnumOptions.CLEAR_WATER, EnumOptions.RANDOM_MOBS, EnumOptions.BETTER_GRASS, EnumOptions.BETTER_SNOW, EnumOptions.CUSTOM_FONTS, EnumOptions.CUSTOM_COLORS, EnumOptions.SWAMP_COLORS, EnumOptions.SMOOTH_BIOMES, EnumOptions.CONNECTED_TEXTURES, EnumOptions.NATURAL_TEXTURES};
+    private static EnumOptions[] enumOptions = new EnumOptions[] {EnumOptions.MIPMAP_LEVEL, EnumOptions.MIPMAP_TYPE, EnumOptions.CLEAR_WATER, EnumOptions.RANDOM_MOBS, EnumOptions.BETTER_GRASS, EnumOptions.BETTER_SNOW, EnumOptions.CUSTOM_FONTS, EnumOptions.CUSTOM_COLORS, EnumOptions.SWAMP_COLORS, EnumOptions.SMOOTH_BIOMES, EnumOptions.CONNECTED_TEXTURES, EnumOptions.NATURAL_TEXTURES};
     private int lastMouseX = 0;
     private int lastMouseY = 0;
     private long mouseStillTime = 0L;

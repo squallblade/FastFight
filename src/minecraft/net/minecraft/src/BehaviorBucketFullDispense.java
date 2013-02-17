@@ -24,9 +24,9 @@ public class BehaviorBucketFullDispense extends BehaviorDefaultDispenseItem
         int var4 = par1IBlockSource.getXInt();
         int var5 = par1IBlockSource.getYInt();
         int var6 = par1IBlockSource.getZInt();
-        EnumFacing var7 = EnumFacing.func_82600_a(par1IBlockSource.func_82620_h());
+        EnumFacing var7 = EnumFacing.getFront(par1IBlockSource.func_82620_h());
 
-        if (var3.tryPlaceContainedLiquid(par1IBlockSource.getWorld(), (double)var4, (double)var5, (double)var6, var4 + var7.func_82601_c(), var5, var6 + var7.func_82599_e()))
+        if (var3.tryPlaceContainedLiquid(par1IBlockSource.getWorld(), (double)var4, (double)var5, (double)var6, var4 + var7.getFrontOffsetX(), var5, var6 + var7.getFrontOffsetZ()))
         {
             par2ItemStack.itemID = Item.bucketEmpty.itemID;
             par2ItemStack.stackSize = 1;

@@ -150,8 +150,8 @@ public class EntityItem extends Entity
         }
         else if (par1EntityItem.isEntityAlive() && this.isEntityAlive())
         {
-            ItemStack var2 = this.func_92059_d();
-            ItemStack var3 = par1EntityItem.func_92059_d();
+            ItemStack var2 = this.getEntityItem();
+            ItemStack var3 = par1EntityItem.getEntityItem();
 
             if (var3.getItem() != var2.getItem())
             {
@@ -224,7 +224,7 @@ public class EntityItem extends Entity
         {
             return false;
         }
-        else if (this.func_92059_d() != null && this.func_92059_d().itemID == Item.netherStar.itemID && par1DamageSource == DamageSource.explosion)
+        else if (this.getEntityItem() != null && this.getEntityItem().itemID == Item.netherStar.itemID && par1DamageSource == DamageSource.explosion)
         {
             return false;
         }
@@ -250,9 +250,9 @@ public class EntityItem extends Entity
         par1NBTTagCompound.setShort("Health", (short)((byte)this.health));
         par1NBTTagCompound.setShort("Age", (short)this.age);
 
-        if (this.func_92059_d() != null)
+        if (this.getEntityItem() != null)
         {
-            par1NBTTagCompound.setCompoundTag("Item", this.func_92059_d().writeToNBT(new NBTTagCompound()));
+            par1NBTTagCompound.setCompoundTag("Item", this.getEntityItem().writeToNBT(new NBTTagCompound()));
         }
     }
 
@@ -266,7 +266,7 @@ public class EntityItem extends Entity
         NBTTagCompound var2 = par1NBTTagCompound.getCompoundTag("Item");
         this.func_92058_a(ItemStack.loadItemStackFromNBT(var2));
 
-        if (this.func_92059_d() == null)
+        if (this.getEntityItem() == null)
         {
             this.setDead();
         }
@@ -279,7 +279,7 @@ public class EntityItem extends Entity
     {
         if (!this.worldObj.isRemote)
         {
-            ItemStack var2 = this.func_92059_d();
+            ItemStack var2 = this.getEntityItem();
             int var3 = var2.stackSize;
 
             if (this.delayBeforeCanPickup == 0 && par1EntityPlayer.inventory.addItemStackToInventory(var2))
@@ -320,7 +320,7 @@ public class EntityItem extends Entity
      */
     public String getEntityName()
     {
-        return StatCollector.translateToLocal("item." + this.func_92059_d().getItemName());
+        return StatCollector.translateToLocal("item." + this.getEntityItem().getItemName());
     }
 
     /**
@@ -344,7 +344,11 @@ public class EntityItem extends Entity
         }
     }
 
-    public ItemStack func_92059_d()
+    /**
+     * Returns the ItemStack corresponding to the Entity (Note: if no item exists, will log an error but still return an
+     * ItemStack containing Block.stone)
+     */
+    public ItemStack getEntityItem()
     {
         ItemStack var1 = this.getDataWatcher().getWatchableObjectItemStack(10);
 

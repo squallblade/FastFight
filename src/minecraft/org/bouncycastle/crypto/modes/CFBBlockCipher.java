@@ -7,56 +7,56 @@ import org.bouncycastle.crypto.params.ParametersWithIV;
 
 public class CFBBlockCipher implements BlockCipher
 {
-    private byte[] field_71814_a;
-    private byte[] field_71812_b;
-    private byte[] field_71813_c;
-    private int field_71810_d;
-    private BlockCipher field_71811_e = null;
-    private boolean field_71809_f;
+    private byte[] IV;
+    private byte[] cfbV;
+    private byte[] cfbOutV;
+    private int blockSize;
+    private BlockCipher cipher = null;
+    private boolean encrypting;
 
     public CFBBlockCipher(BlockCipher par1BlockCipher, int par2)
     {
-        this.field_71811_e = par1BlockCipher;
-        this.field_71810_d = par2 / 8;
-        this.field_71814_a = new byte[par1BlockCipher.getBlockSize()];
-        this.field_71812_b = new byte[par1BlockCipher.getBlockSize()];
-        this.field_71813_c = new byte[par1BlockCipher.getBlockSize()];
+        this.cipher = par1BlockCipher;
+        this.blockSize = par2 / 8;
+        this.IV = new byte[par1BlockCipher.getBlockSize()];
+        this.cfbV = new byte[par1BlockCipher.getBlockSize()];
+        this.cfbOutV = new byte[par1BlockCipher.getBlockSize()];
     }
 
-    public void func_71805_a(boolean par1, CipherParameters par2CipherParameters) throws IllegalArgumentException
+    public void init(boolean par1, CipherParameters par2CipherParameters) throws IllegalArgumentException
     {
-        this.field_71809_f = par1;
+        this.encrypting = par1;
 
         if (par2CipherParameters instanceof ParametersWithIV)
         {
             ParametersWithIV var3 = (ParametersWithIV)par2CipherParameters;
             byte[] var4 = var3.getIV();
 
-            if (var4.length < this.field_71814_a.length)
+            if (var4.length < this.IV.length)
             {
-                System.arraycopy(var4, 0, this.field_71814_a, this.field_71814_a.length - var4.length, var4.length);
+                System.arraycopy(var4, 0, this.IV, this.IV.length - var4.length, var4.length);
 
-                for (int var5 = 0; var5 < this.field_71814_a.length - var4.length; ++var5)
+                for (int var5 = 0; var5 < this.IV.length - var4.length; ++var5)
                 {
-                    this.field_71814_a[var5] = 0;
+                    this.IV[var5] = 0;
                 }
             }
             else
             {
-                System.arraycopy(var4, 0, this.field_71814_a, 0, this.field_71814_a.length);
+                System.arraycopy(var4, 0, this.IV, 0, this.IV.length);
             }
 
-            this.func_71803_c();
+            this.reset();
 
             if (var3.getParameters() != null)
             {
-                this.field_71811_e.func_71805_a(true, var3.getParameters());
+                this.cipher.init(true, var3.getParameters());
             }
         }
         else
         {
-            this.func_71803_c();
-            this.field_71811_e.func_71805_a(true, par2CipherParameters);
+            this.reset();
+            this.cipher.init(true, par2CipherParameters);
         }
     }
 
@@ -65,7 +65,7 @@ public class CFBBlockCipher implements BlockCipher
      */
     public String getAlgorithmName()
     {
-        return this.field_71811_e.getAlgorithmName() + "/CFB" + this.field_71810_d * 8;
+        return this.cipher.getAlgorithmName() + "/CFB" + this.blockSize * 8;
     }
 
     /**
@@ -73,67 +73,67 @@ public class CFBBlockCipher implements BlockCipher
      */
     public int getBlockSize()
     {
-        return this.field_71810_d;
+        return this.blockSize;
     }
 
-    public int func_71806_a(byte[] par1ArrayOfByte, int par2, byte[] par3ArrayOfByte, int par4) throws DataLengthException, IllegalStateException
+    public int processBlock(byte[] par1ArrayOfByte, int par2, byte[] par3ArrayOfByte, int par4) throws DataLengthException, IllegalStateException
     {
-        return this.field_71809_f ? this.func_71807_b(par1ArrayOfByte, par2, par3ArrayOfByte, par4) : this.func_71808_c(par1ArrayOfByte, par2, par3ArrayOfByte, par4);
+        return this.encrypting ? this.encryptBlock(par1ArrayOfByte, par2, par3ArrayOfByte, par4) : this.decryptBlock(par1ArrayOfByte, par2, par3ArrayOfByte, par4);
     }
 
-    public int func_71807_b(byte[] par1ArrayOfByte, int par2, byte[] par3ArrayOfByte, int par4) throws DataLengthException, IllegalStateException
+    public int encryptBlock(byte[] par1ArrayOfByte, int par2, byte[] par3ArrayOfByte, int par4) throws DataLengthException, IllegalStateException
     {
-        if (par2 + this.field_71810_d > par1ArrayOfByte.length)
+        if (par2 + this.blockSize > par1ArrayOfByte.length)
         {
             throw new DataLengthException("input buffer too short");
         }
-        else if (par4 + this.field_71810_d > par3ArrayOfByte.length)
+        else if (par4 + this.blockSize > par3ArrayOfByte.length)
         {
             throw new DataLengthException("output buffer too short");
         }
         else
         {
-            this.field_71811_e.func_71806_a(this.field_71812_b, 0, this.field_71813_c, 0);
+            this.cipher.processBlock(this.cfbV, 0, this.cfbOutV, 0);
 
-            for (int var5 = 0; var5 < this.field_71810_d; ++var5)
+            for (int var5 = 0; var5 < this.blockSize; ++var5)
             {
-                par3ArrayOfByte[par4 + var5] = (byte)(this.field_71813_c[var5] ^ par1ArrayOfByte[par2 + var5]);
+                par3ArrayOfByte[par4 + var5] = (byte)(this.cfbOutV[var5] ^ par1ArrayOfByte[par2 + var5]);
             }
 
-            System.arraycopy(this.field_71812_b, this.field_71810_d, this.field_71812_b, 0, this.field_71812_b.length - this.field_71810_d);
-            System.arraycopy(par3ArrayOfByte, par4, this.field_71812_b, this.field_71812_b.length - this.field_71810_d, this.field_71810_d);
-            return this.field_71810_d;
+            System.arraycopy(this.cfbV, this.blockSize, this.cfbV, 0, this.cfbV.length - this.blockSize);
+            System.arraycopy(par3ArrayOfByte, par4, this.cfbV, this.cfbV.length - this.blockSize, this.blockSize);
+            return this.blockSize;
         }
     }
 
-    public int func_71808_c(byte[] par1ArrayOfByte, int par2, byte[] par3ArrayOfByte, int par4) throws DataLengthException, IllegalStateException
+    public int decryptBlock(byte[] par1ArrayOfByte, int par2, byte[] par3ArrayOfByte, int par4) throws DataLengthException, IllegalStateException
     {
-        if (par2 + this.field_71810_d > par1ArrayOfByte.length)
+        if (par2 + this.blockSize > par1ArrayOfByte.length)
         {
             throw new DataLengthException("input buffer too short");
         }
-        else if (par4 + this.field_71810_d > par3ArrayOfByte.length)
+        else if (par4 + this.blockSize > par3ArrayOfByte.length)
         {
             throw new DataLengthException("output buffer too short");
         }
         else
         {
-            this.field_71811_e.func_71806_a(this.field_71812_b, 0, this.field_71813_c, 0);
-            System.arraycopy(this.field_71812_b, this.field_71810_d, this.field_71812_b, 0, this.field_71812_b.length - this.field_71810_d);
-            System.arraycopy(par1ArrayOfByte, par2, this.field_71812_b, this.field_71812_b.length - this.field_71810_d, this.field_71810_d);
+            this.cipher.processBlock(this.cfbV, 0, this.cfbOutV, 0);
+            System.arraycopy(this.cfbV, this.blockSize, this.cfbV, 0, this.cfbV.length - this.blockSize);
+            System.arraycopy(par1ArrayOfByte, par2, this.cfbV, this.cfbV.length - this.blockSize, this.blockSize);
 
-            for (int var5 = 0; var5 < this.field_71810_d; ++var5)
+            for (int var5 = 0; var5 < this.blockSize; ++var5)
             {
-                par3ArrayOfByte[par4 + var5] = (byte)(this.field_71813_c[var5] ^ par1ArrayOfByte[par2 + var5]);
+                par3ArrayOfByte[par4 + var5] = (byte)(this.cfbOutV[var5] ^ par1ArrayOfByte[par2 + var5]);
             }
 
-            return this.field_71810_d;
+            return this.blockSize;
         }
     }
 
-    public void func_71803_c()
+    public void reset()
     {
-        System.arraycopy(this.field_71814_a, 0, this.field_71812_b, 0, this.field_71814_a.length);
-        this.field_71811_e.func_71803_c();
+        System.arraycopy(this.IV, 0, this.cfbV, 0, this.IV.length);
+        this.cipher.reset();
     }
 }

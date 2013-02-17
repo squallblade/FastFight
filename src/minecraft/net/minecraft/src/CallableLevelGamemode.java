@@ -4,16 +4,16 @@ import java.util.concurrent.Callable;
 
 class CallableLevelGamemode implements Callable
 {
-    final WorldInfo field_85109_a;
+    final WorldInfo worldInfoInstance;
 
     CallableLevelGamemode(WorldInfo par1WorldInfo)
     {
-        this.field_85109_a = par1WorldInfo;
+        this.worldInfoInstance = par1WorldInfo;
     }
 
     public String func_85108_a()
     {
-        return String.format("Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", new Object[] {WorldInfo.func_85120_o(this.field_85109_a).getName(), Integer.valueOf(WorldInfo.func_85120_o(this.field_85109_a).getID()), Boolean.valueOf(WorldInfo.func_85117_p(this.field_85109_a)), Boolean.valueOf(WorldInfo.func_85131_q(this.field_85109_a))});
+        return String.format("Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", new Object[] {WorldInfo.func_85120_o(this.worldInfoInstance).getName(), Integer.valueOf(WorldInfo.func_85120_o(this.worldInfoInstance).getID()), Boolean.valueOf(WorldInfo.func_85117_p(this.worldInfoInstance)), Boolean.valueOf(WorldInfo.func_85131_q(this.worldInfoInstance))});
     }
 
     public Object call()

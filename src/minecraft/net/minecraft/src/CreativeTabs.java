@@ -156,7 +156,7 @@ public class CreativeTabs
 
                 if (var7)
                 {
-                    par1List.add(Item.field_92105_bW.func_92111_a(new EnchantmentData(var6, var6.getMaxLevel())));
+                    par1List.add(Item.enchantedBook.func_92111_a(new EnchantmentData(var6, var6.getMaxLevel())));
                 }
             }
         }

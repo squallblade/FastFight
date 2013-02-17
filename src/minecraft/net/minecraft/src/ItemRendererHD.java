@@ -63,17 +63,7 @@ public class ItemRendererHD extends ItemRenderer
                         var9 = Reflector.callString(var2.getItem(), Reflector.ForgeItem_getTextureFile, new Object[0]);
                     }
 
-                    if (var9.equals("/terrain.png") && Config.isMultiTexture())
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, Tessellator.getTileTextures(this.minecraft.renderEngine.getTexture(var9))[var7]);
-                        var7 = 0;
-                        var8 = 16.0F;
-                    }
-                    else
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
-                    }
-
+                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
                     var22 = Config.getIconWidthTerrain();
                 }
                 else
@@ -85,17 +75,7 @@ public class ItemRendererHD extends ItemRenderer
                         var9 = Reflector.callString(var2.getItem(), Reflector.ForgeItem_getTextureFile, new Object[0]);
                     }
 
-                    if (var9.equals("/gui/items.png") && Config.isMultiTexture())
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, Tessellator.getTileTextures(this.minecraft.renderEngine.getTexture(var9))[var7]);
-                        var7 = 0;
-                        var8 = 16.0F;
-                    }
-                    else
-                    {
-                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
-                    }
-
+                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.renderEngine.getTexture(var9));
                     var22 = Config.getIconWidthItems();
                 }
 

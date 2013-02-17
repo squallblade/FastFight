@@ -72,7 +72,7 @@ public class EntityEnderman extends EntityMob
                 if (this.field_70826_g++ == 5)
                 {
                     this.field_70826_g = 0;
-                    this.func_70819_e(true);
+                    this.setScreaming(true);
                     return var1;
                 }
             }
@@ -172,7 +172,7 @@ public class EntityEnderman extends EntityMob
             if (var6 > 0.5F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) && this.rand.nextFloat() * 30.0F < (var6 - 0.4F) * 2.0F)
             {
                 this.entityToAttack = null;
-                this.func_70819_e(false);
+                this.setScreaming(false);
                 this.teleportRandomly();
             }
         }
@@ -180,7 +180,7 @@ public class EntityEnderman extends EntityMob
         if (this.isWet() || this.isBurning())
         {
             this.entityToAttack = null;
-            this.func_70819_e(false);
+            this.setScreaming(false);
             this.teleportRandomly();
         }
 
@@ -214,7 +214,7 @@ public class EntityEnderman extends EntityMob
             }
             else
             {
-                this.func_70819_e(false);
+                this.setScreaming(false);
                 this.teleportDelay = 0;
             }
         }
@@ -326,7 +326,7 @@ public class EntityEnderman extends EntityMob
      */
     protected String getLivingSound()
     {
-        return this.func_70823_r() ? "mob.endermen.scream" : "mob.endermen.idle";
+        return this.isScreaming() ? "mob.endermen.scream" : "mob.endermen.idle";
     }
 
     /**
@@ -415,7 +415,7 @@ public class EntityEnderman extends EntityMob
         }
         else
         {
-            this.func_70819_e(true);
+            this.setScreaming(true);
 
             if (par1DamageSource instanceof EntityDamageSourceIndirect)
             {
@@ -436,12 +436,12 @@ public class EntityEnderman extends EntityMob
         }
     }
 
-    public boolean func_70823_r()
+    public boolean isScreaming()
     {
         return this.dataWatcher.getWatchableObjectByte(18) > 0;
     }
 
-    public void func_70819_e(boolean par1)
+    public void setScreaming(boolean par1)
     {
         this.dataWatcher.updateObject(18, Byte.valueOf((byte)(par1 ? 1 : 0)));
     }

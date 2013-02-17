@@ -10,7 +10,7 @@ public class CrashReportCategory
     private final CrashReport field_85078_a;
     private final String field_85076_b;
     private final List field_85077_c = new ArrayList();
-    private StackTraceElement[] field_85075_d = new StackTraceElement[0];
+    private StackTraceElement[] stackTrace = new StackTraceElement[0];
 
     public CrashReportCategory(CrashReport par1CrashReport, String par2Str)
     {
@@ -123,30 +123,30 @@ public class CrashReportCategory
     public int func_85073_a(int par1)
     {
         StackTraceElement[] var2 = Thread.currentThread().getStackTrace();
-        this.field_85075_d = new StackTraceElement[var2.length - 3 - par1];
-        System.arraycopy(var2, 3 + par1, this.field_85075_d, 0, this.field_85075_d.length);
-        return this.field_85075_d.length;
+        this.stackTrace = new StackTraceElement[var2.length - 3 - par1];
+        System.arraycopy(var2, 3 + par1, this.stackTrace, 0, this.stackTrace.length);
+        return this.stackTrace.length;
     }
 
     public boolean func_85069_a(StackTraceElement par1StackTraceElement, StackTraceElement par2StackTraceElement)
     {
-        if (this.field_85075_d.length != 0 && par1StackTraceElement != null)
+        if (this.stackTrace.length != 0 && par1StackTraceElement != null)
         {
-            StackTraceElement var3 = this.field_85075_d[0];
+            StackTraceElement var3 = this.stackTrace[0];
 
             if (var3.isNativeMethod() == par1StackTraceElement.isNativeMethod() && var3.getClassName().equals(par1StackTraceElement.getClassName()) && var3.getFileName().equals(par1StackTraceElement.getFileName()) && var3.getMethodName().equals(par1StackTraceElement.getMethodName()))
             {
-                if (par2StackTraceElement != null != this.field_85075_d.length > 1)
+                if (par2StackTraceElement != null != this.stackTrace.length > 1)
                 {
                     return false;
                 }
-                else if (par2StackTraceElement != null && !this.field_85075_d[1].equals(par2StackTraceElement))
+                else if (par2StackTraceElement != null && !this.stackTrace[1].equals(par2StackTraceElement))
                 {
                     return false;
                 }
                 else
                 {
-                    this.field_85075_d[0] = par1StackTraceElement;
+                    this.stackTrace[0] = par1StackTraceElement;
                     return true;
                 }
             }
@@ -163,9 +163,9 @@ public class CrashReportCategory
 
     public void func_85070_b(int par1)
     {
-        StackTraceElement[] var2 = new StackTraceElement[this.field_85075_d.length - par1];
-        System.arraycopy(this.field_85075_d, 0, var2, 0, var2.length);
-        this.field_85075_d = var2;
+        StackTraceElement[] var2 = new StackTraceElement[this.stackTrace.length - par1];
+        System.arraycopy(this.stackTrace, 0, var2, 0, var2.length);
+        this.stackTrace = var2;
     }
 
     public void func_85072_a(StringBuilder par1StringBuilder)
@@ -183,10 +183,10 @@ public class CrashReportCategory
             par1StringBuilder.append(var3.func_85090_b());
         }
 
-        if (this.field_85075_d != null && this.field_85075_d.length > 0)
+        if (this.stackTrace != null && this.stackTrace.length > 0)
         {
             par1StringBuilder.append("\nStacktrace:");
-            StackTraceElement[] var6 = this.field_85075_d;
+            StackTraceElement[] var6 = this.stackTrace;
             int var7 = var6.length;
 
             for (int var4 = 0; var4 < var7; ++var4)
