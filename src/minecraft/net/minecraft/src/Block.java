@@ -206,6 +206,10 @@ public class Block
     public static final Block skull = (new BlockSkull(144)).setHardness(1.0F).setStepSound(soundStoneFootstep).setBlockName("skull").setRequiresSelfNotify();
     public static final Block anvil = (new BlockAnvil(145)).setHardness(5.0F).setStepSound(soundAnvilFootstep).setResistance(2000.0F).setBlockName("anvil").setRequiresSelfNotify();
 
+    
+    public static final Block stairsObsidian = (new BlockStairs(160, obsidian, 4)).setBlockName("stairsObsidian").setRequiresSelfNotify();
+    public static final BlockHalfSlab2 obsidianSingleSlab = (BlockHalfSlab2)(new BlockStep2(161, false)).setHardness(50.0F).setResistance(2000.0F).setStepSound(soundStoneFootstep).setBlockName("obsidianSlab");
+
     /**
      * The index of the texture to be displayed for this block. May vary based on graphics settings. Mostly seems to
      * come from terrain.png, and the index is 0-based (grass is 0).
@@ -1264,6 +1268,9 @@ public class Block
         Item.itemsList[stoneDoubleSlab.blockID] = (new ItemSlab(stoneDoubleSlab.blockID - 256, stoneSingleSlab, stoneDoubleSlab, true)).setItemName("stoneSlab");
         Item.itemsList[woodSingleSlab.blockID] = (new ItemSlab(woodSingleSlab.blockID - 256, woodSingleSlab, woodDoubleSlab, false)).setItemName("woodSlab");
         Item.itemsList[woodDoubleSlab.blockID] = (new ItemSlab(woodDoubleSlab.blockID - 256, woodSingleSlab, woodDoubleSlab, true)).setItemName("woodSlab");
+//        Item.itemsList[obsidianSingleSlab.blockID] = (new ItemSlab(obsidianSingleSlab.blockID - 256, obsidianSingleSlab, obsidianDoubleSlab, false)).setItemName("obsidianSlab");
+//        Item.itemsList[obsidianDoubleSlab.blockID] = (new ItemSlab(obsidianDoubleSlab.blockID - 256, obsidianSingleSlab, obsidianDoubleSlab, false)).setItemName("obsidianSlab");
+
         Item.itemsList[sapling.blockID] = (new ItemMultiTextureTile(sapling.blockID - 256, sapling, BlockSapling.WOOD_TYPES)).setItemName("sapling");
         Item.itemsList[leaves.blockID] = (new ItemLeaves(leaves.blockID - 256)).setItemName("leaves");
         Item.itemsList[vine.blockID] = new ItemColored(vine.blockID - 256, false);
