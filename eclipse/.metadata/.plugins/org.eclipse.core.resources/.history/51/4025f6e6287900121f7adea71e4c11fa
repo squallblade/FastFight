@@ -543,7 +543,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
     {
         if (minecraftDir == null)
         {
-            minecraftDir = getAppDir("FastFight");
+            minecraftDir = getAppDir("minecraft");
         }
 
         return minecraftDir;
