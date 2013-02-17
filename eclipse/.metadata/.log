@@ -147,3 +147,21 @@ java.lang.NullPointerException
 	at org.eclipse.core.internal.refresh.PollingMonitor.poll(PollingMonitor.java:173)
 	at org.eclipse.core.internal.refresh.PollingMonitor.run(PollingMonitor.java:132)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2013-02-17 11:12:45.456 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_CA
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 2 2013-02-17 11:28:39.758
+!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
+!SESSION 2013-02-17 12:23:37.943 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_CA
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 2 2013-02-17 12:32:34.932
+!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
