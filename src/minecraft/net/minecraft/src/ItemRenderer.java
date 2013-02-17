@@ -34,70 +34,28 @@ public class ItemRenderer
      */
     public void renderItem(EntityLiving par1EntityLiving, ItemStack par2ItemStack, int par3)
     {
-        GL11.glPushMatrix();
-        boolean var4 = Reflector.MinecraftForgeClient.exists();
-        String var5 = null;
+    GL11.glPushMatrix();
+    Block var4 = Block.blocksList[par2ItemStack.itemID];
 
-        if (var4)
-        {
-            var5 = Reflector.callString(par2ItemStack.getItem(), Reflector.ForgeItem_getTextureFile, new Object[0]);
-            Object var6 = Reflector.getFieldValue(Reflector.ItemRenderType_EQUIPPED);
-            Object var7 = Reflector.call(Reflector.MinecraftForgeClient_getItemRenderer, new Object[] {par2ItemStack, var6});
+    if (var4 != null && RenderBlocks.renderItemIn3d(var4.getRenderType()))
+    {
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var4.getTextureFile()));//modif
+    this.renderBlocksInstance.renderBlockAsItem(var4, par2ItemStack.getItemDamage(), 1.0F);
+    }
+    else
+    {
+    if (var4 != null)
+    {
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var4.getTextureFile()));//modif
+    }
+    else
+    {
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(Item.itemsList[par2ItemStack.itemID].getTextureFile()));//modif
+    }
 
-            if (var7 != null)
-            {
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
-                Reflector.callVoid(Reflector.ForgeHooksClient_renderEquippedItem, new Object[] {var7, this.renderBlocksInstance, par1EntityLiving, par2ItemStack});
-                GL11.glPopMatrix();
-                return;
-            }
-        }
-
-        boolean var23 = par2ItemStack.getItem() instanceof ItemBlock;
-        Block var24 = null;
-
-        if (var23)
-        {
-            var24 = Block.blocksList[par2ItemStack.itemID];
-        }
-
-        if (var24 != null && RenderBlocks.renderItemIn3d(var24.getRenderType()))
-        {
-            if (var5 == null)
-            {
-                var5 = "/terrain.png";
-            }
-
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
-            this.renderBlocksInstance.renderBlockAsItem(var24, par2ItemStack.getItemDamage(), 1.0F);
-        }
-        else
-        {
             int var8 = Config.getIconWidthTerrain();
             int var9 = par1EntityLiving.getItemIcon(par2ItemStack, par3);
             float var10 = 256.0F;
-
-            if (var23)
-            {
-                if (var5 == null)
-                {
-                    var5 = "/terrain.png";
-                }
-
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
-                var8 = Config.getIconWidthTerrain();
-            }
-            else
-            {
-                if (var5 == null)
-                {
-                    var5 = "/gui/items.png";
-                }
-
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(var5));
-                var8 = Config.getIconWidthItems();
-            }
-
             Tessellator var11 = Tessellator.instance;
             float var13 = ((float)(var9 % 16 * 16) + 0.0F) / var10;
             float var14 = ((float)(var9 % 16 * 16) + 15.99F) / var10;

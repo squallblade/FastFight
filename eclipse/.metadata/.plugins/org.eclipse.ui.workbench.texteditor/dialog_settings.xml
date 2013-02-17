@@ -13,15 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="func_77020_a(" key="selection"/>
 		<list key="findhistory">
-			<item value="GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture(&quot;/gui/items.png&quot;));"/>
-			<item value="public void renderItem(EntityLiving par1EntityLiving, ItemStack par2ItemStack, int par3)"/>
-			<item value="protected Item(int par1)"/>
-			<item value="protected Block(int par1, Material par2Material)"/>
-			<item value="height"/>
-			<item value="6"/>
-			<item value=".png"/>
+			<item value="func_77020_a("/>
+			<item value="func_77020_a(...)"/>
+			<item value="renderItemIntoGUI()"/>
+			<item value="par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Block.blocksList[var6].getTextureFile()));"/>
+			<item value="public void renderItemIntoGUI(FontRenderer par1FontRenderer, RenderEngine par2RenderEngine, ItemStack par3ItemStack, int par4, int par5)"/>
+			<item value="Block.blocksList"/>
+			<item value="public void RenderParticles(Entity par1Entity, float par2)"/>
+			<item value="fancyGrass"/>
 		</list>
 		<list key="replacehistory">
 		</list>

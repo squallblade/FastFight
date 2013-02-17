@@ -76,7 +76,8 @@ public class EffectRenderer
         for (int var8 = 0; var8 < 3; ++var8)
         {
             if (!this.fxLayers[var8].isEmpty())
-            {
+ 	   {
+ 		boolean change = false; //ajout
                 int var9 = 0;
 
                 if (var8 == 0)
@@ -107,6 +108,26 @@ public class EffectRenderer
                     EntityFX var12 = (EntityFX)this.fxLayers[var8].get(var11);
                     var10.setBrightness(var12.getBrightnessForRender(par2));
                     var12.renderParticle(var10, par2, var3, var7, var4, var5, var6);
+                    if(var12 instanceof EntityBreakingFX)
+                    {
+                        var9 = renderer.getTexture(((EntityBreakingFX) var12).getEntityItemTexture());
+                        GL11.glBindTexture(GL11.GL_TEXTURE_2D, var9);
+                        change = true;
+                    }
+                    if(var12 instanceof EntityDiggingFX)
+                    {
+                       var9 = renderer.getTexture(((EntityDiggingFX) var12).getEntityBlockTexture());
+                       GL11.glBindTexture(GL11.GL_TEXTURE_2D, var9);
+                       change = true;
+                    }
+                    if(change)
+                    {
+                       var10.draw();
+                       GL11.glBindTexture(GL11.GL_TEXTURE_2D, var9);
+                       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+                       var10.startDrawingQuads();
+                       change = false;
+                    }
                 }
 
                 var10.draw();

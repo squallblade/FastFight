@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Block
 {
+	
+	private String textureFile;
     /**
      * used as foreach item, if item.tab = current tab, display it on the screen
      */
@@ -268,30 +270,40 @@ public class Block
      */
     public float slipperiness;
     private String blockName;
+    public Block setTextureFile(String tf)
+    {
+    this.textureFile = tf;
+    return this;
+    }
 
+    public String getTextureFile()
+    {
+    return this.textureFile;
+    }
     protected Block(int par1, Material par2Material)
     {
-        this.blockConstructorCalled = true;
-        this.enableStats = true;
-        this.stepSound = soundPowderFootstep;
-        this.blockParticleGravity = 1.0F;
-        this.slipperiness = 0.6F;
-
-        if (blocksList[par1] != null)
-        {
-            throw new IllegalArgumentException("Slot " + par1 + " is already occupied by " + blocksList[par1] + " when adding " + this);
+            this.textureFile = "/terrain.png";//ajout on définie le fichier de texture par defaut
+            this.blockConstructorCalled = true;
+            this.enableStats = true;
+            this.stepSound = soundPowderFootstep;
+            this.blockParticleGravity = 1.0F;
+            this.slipperiness = 0.6F;
+            
+            if (blocksList[par1] != null)
+            {
+                throw new IllegalArgumentException("Slot " + par1 + " is already occupied by " + blocksList[par1] + " when adding " + this);
+            }
+            else
+            {
+                this.blockMaterial = par2Material;
+                blocksList[par1] = this;
+                this.blockID = par1;
+                this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+                opaqueCubeLookup[par1] = this.isOpaqueCube();
+                lightOpacity[par1] = this.isOpaqueCube() ? 255 : 0;
+                canBlockGrass[par1] = !par2Material.getCanBlockGrass();
+            }
         }
-        else
-        {
-            this.blockMaterial = par2Material;
-            blocksList[par1] = this;
-            this.blockID = par1;
-            this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-            opaqueCubeLookup[par1] = this.isOpaqueCube();
-            lightOpacity[par1] = this.isOpaqueCube() ? 255 : 0;
-            canBlockGrass[par1] = !par2Material.getCanBlockGrass();
-        }
-    }
 
     /**
      * Blocks with this attribute will not notify all near blocks when it's metadata change. The default behavior is

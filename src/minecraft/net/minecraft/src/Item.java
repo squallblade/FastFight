@@ -184,7 +184,7 @@ public class Item
     public static Item recordWard = (new ItemRecord(2009, "ward")).setIconCoord(9, 15).setItemName("record");
     public static Item record11 = (new ItemRecord(2010, "11")).setIconCoord(10, 15).setItemName("record");
     public static Item recordWait = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
-
+    private String textureFile;
     /** The ID of this item. */
     public final int itemID;
 
@@ -212,14 +212,24 @@ public class Item
 
     protected Item(int par1)
     {
-        this.itemID = 256 + par1;
+    this.textureFile = "/gui/items.png";//ajout on définie le fichier de texture par defaut
+    this.itemID = 256 + par1;
 
-        if (itemsList[256 + par1] != null)
-        {
-            System.out.println("CONFLICT @ " + par1);
-        }
+    if (itemsList[256 + par1] != null)
+    {
+    System.out.println("CONFLICT @ " + par1);
+    }
+    itemsList[256 + par1] = this;
+    }
+    public Item setTextureFile(String tf)
+    {
+    this.textureFile = tf;
+    return this;
+    }
 
-        itemsList[256 + par1] = this;
+    public String getTextureFile()
+    {
+    return this.textureFile;
     }
 
     /**

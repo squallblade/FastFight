@@ -4763,7 +4763,7 @@ public class RenderBlocks
 
             this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -4904,7 +4904,7 @@ public class RenderBlocks
 
             this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5045,7 +5045,7 @@ public class RenderBlocks
 
             this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5186,7 +5186,7 @@ public class RenderBlocks
 
             this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, var24);
 
-            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var24 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 this.colorRedTopLeft *= par5;
                 this.colorRedBottomLeft *= par5;
@@ -5319,7 +5319,7 @@ public class RenderBlocks
 
             this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var20 * par5, var23 * par6, var26 * par7);
                 this.renderEastFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5354,7 +5354,7 @@ public class RenderBlocks
 
             this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var20 * par5, var23 * par6, var26 * par7);
                 this.renderWestFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5389,7 +5389,7 @@ public class RenderBlocks
 
             this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var21 * par5, var24 * par6, var27 * par7);
                 this.renderNorthFace(par1Block, (double)par2, (double)par3, (double)par4, 38);
@@ -5424,7 +5424,7 @@ public class RenderBlocks
 
             this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, var29);
 
-            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0)
+            if (var8 && fancyGrass && var29 == 3 && this.overrideBlockTexture < 0 && par1Block.getTextureFile().equals("/terrain.png"))
             {
                 var10.setColorOpaque_F(var21 * par5, var24 * par6, var27 * par7);
                 this.renderSouthFace(par1Block, (double)par2, (double)par3, (double)par4, 38);

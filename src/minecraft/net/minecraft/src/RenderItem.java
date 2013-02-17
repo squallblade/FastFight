@@ -80,7 +80,7 @@ public class RenderItem extends Render
                         var27 = Reflector.callString(var15, Reflector.ForgeBlock_getTextureFile, new Object[0]);
                     }
 
-                    this.loadTexture(var27);
+                    this.loadTexture(var15.getTextureFile());
                     var22 = 0.25F;
                     var16 = var15.getRenderType();
 
@@ -190,13 +190,13 @@ public class RenderItem extends Render
                             var23 = Reflector.callString(var10.getItem(), Reflector.ForgeItem_getTextureFile, new Object[0]);
                             this.loadTexture(var23);
                         }
-                        else if (var15 != null)
+                        if (var15 != null)
                         {
-                            this.loadTexture("/terrain.png");
+                        this.loadTexture(var15.getTextureFile());
                         }
                         else
                         {
-                            this.loadTexture("/gui/items.png");
+                        this.loadTexture(var10.getItem().getTextureFile());
                         }
 
                         if (this.field_77024_a)
@@ -258,30 +258,13 @@ public class RenderItem extends Render
                 GL11.glTranslatef(0.0F, 0.0F, var17 + var16);
                 int var22 = 16;
 
-                if (Reflector.ForgeItem_getTextureFile.exists())
+                if (Block.blocksList[var18.itemID] != null)
                 {
-                    String var23 = Reflector.callString(var18.getItem(), Reflector.ForgeItem_getTextureFile, new Object[0]);
-
-                    if (var23.equals("/terrain.png"))
-                    {
-                        var22 = Config.getIconWidthTerrain();
-                    }
-                    else if (var23.equals("/gui/items.png"))
-                    {
-                        var22 = Config.getIconWidthItems();
-                    }
-
-                    this.loadTexture(var23);
-                }
-                else if (var18.getItem() instanceof ItemBlock)
-                {
-                    this.loadTexture("/terrain.png");
-                    var22 = Config.getIconWidthTerrain();
+                    this.loadTexture(Block.blocksList[var18.itemID].getTextureFile());
                 }
                 else
                 {
-                    this.loadTexture("/gui/items.png");
-                    var22 = Config.getIconWidthItems();
+                    this.loadTexture(Item.itemsList[var18.itemID].getTextureFile());
                 }
 
                 GL11.glColor4f(par5, par6, par7, 1.0F);
@@ -372,10 +355,10 @@ public class RenderItem extends Render
             Block var18 = Block.blocksList[var6];
             var14 = "/terrain.png";
 
-            if (Reflector.ForgeBlock_getTextureFile.exists())
+            if (var6 < 256 && RenderBlocks.renderItemIn3d(Block.blocksList[var6].getRenderType()))
             {
-                var14 = Reflector.callString(var18, Reflector.ForgeBlock_getTextureFile, new Object[0]);
-            }
+            	par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Block.blocksList[var6].getTextureFile()));            
+            	}
 
             par2RenderEngine.bindTexture(par2RenderEngine.getTexture(var14));
             GL11.glPushMatrix();
@@ -415,7 +398,7 @@ public class RenderItem extends Render
                     var14 = Reflector.callString(Item.itemsList[var6], Reflector.ForgeItem_getTextureFile, new Object[0]);
                 }
 
-                par2RenderEngine.bindTexture(par2RenderEngine.getTexture(var14));
+                par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Item.itemsList[var6].getTextureFile()));
                 int var15 = 1;
 
                 if (Reflector.ForgeItem_getRenderPasses.exists())
@@ -455,20 +438,16 @@ public class RenderItem extends Render
                 GL11.glDisable(GL11.GL_LIGHTING);
                 var14 = null;
 
-                if (Reflector.ForgeItem_getTextureFile.exists())
+                if (var6 < 256)
                 {
-                    var14 = Reflector.callString(par3ItemStack.getItem(), Reflector.ForgeItem_getTextureFile, new Object[0]);
-                }
-                else if (Item.itemsList[var6] instanceof ItemBlock)
-                {
-                    var14 = "/terrain.png";
+                par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Block.blocksList[var6].getTextureFile()));
                 }
                 else
                 {
-                    var14 = "/gui/items.png";
+                par2RenderEngine.bindTexture(par2RenderEngine.getTexture(Item.itemsList[var6].getTextureFile()));
                 }
 
-                par2RenderEngine.bindTexture(par2RenderEngine.getTexture(var14));
+//                par2RenderEngine.bindTexture(par2RenderEngine.getTexture(var14));
                 var13 = Item.itemsList[var6].getColorFromItemStack(par3ItemStack, 0);
                 float var19 = (float)(var13 >> 16 & 255) / 255.0F;
                 var12 = (float)(var13 >> 8 & 255) / 255.0F;
