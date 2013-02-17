@@ -83,7 +83,6 @@ import net.minecraft.src.Vec3;
 import net.minecraft.src.WorldClient;
 import net.minecraft.src.WorldProvider;
 import net.minecraft.src.WorldRenderer;
-import net.minecraft.src.WrUpdates;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.ARBOcclusionQuery;
@@ -328,7 +327,7 @@ public class RenderGlobal implements IWorldAccess {
             for(int var12 = 0; var12 < this.field_72763_n; ++var12) {
                for(int var9 = 0; var9 < this.field_72764_o; ++var9) {
                   int var10 = (var9 * this.field_72763_n + var12) * this.field_72766_m + var7;
-                  this.field_72765_l[var10] = WrUpdates.makeWorldRenderer(this.field_72769_h, this.field_72762_a, var7 * 16, var12 * 16, var9 * 16, this.field_72778_p + var4);
+                  this.field_72765_l[var10] = new WorldRenderer(this.field_72769_h, this.field_72762_a, var7 * 16, var12 * 16, var9 * 16, this.field_72778_p + var4);
                   if(this.field_72774_t) {
                      this.field_72765_l[var10].field_78934_v = this.field_72775_s.get(var5);
                   }
@@ -586,7 +585,6 @@ public class RenderGlobal implements IWorldAccess {
       }
 
       RenderHelper.func_74518_a();
-      WrUpdates.preRender(this, p_72719_1_);
       if(this.field_72777_q.field_71474_y.ofSmoothFps && p_72719_2_ == 0) {
          GL11.glFinish();
       }
@@ -716,7 +714,6 @@ public class RenderGlobal implements IWorldAccess {
       }
 
       var5.func_76319_b();
-      WrUpdates.postRender();
       return var20;
    }
 
@@ -1272,9 +1269,7 @@ public class RenderGlobal implements IWorldAccess {
    }
 
    public boolean func_72716_a(EntityLiving p_72716_1_, boolean p_72716_2_) {
-      if(WrUpdates.hasWrUpdater()) {
-         return WrUpdates.updateRenderers(this, p_72716_1_, p_72716_2_);
-      } else if(this.field_72767_j.size() <= 0) {
+      if(this.field_72767_j.size() <= 0) {
          return false;
       } else {
          int var3 = 0;
