@@ -1958,9 +1958,9 @@ public abstract class World implements IBlockAccess
                 {
                     this.updateEntity(var2);
                 }
-                catch (Throwable var6)
+                catch (Throwable var8)
                 {
-                    var4 = CrashReport.makeCrashReport(var6, "Ticking entity");
+                    var4 = CrashReport.makeCrashReport(var8, "Ticking entity");
                     var5 = var4.makeCategory("Entity being ticked");
 
                     if (var2 == null)
@@ -2010,9 +2010,9 @@ public abstract class World implements IBlockAccess
                 {
                     var9.updateEntity();
                 }
-                catch (Throwable var8)
+                catch (Throwable var6)
                 {
-                    var4 = CrashReport.makeCrashReport(var8, "Ticking tile entity");
+                    var4 = CrashReport.makeCrashReport(var6, "Ticking tile entity");
                     var5 = var4.makeCategory("Tile entity being ticked");
 
                     if (var9 == null)
