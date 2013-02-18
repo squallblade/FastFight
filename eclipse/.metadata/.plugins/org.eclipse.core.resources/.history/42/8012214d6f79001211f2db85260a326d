@@ -97,7 +97,7 @@ public class StringTranslate
 
             try
             {
-                this.loadLanguage(var2, "en_US");
+                this.loadLanguage(var2, "fr_FR");
             }
             catch (IOException var8)
             {

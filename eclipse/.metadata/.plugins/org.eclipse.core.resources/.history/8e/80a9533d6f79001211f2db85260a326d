@@ -11,7 +11,7 @@ import java.util.TreeMap;
 public class StringTranslate
 {
     /** Is the private singleton instance of StringTranslate. */
-    private static StringTranslate instance = new StringTranslate("en_US");
+    private static StringTranslate instance = new StringTranslate("fr_FR");
 
     /**
 * Contains all key/value pairs to be translated - is loaded from '/lang/en_US.lang' when the StringTranslate is
@@ -97,7 +97,7 @@ public class StringTranslate
 
             try
             {
-                this.loadLanguage(var2, "en_US");
+                this.loadLanguage(var2, "fr_FR");
             }
             catch (IOException var8)
             {

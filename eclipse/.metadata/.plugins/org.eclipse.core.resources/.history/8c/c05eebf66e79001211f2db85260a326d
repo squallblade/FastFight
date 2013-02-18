@@ -126,7 +126,7 @@ public class StringTranslate
                             {
                                 if (var6.charAt(var7) >= 256)
                                 {
-                                    this.isUnicode = false;
+                                    this.isUnicode = true;
                                     break;
                                 }
                             }
