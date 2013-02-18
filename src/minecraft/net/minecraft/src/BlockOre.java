@@ -15,7 +15,7 @@ public class BlockOre extends Block
      */
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return this.blockID == Block.oreCoal.blockID ? Item.coal.itemID : (this.blockID == Block.oreDiamond.blockID ? Item.diamond.itemID : (this.blockID == Block.oreLapis.blockID ? Item.dyePowder.itemID : (this.blockID == Block.oreEmerald.blockID ? Item.emerald.itemID : (this.blockID == Block.oreRubi.blockID ? Item.Rubi.itemID : this.blockID))));
+        return this.blockID == Block.oreCoal.blockID ? Item.coal.itemID : (this.blockID == Block.oreDiamond.blockID ? Item.diamond.itemID : (this.blockID == Block.oreLapis.blockID ? Item.dyePowder.itemID : (this.blockID == Block.oreEmerald.blockID ? Item.emerald.itemID : (this.blockID == Block.oreRubis.blockID ? Item.Rubis.itemID : this.blockID))));
     }
 
     /**
@@ -75,7 +75,7 @@ public class BlockOre extends Block
             {
                 var8 = MathHelper.getRandomIntegerInRange(par1World.rand, 2, 5);
             }
-            else if (this.blockID == Block.oreRubi.blockID)
+            else if (this.blockID == Block.oreRubis.blockID)
             {
                 var8 = MathHelper.getRandomIntegerInRange(par1World.rand, 3, 7);
             }

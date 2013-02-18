@@ -217,7 +217,7 @@ public class GameSettings
         this.gammaSetting = 0.0F;
         this.guiScale = 0;
         this.particleSetting = 0;
-        this.language = "en_US";
+        this.language = "fr_FR";
         this.mc = par1Minecraft;
         this.optionsFile = new File(par2File, "options.txt");
         this.optionsFileOF = new File(par2File, "optionsof.txt");
@@ -246,7 +246,7 @@ public class GameSettings
         this.gammaSetting = 0.0F;
         this.guiScale = 0;
         this.particleSetting = 0;
-        this.language = "en_US";
+        this.language = "fr_FR";
     }
 
     public String getKeyBindingDescription(int par1)

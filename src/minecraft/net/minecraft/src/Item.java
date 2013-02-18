@@ -186,7 +186,26 @@ public class Item
     public static Item recordWait = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
 
     
-    public static Item Rubi = (new Item(150)).setIconCoord(10, 10).setItemName("Rubi").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item Rubis = (new Item(150)).setIconCoord(10, 10).setItemName("Rubis").setCreativeTab(CreativeTabs.tabMaterials);
+    
+//    public static Item shovelRubis = (new ItemSpade(226, EnumToolMaterial.RUBIS)).setIconCoord(3, 10).setItemName("shovelRubis");//ajout
+//    public static Item pickaxeRubis = (new ItemPickaxe(227, EnumToolMaterial.RUBIS)).setIconCoord(3, 11).setItemName("pickaxeRubis");//ajout
+//    public static Item axeRubis = (new ItemAxe(228, EnumToolMaterial.RUBIS)).setIconCoord(3, 12).setItemName("hatchetRubis");//ajout
+//    public static Item hoeRubis = (new ItemHoe(229, EnumToolMaterial.RUBIS)).setIconCoord(3, 13).setItemName("hoeRubis");//ajout
+    public static Item helmetRubis = (new ItemArmor(230, EnumArmorMaterial.RUBIS, 7, 0)).setIconCoord(5, 10).setItemName("helmetRubis");//ajout
+    public static Item plateRubis = (new ItemArmor(231, EnumArmorMaterial.RUBIS, 7, 1)).setIconCoord(3, 11).setItemName("chestplateRubis");//ajout
+    public static Item legsRubis = (new ItemArmor(232, EnumArmorMaterial.RUBIS, 7, 2)).setIconCoord(4, 11).setItemName("leggingsRubis");//ajout
+    public static Item bootsRubis = (new ItemArmor(233, EnumArmorMaterial.RUBIS, 7, 3)).setIconCoord(5, 11).setItemName("bootsRubis");//ajout
+//    public static Item swordEmeraude = (new ItemSword(234, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 9).setItemName("swordEmeraude");//ajout
+//    public static Item shovelEmeraude = (new ItemSpade(235, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 10).setItemName("shovelEmeraude");//ajout
+//    public static Item pickaxeEmeraude = (new ItemPickaxe(236, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 11).setItemName("pickaxeEmeraude");//ajout
+//    public static Item axeEmeraude = (new ItemAxe(237, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 12).setItemName("hatchetEmeraude");//ajout
+//    public static Item hoeEmeraude = (new ItemHoe(238, EnumToolMaterial.EMERAUDE)).setIconCoord(4, 13).setItemName("hoeEmeraude");//ajout
+    public static Item helmetEmeraude = (new ItemArmor(239, EnumArmorMaterial.EMERAUDE, 6, 0)).setIconCoord(1, 10).setItemName("helmetEmeraude");//ajout
+    public static Item plateEmeraude = (new ItemArmor(240, EnumArmorMaterial.EMERAUDE, 6, 1)).setIconCoord(2, 10).setItemName("chestplateEmeraude");//ajout
+    public static Item legsEmeraude = (new ItemArmor(241, EnumArmorMaterial.EMERAUDE, 6, 2)).setIconCoord(1, 11).setItemName("leggingsEmeraude");//ajout
+    public static Item bootsEmeraude = (new ItemArmor(242, EnumArmorMaterial.EMERAUDE, 6, 3)).setIconCoord(2, 11).setItemName("bootsEmeraude");//ajout    
+    
     /** The ID of this item. */
     public final int itemID;
 

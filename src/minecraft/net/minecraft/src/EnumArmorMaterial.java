@@ -6,8 +6,10 @@ public enum EnumArmorMaterial
     CHAIN(15, new int[]{2, 5, 4, 1}, 12),
     IRON(15, new int[]{2, 6, 5, 2}, 9),
     GOLD(7, new int[]{2, 5, 3, 1}, 25),
-    DIAMOND(33, new int[]{3, 8, 6, 3}, 10);
-
+    DIAMOND(33, new int[]{3, 8, 6, 3}, 10),
+    OBSIDIAN(35, new int[]{4, 10, 8, 5}, 9),
+    EMERAUDE(24, new int[]{2, 6, 4, 2}, 25),
+    RUBIS(27, new int[]{3, 6, 5, 3}, 20);
     /**
      * Holds the maximum damage factor (each piece multiply this by it's own value) of the material, this is the item
      * damage (how much can absorb before breaks)

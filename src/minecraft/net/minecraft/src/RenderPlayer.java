@@ -8,7 +8,7 @@ public class RenderPlayer extends RenderLiving
     private ModelBiped modelBipedMain;
     private ModelBiped modelArmorChestplate;
     private ModelBiped modelArmor;
-    private static final String[] armorFilenamePrefix = new String[] {"cloth", "chain", "iron", "diamond", "gold"};
+    private static final String[] armorFilenamePrefix = new String[] {"cloth", "chain", "iron", "diamond", "gold", "obsidian", "emeraude", "rubis"};
 
     public RenderPlayer()
     {

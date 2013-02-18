@@ -204,15 +204,16 @@ public class Block
     public static final Block skull = (new BlockSkull(144)).setHardness(1.0F).setStepSound(soundStoneFootstep).setBlockName("skull").setRequiresSelfNotify();
     public static final Block anvil = (new BlockAnvil(145)).setHardness(5.0F).setStepSound(soundAnvilFootstep).setResistance(2000.0F).setBlockName("anvil").setRequiresSelfNotify();
 
-    public static final Block stairsObsidian = (new BlockStairs(150, obsidian, 0)).setBlockName("stairsobsidian").setRequiresSelfNotify();
+    public static final Block stairsObsidian = (new BlockStairs(150, obsidian, 0)).setBlockName("stairsObsidian").setRequiresSelfNotify();
     public static final BlockHalfSlab obsidianSingleSlab = (BlockHalfSlab)(new BlockStep2(151, false)).setHardness(50.0F).setResistance(2000.0F).setStepSound(soundStoneFootstep).setBlockName("obsidianSlab");
     public static final Block invisibleBlock = (new BlockInvisible(152, 187)).setLightOpacity(0).setBlockName("invisibleBlock").setBlockUnbreakable().setResistance(6000000.0F).setStepSound(soundStoneFootstep).disableStats();
     
-    public static final Block blockRubi = (new BlockOreStorage(153, 188)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRubi");
-    public static final Block oreRubi = (new BlockOre(154, 189)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("oreRubi");
+    public static final Block blockRubis = (new BlockOreStorage(153, 188)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRubis");
+    public static final Block oreRubis = (new BlockOre(154, 189)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("oreRubis");
 
     
     
+
     
     /**
      * The index of the texture to be displayed for this block. May vary based on graphics settings. Mostly seems to
