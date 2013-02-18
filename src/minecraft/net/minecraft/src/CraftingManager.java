@@ -127,6 +127,10 @@ public class CraftingManager
         this.addShapelessRecipe(new ItemStack(Item.eyeOfEnder, 1), new Object[] {Item.enderPearl, Item.blazePowder});
         this.addShapelessRecipe(new ItemStack(Item.fireballCharge, 3), new Object[] {Item.gunpowder, Item.blazePowder, Item.coal});
         this.addShapelessRecipe(new ItemStack(Item.fireballCharge, 3), new Object[] {Item.gunpowder, Item.blazePowder, new ItemStack(Item.coal, 1, 1)});
+        
+        this.func_92103_a(new ItemStack(Block.obsidianSingleSlab, 6, 0), new Object[] {"###", '#', Block.obsidian});
+        this.func_92103_a(new ItemStack(Block.obsidian, 1), new Object[] {"##", '#', Block.obsidianSingleSlab});
+
         Collections.sort(this.recipes, new RecipeSorter(this));
         System.out.println(this.recipes.size() + " recipes");
     }
