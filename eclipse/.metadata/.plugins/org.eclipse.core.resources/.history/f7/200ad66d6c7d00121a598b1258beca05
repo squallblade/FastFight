@@ -101,7 +101,7 @@ public class NetLoginHandler extends NetHandler
             {
                 if (par1Packet2ClientProtocol.getProtocolVersion() > 61)
                 {
-                    this.raiseErrorAndDisconnect("\u00a73[Erreur]Contactez Squallblade pour de l'information ! Skype ; samuel.bolduc3");
+                    this.raiseErrorAndDisconnect("Outdated server!");
                 }
                 else
                 {
