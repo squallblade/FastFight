@@ -93,7 +93,7 @@ net/minecraft/src/BiomeGenDesert ff6ba66f9425d4c93e981a556efa5ade
 net/minecraft/src/BiomeGenEnd d61dff2f6c7bceb8ddf231d4cc823873
 net/minecraft/src/BiomeGenForest d1ea15e302a5d4ee1183841b522f2f12
 net/minecraft/src/BiomeGenHell 69928ae2eb38783d32e945a94d14c4dc
-net/minecraft/src/BiomeGenHills 757f8e10d20b8ab7fe42ee57225429f1
+net/minecraft/src/BiomeGenHills d2102ce5e5008ecc8fcf6356b518528e
 net/minecraft/src/BiomeGenJungle a934032334a4a866abe98ca96f24bb30
 net/minecraft/src/BiomeGenMushroomIsland 100fb293b4aff4fb32c79f9bc6c4021f
 net/minecraft/src/BiomeGenOcean be4442e8ce61488378dd780630ebd44a
@@ -409,7 +409,7 @@ net/minecraft/src/ContainerRepair adeeea8ecadba7b6d66324b856017ff6
 net/minecraft/src/ContainerSheep 56c88681b0f52aa275b33fe9ab215b9c
 net/minecraft/src/ContainerWorkbench 279537c470ae2698a68955d92c11b6d9
 net/minecraft/src/ConvertingProgressUpdate c8a4774dfdc0514f73cfd37cb9912fa5
-net/minecraft/src/CraftingManager b42516852ae1be6378825cddc72a7ad5
+net/minecraft/src/CraftingManager 350e6c6e69a9a6ad79f864ba65f4b6ad
 net/minecraft/src/CrashReport 5d8f726eba86c2ee946f49210c43c3f6
 net/minecraft/src/CrashReportCategory 98fceea44ea975357bbfe1cfbbb573da
 net/minecraft/src/CrashReportCategoryEntry 996f896d0ca99d6bac9af8bd8acde140
@@ -996,7 +996,7 @@ net/minecraft/src/NBTTagString d80b4e58ddb4de18944a88f9e1280414
 net/minecraft/src/NetClientHandler 94ccb67eb5483c310b33b6ed5f793dc0
 net/minecraft/src/NetClientWebTextures 5634297f38a509cdb615e65004053536
 net/minecraft/src/NetHandler dd3c93b8787bae72c41686a540ece550
-net/minecraft/src/NetLoginHandler 53097a11e0b3c1e176613b01e6de9d84
+net/minecraft/src/NetLoginHandler 8d6949b0cb02d0a49012c85f1de693a3
 net/minecraft/src/NetServerHandler f634055e0de757e446aefdedfe9ab586
 net/minecraft/src/NetworkListenThread fcdb2d9ad026a51b7b37b51b3020cc09
 net/minecraft/src/NextTickHashSet 0ddf1124313958b30e55fba668103327
@@ -1130,7 +1130,7 @@ net/minecraft/src/RecipesArmorDyes d63422706107b924228f95a4f4cb24cc
 net/minecraft/src/RecipesCrafting 083d7ceb7ea18f29d072ce102231de18
 net/minecraft/src/RecipesDyes 70a93647d00c734a1efbd2d4d888ca7d
 net/minecraft/src/RecipesFood 684520eb60d20b2b2855283b97379ac9
-net/minecraft/src/RecipesIngots d5979d70846eaff9c25c6789ac2d394d
+net/minecraft/src/RecipesIngots cd01ce5a37d2ea76848edd86970cc489
 net/minecraft/src/RecipesMapCloning 859428efc1b333813ba2171831d9e0e5
 net/minecraft/src/RecipesMapExtending b6d0b739249160cc95381fb4db3297fa
 net/minecraft/src/RecipeSorter 2ee78ae1ac88410aaecc5263bab4c23a
@@ -1317,7 +1317,7 @@ net/minecraft/src/TextureWatchFX 316338ab0f004f1feeb6f1a97c8cbf08
 net/minecraft/src/TextureWaterFlowFX 86c977a8512cb15cff10bc03f6ac2cac
 net/minecraft/src/TextureWaterFX 90103574b79955a213ec6df3eb02416f
 net/minecraft/src/ThreadClientSleep 95a25acd31cae1088cf7c7b3334e8061
-net/minecraft/src/ThreadConnectToServer aaef02077b9f9f1a001a1ed1f6e40914
+net/minecraft/src/ThreadConnectToServer 134025db4f0cbacff9b194ed5e26f55a
 net/minecraft/src/ThreadDownloadImage dcaea8f9ece8a2c59255501b53abce85
 net/minecraft/src/ThreadDownloadImageData aaba8236bd6a4f19e0cbd7d0b20afa09
 net/minecraft/src/ThreadDownloadResources aab972cfd5acdb5fbb1ad25506f2e466

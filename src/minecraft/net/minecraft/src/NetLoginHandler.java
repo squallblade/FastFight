@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 import javax.crypto.SecretKey;
+
 import net.minecraft.server.MinecraftServer;
 
 public class NetLoginHandler extends NetHandler
@@ -95,15 +97,15 @@ public class NetLoginHandler extends NetHandler
         {
             PublicKey var2 = this.mcServer.getKeyPair().getPublic();
 
-            if (par1Packet2ClientProtocol.getProtocolVersion() != 51)
+            if (par1Packet2ClientProtocol.getProtocolVersion() != 61)
             {
-                if (par1Packet2ClientProtocol.getProtocolVersion() > 51)
+                if (par1Packet2ClientProtocol.getProtocolVersion() > 61)
                 {
                     this.raiseErrorAndDisconnect("Outdated server!");
                 }
                 else
                 {
-                    this.raiseErrorAndDisconnect("Outdated client!");
+                    this.raiseErrorAndDisconnect("\u00a73Nous Utilisons Maintenant Un Launcher ! Procurez-vous le sur fastfight.net");
                 }
             }
             else

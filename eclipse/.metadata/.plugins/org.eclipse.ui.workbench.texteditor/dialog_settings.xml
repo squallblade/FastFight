@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Slab" key="selection"/>
+		<item value="FastFight" key="selection"/>
 		<list key="findhistory">
+			<item value="FastFight"/>
+			<item value="var10"/>
+			<item value="Emerald"/>
 			<item value="slab"/>
 			<item value="emerald"/>
 			<item value="block"/>
 			<item value="var2"/>
 			<item value="var ="/>
-			<item value="en_US"/>
-			<item value="par2Str"/>
-			<item value="France"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

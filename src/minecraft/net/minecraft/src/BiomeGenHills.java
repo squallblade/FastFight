@@ -31,6 +31,11 @@ public class BiomeGenHills extends BiomeGenBase
             {
                 par1World.setBlock(var7, var8, var9, Block.oreEmerald.blockID);
             }
+            
+            if (var10 == Block.stone.blockID)
+            {
+                par1World.setBlock(var7, var8, var9, Block.oreRubis.blockID);
+            }
         }
 
         for (var5 = 0; var5 < 7; ++var5)
