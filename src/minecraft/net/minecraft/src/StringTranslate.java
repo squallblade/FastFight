@@ -137,7 +137,7 @@ public class StringTranslate
                 {
                     var9.printStackTrace();
                     return;
-                }
+              }
             }
 
             this.currentLanguage = par1Str;

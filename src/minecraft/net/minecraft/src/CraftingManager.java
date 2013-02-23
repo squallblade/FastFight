@@ -130,6 +130,8 @@ public class CraftingManager
         
         this.func_92103_a(new ItemStack(Block.obsidianSingleSlab, 6, 0), new Object[] {"###", '#', Block.obsidian});
         this.func_92103_a(new ItemStack(Block.obsidian, 1), new Object[] {"##", '#', Block.obsidianSingleSlab});
+        this.func_92103_a(new ItemStack(Block.stairsObsidian, 4), new Object[] {"#  ", "## ", "###", '#', new ItemStack(Block.obsidian)});
+
 
         Collections.sort(this.recipes, new RecipeSorter(this));
         System.out.println(this.recipes.size() + " recipes");

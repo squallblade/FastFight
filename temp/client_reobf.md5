@@ -198,7 +198,7 @@ net/minecraft/src/BlockStairs 47af0ca167197bba761e9d84d7c95932
 net/minecraft/src/BlockStationary 4a27b818220bdd9fa4f7e13d72af6c5d
 net/minecraft/src/BlockStem b9e370b7664d8bc6d4105da34d8d7eed
 net/minecraft/src/BlockStep 699c1629ecb2f259e9775d6455fa1ce2
-net/minecraft/src/BlockStep2 ca745a889721e997894d4a179518d013
+net/minecraft/src/BlockStep2 0dacadd40a72c9b8686a7bf79a7aaf5e
 net/minecraft/src/BlockStone 4be5ae60fa5598a9bae46abdcdbae19d
 net/minecraft/src/BlockStoneBrick 33d388234d2b1e9e2307e291a74286c7
 net/minecraft/src/BlockTallGrass be126bb5601528249a00c0967a6f4fcf
@@ -409,7 +409,7 @@ net/minecraft/src/ContainerRepair adeeea8ecadba7b6d66324b856017ff6
 net/minecraft/src/ContainerSheep 56c88681b0f52aa275b33fe9ab215b9c
 net/minecraft/src/ContainerWorkbench 279537c470ae2698a68955d92c11b6d9
 net/minecraft/src/ConvertingProgressUpdate c8a4774dfdc0514f73cfd37cb9912fa5
-net/minecraft/src/CraftingManager 350e6c6e69a9a6ad79f864ba65f4b6ad
+net/minecraft/src/CraftingManager cb0529da4c5b5ff0ab10be3607aa2c75
 net/minecraft/src/CrashReport 5d8f726eba86c2ee946f49210c43c3f6
 net/minecraft/src/CrashReportCategory 98fceea44ea975357bbfe1cfbbb573da
 net/minecraft/src/CrashReportCategoryEntry 996f896d0ca99d6bac9af8bd8acde140
@@ -658,6 +658,7 @@ net/minecraft/src/Facing 1ca7fd2141d23d513ac91e9267f7b1c2
 net/minecraft/src/FilterIMob 27c31b86c772924288b8d33f758672a6
 net/minecraft/src/FlatGeneratorInfo 8dc47b8af1a2984ac8f6e06623d0383e
 net/minecraft/src/FlatLayerInfo 87a6f56391cb3aac58f092c800596344
+net/minecraft/src/FontColors 45b1d94b0bc8a6dc4fa5f2960371ac20
 net/minecraft/src/FontRenderer e497fc782c739f503262ed8527aa045d
 net/minecraft/src/FoodStats 7cbf7398d3dd51d35d5ee86215923c3a
 net/minecraft/src/Frustrum 30f1bf06e2421387f1f32a01e8e10c44
@@ -725,7 +726,7 @@ net/minecraft/src/GuiIngame d32012b0b2bb7763b6300de183879ddf
 net/minecraft/src/GuiIngameMenu 77473e0caecebb15a1603fbcf22f3d9d
 net/minecraft/src/GuiInventory 6653e80debcaa21e858415c03440e3c2
 net/minecraft/src/GuiLanguage 13e2b03a011a70a5cc0537ec1f9b64cd
-net/minecraft/src/GuiMainMenu a1ccb4b91829b54adcde00aed4285682
+net/minecraft/src/GuiMainMenu 3b4849f1664fc9c8e0e114dbefb02185
 net/minecraft/src/GuiMemoryErrorScreen 1e277b5406d73c65e6909dbcdaa2fe99
 net/minecraft/src/GuiMerchant b6a3854661a43499bab0072faabaf3c2
 net/minecraft/src/GuiMultiplayer 8c9d867613cb050f9d48b56cac9d2cb6
@@ -996,7 +997,7 @@ net/minecraft/src/NBTTagString d80b4e58ddb4de18944a88f9e1280414
 net/minecraft/src/NetClientHandler 94ccb67eb5483c310b33b6ed5f793dc0
 net/minecraft/src/NetClientWebTextures 5634297f38a509cdb615e65004053536
 net/minecraft/src/NetHandler dd3c93b8787bae72c41686a540ece550
-net/minecraft/src/NetLoginHandler 8d6949b0cb02d0a49012c85f1de693a3
+net/minecraft/src/NetLoginHandler 61e07536ae2c620092a7b4a6b3182dc6
 net/minecraft/src/NetServerHandler f634055e0de757e446aefdedfe9ab586
 net/minecraft/src/NetworkListenThread fcdb2d9ad026a51b7b37b51b3020cc09
 net/minecraft/src/NextTickHashSet 0ddf1124313958b30e55fba668103327
