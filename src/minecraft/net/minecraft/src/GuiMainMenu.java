@@ -231,7 +231,7 @@ public class GuiMainMenu extends GuiScreen
             this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
         }
 
-        if (par1GuiButton.id == 6){
+        if (par1GuiButton.id == 10){
             Desktop desktop = null;
             java.net.URI url;
             try{
@@ -292,7 +292,7 @@ public class GuiMainMenu extends GuiScreen
         //light edition
         
     	 GL11.glPushMatrix();
-         GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/title/test1.png"));
+         GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/title/bg.png"));
      	GL11.glScalef((float)(1280/this.width)+0.5F, (float)(768/this.height)+0.2F, 1.0F);
          this.drawTexturedModalRect(0, 0, 0, 0, 640, 384);
          GL11.glPopMatrix();
@@ -369,7 +369,7 @@ public class GuiMainMenu extends GuiScreen
         
         onBoutonOver((float)par1, (float)par2);
         
-        GL11.glPushMatrix();
+//        GL11.glPushMatrix();
 //        GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/title/menu.png"));
 //        this.drawRect(this.width+this.X -152, 18, this.width, 191, 0xff838383);
 //        
@@ -389,7 +389,7 @@ public class GuiMainMenu extends GuiScreen
 //        else
 //        	this.drawString(this.fontRenderer, ">", this.width+this.X -162, 27, 0xd8d8d8);
         
-        GL11.glPopMatrix();
+//        GL11.glPopMatrix();
         
         this.controlList.clear();
         
@@ -411,7 +411,7 @@ public class GuiMainMenu extends GuiScreen
         this.quit = new GuiButton(4, this.width -151 + this.X, 132, 150, 20, "Quitter le jeu");
         this.controlList.add(this.quit);
         
-        this.site = new GuiButton(6, this.width -151 + this.X, 66, 150, 20, "Le site");
+        this.site = new GuiButton(10, this.width -151 + this.X, 66, 150, 20, "Le site");
         this.controlList.add(this.site);
 
 //        this.ts = new GuiButtonTeamSpeak(7, this.width - 85 + this.X, 160);
@@ -429,9 +429,7 @@ public class GuiMainMenu extends GuiScreen
 		}else if(x >= this.width+this.X -170 && x <= this.width+this.X -170+15 && y >= 18 && y <= 48){
 			this.color = false;
 			this.menu = true;
-		}
-	else
-	{
+		}else{
 			this.color = false;
 			this.menu = false;
 		}
@@ -444,7 +442,7 @@ public class GuiMainMenu extends GuiScreen
 //        if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0){
 //            var1 = Mouse.getEventX() * this.width / this.mc.displayWidth;
 //            var2 = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
-//            this.mousePressed(var1, var2, 0);
+////            this.mousePressed(var1, var2, 0);
 //        }
 //    }
 	

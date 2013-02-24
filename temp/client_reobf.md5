@@ -726,7 +726,7 @@ net/minecraft/src/GuiIngame d32012b0b2bb7763b6300de183879ddf
 net/minecraft/src/GuiIngameMenu 77473e0caecebb15a1603fbcf22f3d9d
 net/minecraft/src/GuiInventory 6653e80debcaa21e858415c03440e3c2
 net/minecraft/src/GuiLanguage 13e2b03a011a70a5cc0537ec1f9b64cd
-net/minecraft/src/GuiMainMenu 3b4849f1664fc9c8e0e114dbefb02185
+net/minecraft/src/GuiMainMenu 06709c339df5d54d645e21795b992843
 net/minecraft/src/GuiMemoryErrorScreen 1e277b5406d73c65e6909dbcdaa2fe99
 net/minecraft/src/GuiMerchant b6a3854661a43499bab0072faabaf3c2
 net/minecraft/src/GuiMultiplayer 8c9d867613cb050f9d48b56cac9d2cb6
